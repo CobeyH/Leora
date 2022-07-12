@@ -5018,7 +5018,7 @@ GameObject:
   - component: {fileID: 220891002}
   - component: {fileID: 220891003}
   m_Layer: 0
-  m_Name: Particle System Force Field (1)
+  m_Name: Outer Moth Force
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5721,7 +5721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498914117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.27, y: 4.04, z: 0}
+  m_LocalPosition: {x: 8.96, y: 3.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5994,8 +5994,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1839512392}
   - component: {fileID: 1839512391}
+  - component: {fileID: 1839512394}
   m_Layer: 0
-  m_Name: Particle System Force Field
+  m_Name: Inner Moth Force
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6512,6 +6513,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1839512394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839512390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5afba06ec10bbd0ebc19bb9067c018f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mothSpeed: 2
 --- !u!1 &1959278869
 GameObject:
   m_ObjectHideFlags: 0
@@ -6596,7 +6610,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 20.670002
   m_PointLightOuterAngle: 54.65
   m_PointLightInnerRadius: 0.62396824
-  m_PointLightOuterRadius: 5.9953074
+  m_PointLightOuterRadius: 4.0734286
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -6614,7 +6628,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959278869}
-  m_LocalRotation: {x: 0, y: 0, z: -0.22941007, w: 0.97332984}
+  m_LocalRotation: {x: 0, y: 0, z: -0.3071271, w: 0.95166856}
   m_LocalPosition: {x: -5.01, y: -5.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6677,5 +6691,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 6364553991281383999, guid: a185c22a21d1fecd28ac34586231da98, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a185c22a21d1fecd28ac34586231da98, type: 3}

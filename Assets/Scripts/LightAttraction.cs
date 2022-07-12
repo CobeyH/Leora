@@ -28,7 +28,7 @@ public class LightAttraction : MonoBehaviour
             return;
         }
 
-        Vector3 netForce = Vector3.zero;
+        Vector2 netForce = Vector2.zero;
         foreach (UnityEngine.Rendering.Universal.Light2D light in foundLights)
         {
             // Check if there is a clear line between the field and the light.
@@ -36,10 +36,10 @@ public class LightAttraction : MonoBehaviour
             if (
                 light.enabled &&
                 light.lightType != UnityEngine.Rendering.Universal.Light2D.LightType.Global &&
-                !Physics.Linecast(transform.position, light.transform.position)
+                !Physics2D.Linecast(transform.position, light.transform.position)
             )
             {
-                Vector3 vecToLight =
+                Vector2 vecToLight =
                     light.transform.position - transform.position;
 
                 // Don't move towards light that the moths are on top off to avoid occilations.
@@ -51,7 +51,7 @@ public class LightAttraction : MonoBehaviour
                 // Make moths attracted in the direction of the light.
                 // Moths are more attracted to stronger lights.
                 netForce +=
-                    Vector3.Normalize(vecToLight) *
+                    vecToLight.normalized *
                     (
                     light.intensity / (Mathf.Pow(vecToLight.magnitude, 2) + 1)
                     );
@@ -60,8 +60,8 @@ public class LightAttraction : MonoBehaviour
         }
         if (netForce.magnitude > Constants.minDistance)
         {
-            transform.position +=
-                Vector3.Normalize(netForce) * Time.deltaTime * mothSpeed;
+            netForce = netForce.normalized * Time.deltaTime * mothSpeed;
+            transform.position += new Vector3(netForce.x, netForce.y, 0);
         }
     }
 }
