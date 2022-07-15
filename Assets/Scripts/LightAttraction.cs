@@ -29,6 +29,7 @@ public class LightAttraction : MonoBehaviour
         }
 
         Vector2 netForce = Vector2.zero;
+        int layer_mask = LayerMask.GetMask("Default");
         foreach (UnityEngine.Rendering.Universal.Light2D light in foundLights)
         {
             // Check if there is a clear line between the field and the light.
@@ -36,7 +37,7 @@ public class LightAttraction : MonoBehaviour
             if (
                 light.enabled &&
                 light.lightType != UnityEngine.Rendering.Universal.Light2D.LightType.Global &&
-                !Physics2D.Linecast(transform.position, light.transform.position)
+                !Physics2D.Linecast(transform.position, light.transform.position, layer_mask)
             )
             {
                 Vector2 vecToLight =
