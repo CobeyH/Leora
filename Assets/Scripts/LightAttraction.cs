@@ -48,7 +48,7 @@ public class LightAttraction : MonoBehaviour
                 {
                     continue;
                 }
-
+                if (light.lightType == UnityEngine.Rendering.Universal.Light2D.LightType.Point && !MothsInBeam(light, vecToLight)) continue;
                 // Make moths attracted in the direction of the light.
                 // Moths are more attracted to stronger lights.
                 netForce +=
@@ -56,7 +56,6 @@ public class LightAttraction : MonoBehaviour
                     (
                     light.intensity / (Mathf.Pow(vecToLight.magnitude, 2) + 1)
                     );
-                // Debug.Log(Mathf.Pow(vecToLight.magnitude, 2));
             }
         }
         if (netForce.magnitude > Constants.minDistance)
@@ -64,5 +63,37 @@ public class LightAttraction : MonoBehaviour
             netForce = netForce.normalized * Time.deltaTime * mothSpeed;
             transform.position += new Vector3(netForce.x, netForce.y, 0);
         }
+    }
+
+    private bool MothsInBeam(UnityEngine.Rendering.Universal.Light2D light, Vector2 vecToLight)
+    {
+        // Make sure the point light area is pointing in the direction of the moths.
+        float outerAngle = light.pointLightOuterAngle;
+        if (outerAngle >= 360)
+        {
+            // Moths will always be in the beam of a 360 degree light;
+            Debug.Log(1);
+            return true;
+        }
+        float lightRotation = getZRotation(light);
+        Vector2 lightForward = new Vector2(Mathf.Cos(lightRotation + Mathf.PI / 2f), Mathf.Sin(lightRotation + Mathf.PI / 2f));
+        float angleToLight = Vector2.Angle(vecToLight, -lightForward);
+        if (angleToLight > outerAngle / 2)
+        {
+            Debug.Log(2);
+            return false;
+        }
+        Debug.Log(3);
+        return true;
+    }
+
+    private float getZRotation(UnityEngine.Rendering.Universal.Light2D light)
+    {
+        float zRotation = light.transform.eulerAngles.z;
+        if (zRotation > 180f)
+        {
+            zRotation -= 360f;
+        }
+        return zRotation * Mathf.PI / 180f;
     }
 }
