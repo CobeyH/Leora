@@ -135,6 +135,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991866333}
     m_Modifications:
+    - target: {fileID: 7224242410964092818, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
+      propertyPath: level
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092822, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -221,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092825, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Name
-      value: LevelButton (4)
+      value: Level 5 Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
@@ -338,6 +342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991866333}
     m_Modifications:
+    - target: {fileID: 7224242410964092818, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
+      propertyPath: level
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092822, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -424,7 +432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092825, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Name
-      value: LevelButton (3)
+      value: Level 4 Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
@@ -657,6 +665,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991866333}
     m_Modifications:
+    - target: {fileID: 7224242410964092818, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092822, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -743,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092825, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Name
-      value: LevelButton (2)
+      value: Level 3 Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
@@ -759,6 +771,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991866333}
     m_Modifications:
+    - target: {fileID: 7224242410964092818, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
+      propertyPath: level
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092822, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -845,7 +861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092825, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Name
-      value: LevelButton (1)
+      value: Level 2 Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
@@ -861,6 +877,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991866333}
     m_Modifications:
+    - target: {fileID: 7224242410964092818, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092822, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -947,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224242410964092825, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Name
-      value: LevelButton
+      value: Level 1 Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}

@@ -5,8 +5,13 @@ using UnityEngine;
 public class LightController : MonoBehaviour
 {
     public UnityEngine.Rendering.Universal.Light2D myLight;
+    public bool startOn = false;
 
 
+    void Start()
+    {
+        myLight.enabled = startOn;
+    }
     void OnMouseDown()
     {
         toggleLight();
