@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5490333105552584141}
   - component: {fileID: 5490333105552584137}
   m_Layer: 6
-  m_Name: Plant Lamp
+  m_Name: Point Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 67941eaee0f11b46c9c57290d67341dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLight: {fileID: 5490333106156900489}
+  startOn: 0
 --- !u!1 &5490333106156900492
 GameObject:
   m_ObjectHideFlags: 0
