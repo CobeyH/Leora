@@ -13,6 +13,7 @@
 
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEngine.Rendering.Universal;
 using UnityEngine;
 
 
@@ -31,7 +32,7 @@ public static class ShadowCaster2DExtensions
     /// <param name="path">The new path to define the shape of the shadow caster.</param>
     public static void SetPath(this UnityEngine.Rendering.Universal.ShadowCaster2D shadowCaster, Vector3[] path)
     {
-        FieldInfo shapeField = typeof(UnityEngine.Rendering.Universal.ShadowCaster2D).GetField("m_ShapePath",
+        FieldInfo shapeField = typeof(ShadowCaster2D).GetField("m_ShapePath",
                                                                BindingFlags.NonPublic |
                                                                BindingFlags.Instance);
         shapeField.SetValue(shadowCaster, path);

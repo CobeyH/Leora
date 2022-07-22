@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-static class Constants
-{
-    public const float minDistance = 0.0001f;
-}
-
 public class LightAttraction : MonoBehaviour
 {
     public float mothSpeed = 2f;
@@ -43,14 +38,10 @@ public class LightAttraction : MonoBehaviour
                 Vector2 vecToLight =
                     light.transform.position - transform.position;
 
-                // Don't move towards light that the moths are on top off to avoid occilations.
-                if (vecToLight.magnitude <= Constants.minDistance)
-                {
-                    continue;
-                }
                 if (light.lightType == UnityEngine.Rendering.Universal.Light2D.LightType.Point && !MothsInBeam(light, vecToLight)) continue;
                 // Make moths attracted in the direction of the light.
                 // Moths are more attracted to stronger lights.
+                // Moths are less attracted to far away lights.
                 netForce +=
                     vecToLight.normalized *
                     (
@@ -58,11 +49,8 @@ public class LightAttraction : MonoBehaviour
                     );
             }
         }
-        if (netForce.magnitude > Constants.minDistance)
-        {
-            netForce = netForce.normalized * Time.deltaTime * mothSpeed;
-            transform.position += new Vector3(netForce.x, netForce.y, 0);
-        }
+        netForce = netForce.normalized * Time.deltaTime * mothSpeed;
+        transform.position += new Vector3(netForce.x, netForce.y, 0);
     }
 
     private bool MothsInBeam(UnityEngine.Rendering.Universal.Light2D light, Vector2 vecToLight)
