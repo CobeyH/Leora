@@ -14,6 +14,7 @@ public class ProgressBar : MonoBehaviour
     public float fillSpeed;
     private float targetValue = 0;
     private float barWidth = 0;
+    private int totalMoths = 0;
 
     Goal goal;
 
@@ -25,22 +26,30 @@ public class ProgressBar : MonoBehaviour
         // The slider should scale to the number of moths in the game
         fillSpeed = slider.maxValue * 2;
         barWidth = gameObject.GetComponent<RectTransform>().rect.width;
-        Debug.Log(barWidth);
     }
 
     void Start()
     {
+        // Create checkpoint markers.
         foreach (float req in checkpointRequirements)
         {
             GameObject cp = Instantiate(checkpointPrefab, new Vector3(req * barWidth - barWidth / 2f, 0, 0), Quaternion.identity);
             cp.transform.SetParent(this.transform, false);
             checkpoints.Add(cp);
         }
+
+        // Get count of moths in scene.
+        GameObject[] mothFlocks = GameObject.FindGameObjectsWithTag("Moths");
+        foreach (GameObject flock in mothFlocks)
+        {
+            totalMoths += flock.GetComponent<MothSpawner>().getFlockSize();
+        }
+
     }
 
     void Update()
     {
-        targetValue = goal.getMothsInGoal();
+        targetValue = goal.getMothsInGoal() / (float)totalMoths;
         if (slider.value < targetValue)
         {
             float previousValue = slider.value;
@@ -56,11 +65,6 @@ public class ProgressBar : MonoBehaviour
                 i++;
             }
         }
-        else if (slider.value > targetValue)
-        {
-            slider.value -= fillSpeed * Time.deltaTime;
-        }
-        // Debug.Log(targetValue);
     }
 
     public void IncrementProgress(float newProgress)
