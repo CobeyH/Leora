@@ -12,17 +12,15 @@ public class ProgressBar : MonoBehaviour
     public ParticleSystem emitter;
     public Slider slider;
     public float fillSpeed;
-    private float targetValue = 0;
     private float barWidth = 0;
     private int totalMoths = 0;
 
-    Goal goal;
+    List<Goal> goals = new List<Goal>();
 
 
     void Awake()
     {
         slider = gameObject.GetComponent<Slider>();
-        goal = GameObject.Find("Moth Particles").GetComponent<Goal>();
         // The slider should scale to the number of moths in the game
         fillSpeed = slider.maxValue * 2;
         barWidth = gameObject.GetComponent<RectTransform>().rect.width;
@@ -43,13 +41,19 @@ public class ProgressBar : MonoBehaviour
         foreach (GameObject flock in mothFlocks)
         {
             totalMoths += flock.GetComponent<MothSpawner>().getFlockSize();
+            goals.Add(flock.GetComponent<Goal>());
         }
 
     }
 
     void Update()
     {
-        targetValue = goal.getMothsInGoal() / (float)totalMoths;
+        float targetValue = 0;
+        foreach (Goal goal in goals)
+        {
+
+            targetValue += goal.getMothsInGoal() / (float)totalMoths;
+        }
         if (slider.value < targetValue)
         {
             float previousValue = slider.value;
@@ -66,11 +70,5 @@ public class ProgressBar : MonoBehaviour
             }
         }
     }
-
-    public void IncrementProgress(float newProgress)
-    {
-        targetValue = slider.value + newProgress;
-    }
-
 
 }
