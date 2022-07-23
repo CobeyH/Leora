@@ -9,6 +9,7 @@ public class ProgressBar : MonoBehaviour
     private float[] checkpointRequirements;
     private List<GameObject> checkpoints = new List<GameObject>();
     public GameObject checkpointPrefab;
+    public ParticleSystem emitter;
     public Slider slider;
     public float fillSpeed;
     private float targetValue = 0;
@@ -50,6 +51,7 @@ public class ProgressBar : MonoBehaviour
                 if (previousValue < req && slider.value >= req)
                 {
                     checkpoints[i].transform.GetChild(0).gameObject.SetActive(true);
+                    emitter.Emit(100);
                 }
                 i++;
             }
