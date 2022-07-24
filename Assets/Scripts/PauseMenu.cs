@@ -52,4 +52,10 @@ public class PauseMenu : MonoBehaviour
 
         Debug.Log("Showing settings");
     }
+
+    public void RestartLevel()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
 }
