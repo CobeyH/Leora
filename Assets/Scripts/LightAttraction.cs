@@ -60,7 +60,6 @@ public class LightAttraction : MonoBehaviour
         if (outerAngle >= 360)
         {
             // Moths will always be in the beam of a 360 degree light;
-            Debug.Log(1);
             return true;
         }
         float lightRotation = getZRotation(light);
@@ -68,10 +67,8 @@ public class LightAttraction : MonoBehaviour
         float angleToLight = Vector2.Angle(vecToLight, -lightForward);
         if (angleToLight > outerAngle / 2)
         {
-            Debug.Log(2);
             return false;
         }
-        Debug.Log(3);
         return true;
     }
 
