@@ -12,15 +12,22 @@ public class LevelCompleteMenu : MonoBehaviour
 
         if (ProgressBar.LevelComplete)
         {
-
+            ProgressBar.LevelComplete = false;
             CompletionMenuUI.SetActive(true);
+            // Unlock the next level
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            if (nextSceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
+            {
+                PlayerPrefs.SetInt("furthestUnlock", nextSceneIndex);
+            }
         }
     }
 
     public void LoadNextLevel()
     {
         CompletionMenuUI.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
         ProgressBar.LevelComplete = false;
     }
 }
