@@ -14,6 +14,7 @@ public class ProgressBar : MonoBehaviour
     public float fillSpeed;
     private float barWidth = 0;
     private int totalMoths = 0;
+    public static bool LevelComplete = false;
 
     List<Goal> goals = new List<Goal>();
 
@@ -63,8 +64,13 @@ public class ProgressBar : MonoBehaviour
             {
                 if (previousValue < req && slider.value >= req)
                 {
+                    // Add fill to completed checkpoints
                     checkpoints[i].transform.GetChild(0).gameObject.SetActive(true);
                     emitter.Emit(100);
+                    if (i == checkpointRequirements.Length - 1)
+                    {
+                        LevelComplete = true;
+                    }
                 }
                 i++;
             }
