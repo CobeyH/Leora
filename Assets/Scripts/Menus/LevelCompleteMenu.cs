@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelCompleteMenu : MonoBehaviour
 {
     public GameObject CompletionMenuUI;
+    public GameObject LevelSkipButton;
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +22,10 @@ public class LevelCompleteMenu : MonoBehaviour
                 PlayerPrefs.SetInt("furthestUnlock", nextSceneIndex);
             }
         }
+        else if (ProgressBar.LevelSkippable)
+        {
+            LevelSkipButton.SetActive(true);
+        }
     }
 
     public void LoadNextLevel()
@@ -29,5 +34,11 @@ public class LevelCompleteMenu : MonoBehaviour
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(nextSceneIndex);
         ProgressBar.LevelComplete = false;
+    }
+
+    public void HideSkipButton()
+    {
+        ProgressBar.LevelSkippable = false;
+        LevelSkipButton.SetActive(false);
     }
 }

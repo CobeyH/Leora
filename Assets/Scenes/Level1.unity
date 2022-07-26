@@ -8658,28 +8658,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6152301163840027545, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
-      propertyPath: UVModule.fps
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152301163840027545, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
-      propertyPath: UVModule.timeMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152301163840027545, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
-      propertyPath: UVModule.startFrame.scalar
-      value: 0.9999
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152301163840027545, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
-      propertyPath: UVModule.startFrame.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152301163840027545, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152301163840027545, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 1e+9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6152301163840027545, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
       propertyPath: TriggerModule.primitives.Array.data[0]

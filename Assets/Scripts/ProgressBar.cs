@@ -15,6 +15,7 @@ public class ProgressBar : MonoBehaviour
     private float barWidth = 0;
     private int totalMoths = 0;
     public static bool LevelComplete = false;
+    public static bool LevelSkippable = false;
 
     List<Goal> goals = new List<Goal>();
 
@@ -67,6 +68,9 @@ public class ProgressBar : MonoBehaviour
                     // Add fill to completed checkpoints
                     checkpoints[i].transform.GetChild(0).gameObject.SetActive(true);
                     emitter.Emit(100);
+                    // Level can be skipped after the first checkpoint is reached.
+                    LevelSkippable = true;
+                    // Level automatically completes once the last checkpoint is reached.
                     if (i == checkpointRequirements.Length - 1)
                     {
                         LevelComplete = true;
