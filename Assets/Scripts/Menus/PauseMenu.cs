@@ -28,17 +28,26 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        PauseMenuUI.SetActive(false);
+        HidePauseMenu();
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
+    public void HidePauseMenu()
+    {
+        PauseMenuUI.SetActive(false);
+    }
+
     void Pause()
     {
-
-        PauseMenuUI.SetActive(true);
+        ShowPauseMenu();
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
+
+    public void ShowPauseMenu()
+    {
+        PauseMenuUI.SetActive(true);
     }
 
     public void LoadMenu()
@@ -47,15 +56,10 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(menuScene);
     }
 
-    public void ShowSettings()
-    {
-
-        Debug.Log("Showing settings");
-    }
-
     public void RestartLevel()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
+
 }
