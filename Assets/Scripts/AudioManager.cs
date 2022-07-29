@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    public Sound[] musicTracks;
     public static AudioManager instance;
     // Start is called before the first frame update
     void Awake()
@@ -20,8 +21,25 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        AddAudioSources(sounds);
+        AddAudioSources(musicTracks);
+    }
 
-        foreach (Sound s in sounds)
+    void Start()
+    {
+        PlayMusic();
+    }
+
+    void PlayMusic()
+    {
+        Sound nextSong = musicTracks[UnityEngine.Random.Range(0, musicTracks.Length - 1)];
+        nextSong.source.Play();
+        Invoke(nameof(PlayMusic), nextSong.clip.length);
+    }
+
+    void AddAudioSources(Sound[] clips)
+    {
+        foreach (Sound s in clips)
         {
             s.source = gameObject.AddComponent<AudioSource>();
 
