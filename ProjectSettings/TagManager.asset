@@ -48,3 +48,6 @@ TagManager:
   - name: Foreground
     uniqueID: 1339184917
     locked: 0
+  - name: Moth
+    uniqueID: 1223874547
+    locked: 0
