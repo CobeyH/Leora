@@ -176,6 +176,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  mainMixer: {fileID: 24300002, guid: e80bc5ca3749e422b9af3805a1e29ae4, type: 2}
 --- !u!4 &139682243
 Transform:
   m_ObjectHideFlags: 0
