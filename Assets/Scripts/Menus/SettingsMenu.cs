@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,9 @@ public class SettingsMenu : MonoBehaviour
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
     public AudioMixer mainMixer;
+    public Slider volumeSlider;
+    public Toggle fullScreenToggle;
+    public TMP_Dropdown greaphicQualityDropdown;
 
     void Start()
     {
@@ -32,17 +36,24 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
-    public void SetVolume(float volume)
+
+    public void SetVolume(float sliderVolume)
     {
-        mainMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+        float mixerVolume = Mathf.Log10(sliderVolume) * 20;
+        mainMixer.SetFloat("volume", mixerVolume);
+        PlayerPrefs.SetFloat("volume", sliderVolume);
+
     }
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
+        PlayerPrefs.SetInt("quality", qualityIndex);
     }
     public void ShowSettings()
     {
+        LoadSettings();
         SettingsMenuUI.SetActive(true);
+
     }
     public void HideSettings()
     {
@@ -52,11 +63,49 @@ public class SettingsMenu : MonoBehaviour
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+        PlayerPrefs.SetInt("fullscreen", Convert.ToInt32(isFullscreen));
     }
 
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        PlayerPrefs.SetInt("resolution", resolutionIndex);
+    }
+    public void LoadSettings()
+    {
+        if (PlayerPrefs.HasKey("volume"))
+        {
+            volumeSlider.value = PlayerPrefs.GetFloat("volume");
+        }
+        else
+        {
+            volumeSlider.value = 1;
+        }
+
+        if (PlayerPrefs.HasKey("quality"))
+        {
+            greaphicQualityDropdown.value = PlayerPrefs.GetInt("quality");
+        }
+        else
+        {
+            greaphicQualityDropdown.value = 5;
+        }
+        if (PlayerPrefs.HasKey("fullscreen"))
+        {
+            fullScreenToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("fullscreen"));
+        }
+        else
+        {
+            fullScreenToggle.isOn = true;
+        }
+        if (PlayerPrefs.HasKey("resolution"))
+        {
+            resolutionDropdown.value = PlayerPrefs.GetInt("resolution");
+        }
+        else
+        {
+            resolutionDropdown.value = resolutions.Length - 1;
+        }
     }
 }
