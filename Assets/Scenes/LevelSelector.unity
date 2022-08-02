@@ -1634,7 +1634,7 @@ GameObject:
   - component: {fileID: 375121593}
   - component: {fileID: 375121592}
   m_Layer: 0
-  m_Name: Rock_Volcanic_A_Basecolor
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2991,6 +2991,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1307045331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1307045333}
+  - component: {fileID: 1307045332}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1307045332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307045331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 195e13e9fe5c7d964981e590d9543426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: buttonHover
+    clip: {fileID: 8300000, guid: f9c05f9c0550eee5f8f5edbd9cf323b4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  musicTracks:
+  - name: Main Theme
+    clip: {fileID: 8300000, guid: ba46b7140b0fd21f0a1a808ea79f7640, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  mainMixer: {fileID: 24300002, guid: e80bc5ca3749e422b9af3805a1e29ae4, type: 2}
+--- !u!4 &1307045333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307045331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3759212, y: 0.7114582, z: -7.5310264}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1380548457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3104,6 +3163,7 @@ GameObject:
   - component: {fileID: 1487283968}
   - component: {fileID: 1487283967}
   - component: {fileID: 1487283970}
+  - component: {fileID: 1487283971}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3146,7 +3206,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.952133
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3210,6 +3270,19 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1487283971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487283966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45c26f2e42cf456abde4078fed78544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneWidth: 22
 --- !u!1 &1574525107
 GameObject:
   m_ObjectHideFlags: 0
