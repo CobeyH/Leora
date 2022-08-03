@@ -588,6 +588,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1385192936}
     m_Modifications:
+    - target: {fileID: 1730573610887708328, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814198751444972707, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3743353115096189989, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -676,9 +684,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3743353115131049867, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4974247277028044309, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133319053692950481, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7909055967220757807, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
@@ -889,6 +909,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 623730305}
     m_Modifications:
+    - target: {fileID: 2310395980314406609, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5490333105552584137, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: startOn
       value: 1
@@ -1073,7 +1097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577258862630230776, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: orthographic size
-      value: 6.184866
+      value: 5.952133
       objectReference: {fileID: 0}
     - target: {fileID: 6577258862630230779, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: m_Name
