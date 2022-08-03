@@ -362,9 +362,37 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2015845557917643149, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015845557917643149, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015845557917643149, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015845557917643149, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015845557917643149, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015845557917643149, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2754686222043404374, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_Name
       value: BlurVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 3252515146065484288, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3336054037087742818, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_AnchorMax.y
