@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     public static bool GameIsPaused = false;
+
     public GameObject PauseMenuUI;
+
     public string menuScene;
 
     // Update is called once per frame
@@ -57,9 +58,9 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Resume();
-        SceneManager.LoadScene(menuScene);
-        AudioManager audioManager = GetComponent<AudioManager>();
-        audioManager.PlayMainTheme();
+        SceneManager.LoadScene (menuScene);
+        GameObject audioManager = GameObject.Find("AudioManager");
+        audioManager.GetComponent<AudioManager>().PlayMainTheme();
     }
 
     public void RestartLevel()
@@ -67,5 +68,4 @@ public class PauseMenu : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
-
 }
