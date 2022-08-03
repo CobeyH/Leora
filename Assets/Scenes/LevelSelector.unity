@@ -3018,12 +3018,19 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   musicTracks:
-  - name: Main Theme
-    clip: {fileID: 8300000, guid: ba46b7140b0fd21f0a1a808ea79f7640, type: 3}
-    volume: 1
-    pitch: 1
+  - name: delusion
+    clip: {fileID: 8300000, guid: 16b93ae9570559006a0f93da2106ea69, type: 3}
+    volume: 0
+    pitch: 0
     loop: 0
     source: {fileID: 0}
+  - name: destiny
+    clip: {fileID: 8300000, guid: 5399454123578eeb98c143cdda95f793, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  themeClip: {fileID: 8300000, guid: ba46b7140b0fd21f0a1a808ea79f7640, type: 3}
   mainMixer: {fileID: 24300002, guid: e80bc5ca3749e422b9af3805a1e29ae4, type: 2}
 --- !u!4 &1307045333
 Transform:
@@ -3196,7 +3203,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.775804
+  orthographic size: 6.1875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5312,6 +5319,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7224242410964092823, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1307045332}
     - target: {fileID: 7224242410964092825, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Name
       value: Level 1 Button

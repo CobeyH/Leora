@@ -58,6 +58,8 @@ public class PauseMenu : MonoBehaviour
     {
         Resume();
         SceneManager.LoadScene(menuScene);
+        AudioManager audioManager = GetComponent<AudioManager>();
+        audioManager.PlayMainTheme();
     }
 
     public void RestartLevel()
