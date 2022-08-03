@@ -3018,12 +3018,55 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   musicTracks:
-  - name: Main Theme
-    clip: {fileID: 8300000, guid: ba46b7140b0fd21f0a1a808ea79f7640, type: 3}
+  - name: delusion
+    clip: {fileID: 8300000, guid: 16b93ae9570559006a0f93da2106ea69, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: destiny
+    clip: {fileID: 8300000, guid: 5399454123578eeb98c143cdda95f793, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Full of memories
+    clip: {fileID: 8300000, guid: 682f2598b774ee47bbfc0480fed413bc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Journey to the East Rock
+    clip: {fileID: 8300000, guid: 6a842accca81e2413805c26e2b340d8b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mystery Forest
+    clip: {fileID: 8300000, guid: dc059e5d4900a33df963f0dd4e6401c9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Please
+    clip: {fileID: 8300000, guid: dd5cc09b36dabd558a846e6eb9fae918, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Time to buy a new sword
+    clip: {fileID: 8300000, guid: 850b36e524ebb56d9ab0822000e9eb67, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Wind and tree
+    clip: {fileID: 8300000, guid: ff10c1530b00ebe3d81398c728ee54ef, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  themeClip: {fileID: 8300000, guid: ba46b7140b0fd21f0a1a808ea79f7640, type: 3}
   mainMixer: {fileID: 24300002, guid: e80bc5ca3749e422b9af3805a1e29ae4, type: 2}
 --- !u!4 &1307045333
 Transform:
@@ -3196,7 +3239,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.775804
+  orthographic size: 6.1875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5312,6 +5355,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7224242410964092823, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1307045332}
     - target: {fileID: 7224242410964092825, guid: 478dde8cd4c0d8e0dbbd8685eb0f9ecf, type: 3}
       propertyPath: m_Name
       value: Level 1 Button
