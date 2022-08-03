@@ -36,7 +36,7 @@ public class LightAttraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lightsInScene.Count <= 0)
+        if (lightsInScene.Count <= 0 || LightLimit.IsOverVoltage)
         {
             return;
         }
