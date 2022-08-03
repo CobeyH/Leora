@@ -17,7 +17,11 @@ public class PauseMenu : MonoBehaviour
         {
             if (GameIsPaused)
             {
-                Resume();
+                // Make sure settings menu isn't oppened.
+                if (PauseMenuUI.activeSelf)
+                {
+                    Resume();
+                }
             }
             else
             {
