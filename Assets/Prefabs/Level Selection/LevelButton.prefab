@@ -975,6 +975,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d3b033646a23a4c994c2354bd7464e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 7109842331913312360}
+  buttonLight: {fileID: 7109842331913312360}
   button: {fileID: 7224242410964092823}
   mothField: {fileID: 1278457095414061862}
