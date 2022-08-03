@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class LightAttraction : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class LightAttraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var foundLights = FindObjectsOfType<UnityEngine.Rendering.Universal.Light2D>();
+        var foundLights = FindObjectsOfType<Light2D>();
         if (foundLights.Length <= 0)
         {
             return;
@@ -25,20 +26,20 @@ public class LightAttraction : MonoBehaviour
 
         Vector2 netForce = Vector2.zero;
         int layer_mask = LayerMask.GetMask("Default");
-        foreach (UnityEngine.Rendering.Universal.Light2D light in foundLights)
+        foreach (Light2D light in foundLights)
         {
             // Check if there is a clear line between the field and the light.
             // Also ignore global lights
             if (
                 light.enabled &&
-                light.lightType != UnityEngine.Rendering.Universal.Light2D.LightType.Global &&
+                light.lightType != Light2D.LightType.Global &&
                 !Physics2D.Linecast(transform.position, light.transform.position, layer_mask)
             )
             {
                 Vector2 vecToLight =
                     light.transform.position - transform.position;
 
-                if (light.lightType == UnityEngine.Rendering.Universal.Light2D.LightType.Point && !MothsInBeam(light, vecToLight)) continue;
+                if (light.lightType == Light2D.LightType.Point && !MothsInBeam(light, vecToLight)) continue;
                 // Make moths attracted in the direction of the light.
                 // Moths are more attracted to stronger lights.
                 // Moths are less attracted to far away lights.
@@ -53,7 +54,7 @@ public class LightAttraction : MonoBehaviour
         transform.position += new Vector3(netForce.x, netForce.y, 0);
     }
 
-    private bool MothsInBeam(UnityEngine.Rendering.Universal.Light2D light, Vector2 vecToLight)
+    private bool MothsInBeam(Light2D light, Vector2 vecToLight)
     {
         // Make sure the point light area is pointing in the direction of the moths.
         float outerAngle = light.pointLightOuterAngle;
@@ -72,7 +73,7 @@ public class LightAttraction : MonoBehaviour
         return true;
     }
 
-    private float getZRotation(UnityEngine.Rendering.Universal.Light2D light)
+    private float getZRotation(Light2D light)
     {
         float zRotation = light.transform.eulerAngles.z;
         if (zRotation > 180f)
