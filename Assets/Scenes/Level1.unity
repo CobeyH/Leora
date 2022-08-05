@@ -943,6 +943,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4666888882054064983, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: canDim
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5490333105552584137, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: startOn
       value: 1
@@ -1127,7 +1131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577258862630230776, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: orthographic size
-      value: 6.1864657
+      value: 6.185623
       objectReference: {fileID: 0}
     - target: {fileID: 6577258862630230779, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: m_Name
