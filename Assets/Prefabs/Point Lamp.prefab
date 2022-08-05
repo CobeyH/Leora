@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5490333105552584143}
   - component: {fileID: 1123742137505648197}
   - component: {fileID: 9137194527988666746}
+  - component: {fileID: 4666888882054064983}
   m_Layer: 6
   m_Name: Point Lamp
   m_TagString: Untagged
@@ -113,9 +114,23 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.52}
+  m_Offset: {x: 0, y: -0.46}
   m_Size: {x: 1, y: 3.76}
   m_Direction: 0
+--- !u!114 &4666888882054064983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490333105552584178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c981ec7ea6c164a7fb838b6f58e08672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDim: 0
+  hitbox: {fileID: 9137194527988666746}
 --- !u!1 &5490333106156900492
 GameObject:
   m_ObjectHideFlags: 0
