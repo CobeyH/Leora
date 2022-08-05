@@ -46,7 +46,7 @@ public class Dimmer : MonoBehaviour
             Vector3 mouseLocalCoords = hitbox.transform.InverseTransformPoint(worldPosition);
 
             float heightClicked = (mouseLocalCoords.y + hitbox.size.y / 2) / hitbox.size.y;
-            controlledLight.intensity = heightClicked * intensityMultiplier;
+            controlledLight.intensity = heightClicked * intensityMultiplier * 2;
         }
     }
 }
