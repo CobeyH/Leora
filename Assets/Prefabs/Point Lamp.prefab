@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canDim: 0
   hitbox: {fileID: 9137194527988666746}
+  controlledLight: {fileID: 5490333106156900489}
 --- !u!1 &5490333106156900492
 GameObject:
   m_ObjectHideFlags: 0
