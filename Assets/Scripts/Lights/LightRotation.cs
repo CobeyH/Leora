@@ -5,8 +5,9 @@ public class LightRotation : MonoBehaviour
 {
     public GameObject leftPivot, rightPivot;
     public Light2D controlledLight;
+    public bool canRotate = false;
     private bool rotating = false;
-    // Start is called before the first frame update
+    // Set the initial leaf position based on the light angle
     void Start()
     {
         UpdateLeafPositions();
@@ -15,9 +16,9 @@ public class LightRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rotating)
+        if (rotating && canRotate)
         {
-
+            // Calculate the angle between the light and the mouse to determine how to angle the leaves;
             Vector3 mousePos = Input.mousePosition;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
             Vector2 dirToMouse = worldPosition - controlledLight.transform.position;

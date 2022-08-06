@@ -140,6 +140,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2641517382351002992, guid: dfa779f4ce69f49899f82e3d33ef0c03, type: 3}
+      propertyPath: canRotate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274576387605035069, guid: dfa779f4ce69f49899f82e3d33ef0c03, type: 3}
+      propertyPath: canRotate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3278040350558806556, guid: dfa779f4ce69f49899f82e3d33ef0c03, type: 3}
       propertyPath: m_Mesh
       value: 
