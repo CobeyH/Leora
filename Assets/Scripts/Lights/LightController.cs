@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class LightController : MonoBehaviour
 {
-    public UnityEngine.Rendering.Universal.Light2D myLight;
+    public Light2D myLight;
     public bool startOn = false;
 
 
@@ -15,14 +16,6 @@ public class LightController : MonoBehaviour
     void OnMouseDown()
     {
         toggleLight();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            toggleLight();
-        }
     }
 
     void toggleLight()

@@ -65,7 +65,9 @@ public class LightAttraction : MonoBehaviour
             Vector2 vecToLight =
                 light.transform.position - transform.position;
 
-            if (light.lightType == Light2D.LightType.Point && !MothsInBeam(light, vecToLight)) return Vector2.zero;
+            if ((light.lightType == Light2D.LightType.Point
+             && !MothsInBeam(light, vecToLight))
+             || !LightInRange(light, vecToLight)) return Vector2.zero;
             // Make moths attracted in the direction of the light.
             // Moths are more attracted to stronger lights.
             // Moths are less attracted to far away lights.
@@ -77,6 +79,15 @@ public class LightAttraction : MonoBehaviour
         return Vector2.zero;
     }
 
+    private bool LightInRange(Light2D light, Vector2 vecToLight)
+    {
+        float distanceToLight = vecToLight.magnitude;
+        if (distanceToLight > light.pointLightOuterRadius || distanceToLight < light.pointLightInnerRadius)
+        {
+            return false;
+        }
+        return true;
+    }
     private bool MothsInBeam(Light2D light, Vector2 vecToLight)
     {
         // Make sure the point light area is pointing in the direction of the moths.

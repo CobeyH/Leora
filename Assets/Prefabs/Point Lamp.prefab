@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5490333105552584142}
   - component: {fileID: 5490333105552584143}
-  - component: {fileID: 5490333105552584141}
-  - component: {fileID: 5490333105552584137}
   - component: {fileID: 1123742137505648197}
+  - component: {fileID: 9137194527988666746}
+  - component: {fileID: 4666888882054064983}
   m_Layer: 6
   m_Name: Point Lamp
   m_TagString: Untagged
@@ -88,36 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5490333105552584141
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5490333105552584178}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.28, y: 1.96}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &5490333105552584137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5490333105552584178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67bab21787269d64597fdb4853267b47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myLight: {fileID: 5490333106156900489}
-  startOn: 0
 --- !u!114 &1123742137505648197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +101,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sparks: {fileID: 634278166950957639}
+--- !u!70 &9137194527988666746
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490333105552584178}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.46}
+  m_Size: {x: 1, y: 3.76}
+  m_Direction: 0
+--- !u!114 &4666888882054064983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490333105552584178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c981ec7ea6c164a7fb838b6f58e08672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDim: 0
+  hitbox: {fileID: 9137194527988666746}
+  controlledLight: {fileID: 5490333106156900489}
 --- !u!1 &5490333106156900492
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +142,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5490333106156900495}
   - component: {fileID: 5490333106156900489}
-  m_Layer: 0
+  - component: {fileID: 4712296088704668852}
+  - component: {fileID: 518453145197026385}
+  - component: {fileID: 5206633296479714324}
+  m_Layer: 6
   m_Name: Light Emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,6 +246,49 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &4712296088704668852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490333106156900492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67bab21787269d64597fdb4853267b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLight: {fileID: 5490333106156900489}
+  startOn: 0
+--- !u!58 &518453145197026385
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490333106156900492}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
+--- !u!114 &5206633296479714324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490333106156900492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec818a66157d70cf9e586f3a46531bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlledLight: {fileID: 5490333106156900489}
 --- !u!1001 &1460149383260497953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,6 +299,10 @@ PrefabInstance:
     - target: {fileID: 3770448330058761968, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
       propertyPath: m_Name
       value: Sparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770448330058761968, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3770448330058761968, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
       propertyPath: m_IsActive
