@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 901476075934133263}
   - component: {fileID: 901476075934133249}
   - component: {fileID: 8263955867486512123}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: glassbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
