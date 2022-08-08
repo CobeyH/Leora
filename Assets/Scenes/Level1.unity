@@ -319,6 +319,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &729707856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3854380181968057032, guid: feeb1eca65b4364ee9a89f637525321a, type: 3}
+  m_PrefabInstance: {fileID: 3854380182549186958}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &770630152
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +453,7 @@ Transform:
   - {fileID: 2077373175}
   - {fileID: 1736753670}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1417628215 stripped
 Transform:
@@ -607,6 +612,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3854380181968057030, guid: feeb1eca65b4364ee9a89f637525321a, type: 3}
   m_PrefabInstance: {fileID: 3854380182549186958}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1839512395
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729707856}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1996704556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -930,6 +956,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inner Moth Force
       objectReference: {fileID: 0}
+    - target: {fileID: 3854380181968057032, guid: feeb1eca65b4364ee9a89f637525321a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feeb1eca65b4364ee9a89f637525321a, type: 3}
 --- !u!1001 &5490333104422181421
@@ -1131,7 +1161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577258862630230776, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: orthographic size
-      value: 6.185623
+      value: 6.1875
       objectReference: {fileID: 0}
     - target: {fileID: 6577258862630230779, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: m_Name
@@ -8597,7 +8627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8091345181466683254, guid: ae9940fa70ac5c4ab8810553c49d328c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8091345181466683254, guid: ae9940fa70ac5c4ab8810553c49d328c, type: 3}
       propertyPath: m_LocalPosition.x
