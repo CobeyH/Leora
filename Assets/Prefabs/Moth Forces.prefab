@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3854380181968057030}
   - component: {fileID: 3854380181968057033}
   - component: {fileID: 3854380181968057028}
+  - component: {fileID: 2938814413458364554}
   m_Layer: 0
   m_Name: Moth Forces
   m_TagString: Untagged
@@ -542,6 +543,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mothSpeed: 2
+--- !u!58 &2938814413458364554
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3854380181968057032}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &3854380182497185527
 GameObject:
   m_ObjectHideFlags: 0
