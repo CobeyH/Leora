@@ -3801,7 +3801,7 @@ ParticleSystem:
     outside: 0
     enter: 2
     exit: 0
-    colliderQueryMode: 0
+    colliderQueryMode: 1
     radiusScale: 1
     primitives:
     - {fileID: 0}
@@ -4828,6 +4828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c0856a49815631792f6e3e7d29d489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trapLights: []
 --- !u!114 &6152301163840027546
 MonoBehaviour:
   m_ObjectHideFlags: 0
