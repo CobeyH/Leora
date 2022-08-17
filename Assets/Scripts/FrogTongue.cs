@@ -12,6 +12,8 @@ public class FrogTongue : MonoBehaviour
 
     public float speed = 1;
 
+    public GameObject tongue;
+
     private GameObject[] mothGroups;
 
     private Vector3? target;
@@ -29,8 +31,8 @@ public class FrogTongue : MonoBehaviour
         // Find moth groups to eat
         mothGroups = GameObject.FindGameObjectsWithTag("Moths");
         lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(0, this.transform.position);
-        lineRenderer.SetPosition(1, this.transform.position);
+        lineRenderer.SetPosition(0, tongue.transform.position);
+        lineRenderer.SetPosition(1, tongue.transform.position);
     }
 
     // Update is called once per frame
@@ -67,7 +69,7 @@ public class FrogTongue : MonoBehaviour
     {
         if (targetSelf)
         {
-            target = gameObject.transform.position;
+            target = tongue.transform.position;
             return;
         }
         foreach (GameObject flock in mothGroups)
@@ -89,7 +91,7 @@ public class FrogTongue : MonoBehaviour
 
     bool ObjectInRange(Vector3 target)
     {
-        if (Vector3.Distance(this.transform.position, target) < 5)
+        if (Vector3.Distance(tongue.transform.position, target) < 5)
         {
             return true;
         }
@@ -119,10 +121,10 @@ public class FrogTongue : MonoBehaviour
         List<Vector2> edges = new List<Vector2>();
         for (int point = 0; point < lineRenderer.positionCount; point++)
         {
-            Vector3 linePoint = lineRenderer.GetPosition(point);
-            edges
-                .Add(new Vector2(linePoint.x - this.transform.position.x,
-                    linePoint.y - this.transform.position.y));
+            Vector3 linePoint =
+                transform
+                    .InverseTransformPoint(lineRenderer.GetPosition(point));
+            edges.Add(new Vector2(linePoint.x, linePoint.y));
         }
 
         edgeCollider.SetPoints (edges);
