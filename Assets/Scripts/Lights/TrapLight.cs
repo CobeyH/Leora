@@ -2,60 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+public class TrapLight : MonoBehaviour
 {
 
     ParticleSystem partSys;
-
     List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
-
-    float mothsInGoal;
-    GameObject[] trapLights;
     
+    float mothsInGoal;
+
     // Start is called before the first frame update
     void Start()
     {
         partSys = GetComponent<ParticleSystem>();
-        trapLights = GameObject.FindGameObjectsWithTag("TrapLight");
-        var trigger = partSys.trigger;
-        foreach (GameObject trap in trapLights)
-        {
-            trigger.AddCollider(trap.GetComponent<CircleCollider2D>());
-        }
+        // find traps, and add them to trigger components
     }
 
     void OnParticleTrigger()
     {
+
         // get the particles which matched the trigger conditions this frame
-        int numEnter = partSys.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter, out var enteredData);
-        
+        int numEnter = partSys.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
         // If no new moths are in the goal, then no work needs to be done.
         if (numEnter <= 0)
         {
             return;
         }
-
         // Delete particles that enter the goal.
         for (int i = 0; i < numEnter; i++)
         {
             ParticleSystem.Particle p = enter[i];
-
-            if (LightLimit.IsOverVoltage || enteredData.GetCollider(i, 0).gameObject.tag != "TrapLight")
-            {
-                mothsInGoal += 1;
-            } 
             p.remainingLifetime = 0;
             enter[i] = p;
         }
 
         // Increment progress bar if new moths made it into goal.
+        mothsInGoal += numEnter;
 
         partSys.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
 
     }
 
-    public float getMothsInGoal()
+    // Update is called once per frame
+    void Update()
     {
-        return mothsInGoal;
+        
     }
 }

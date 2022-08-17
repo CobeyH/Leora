@@ -4,16 +4,16 @@ using UnityEngine.Rendering.Universal;
 public class Dimmer : MonoBehaviour
 {
     public bool canDim = false;
-    public CapsuleCollider2D hitbox;
-    public Light2D controlledLight;
-    private bool dimming = false;
-    private bool inArea = true;
-    private float intensityMultiplier = 0;
 
-    void Start()
-    {
-        intensityMultiplier = controlledLight.intensity;
-    }
+    public int maxValue = 2;
+
+    public CapsuleCollider2D hitbox;
+
+    public Light2D controlledLight;
+
+    private bool dimming = false;
+
+    private bool inArea = true;
 
     void OnMouseDown()
     {
@@ -43,11 +43,17 @@ public class Dimmer : MonoBehaviour
             Vector3 mousePos = Input.mousePosition;
 
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
-            Vector3 mouseLocalCoords = hitbox.transform.InverseTransformPoint(worldPosition);
+            Vector3 mouseLocalCoords =
+                hitbox.transform.InverseTransformPoint(worldPosition);
 
-            float heightClicked = (mouseLocalCoords.y + hitbox.size.y / 2) / hitbox.size.y;
-            controlledLight.intensity = heightClicked * intensityMultiplier * 2;
+            // Scale the value between 0 and 1
+            float heightClicked =
+                (mouseLocalCoords.y + hitbox.size.y / 2) / hitbox.size.y;
+
+            // Scale the value between
+            float newIntensity = heightClicked * maxValue;
+            newIntensity = Mathf.Max(1, newIntensity);
+            controlledLight.intensity = Mathf.Round(newIntensity);
         }
     }
 }
-
