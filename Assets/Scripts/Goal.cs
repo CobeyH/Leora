@@ -11,16 +11,23 @@ public class Goal : MonoBehaviour
 
     float mothsInGoal;
     GameObject[] trapLights;
-    
+    GameObject[] goals;
+
     // Start is called before the first frame update
     void Start()
     {
         partSys = GetComponent<ParticleSystem>();
         trapLights = GameObject.FindGameObjectsWithTag("TrapLight");
+        goals = GameObject.FindGameObjectsWithTag("Goal");
         var trigger = partSys.trigger;
         foreach (GameObject trap in trapLights)
         {
             trigger.AddCollider(trap.GetComponent<Collider2D>());
+        }
+
+        foreach (GameObject goal in goals)
+        {
+            trigger.AddCollider(goal.GetComponent<CircleCollider2D>());
         }
     }
 

@@ -74,6 +74,7 @@ public class ProgressBar : MonoBehaviour
                     if (i == checkpointRequirements.Length - 1)
                     {
                         LevelComplete = true;
+                        Debug.Log(Time.time);
                     }
                 }
                 i++;
