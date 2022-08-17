@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6152301163840027542}
   - component: {fileID: 6152301163840027547}
   - component: {fileID: 6152301163840027546}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Moth Particles
   m_TagString: Moths
   m_Icon: {fileID: 0}
@@ -3801,7 +3801,7 @@ ParticleSystem:
     outside: 0
     enter: 2
     exit: 0
-    colliderQueryMode: 0
+    colliderQueryMode: 1
     radiusScale: 1
     primitives:
     - {fileID: 0}

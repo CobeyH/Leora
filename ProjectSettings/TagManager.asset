@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Moths
   - TrapLight
+  - Goal
   layers:
   - Default
   - TransparentFX
