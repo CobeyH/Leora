@@ -20,7 +20,7 @@ public class Goal : MonoBehaviour
         var trigger = partSys.trigger;
         foreach (GameObject trap in trapLights)
         {
-            trigger.AddCollider(trap.GetComponent<CircleCollider2D>());
+            trigger.AddCollider(trap.GetComponent<Collider2D>());
         }
     }
 

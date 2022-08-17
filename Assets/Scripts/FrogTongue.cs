@@ -6,6 +6,10 @@ public class FrogTongue : MonoBehaviour
 {
     public LineRenderer lineRenderer;
 
+    public EdgeCollider2D edgeCollider;
+
+    public int eatingPeriod = 1;
+
     public float speed = 1;
 
     private GameObject[] mothGroups;
@@ -17,6 +21,8 @@ public class FrogTongue : MonoBehaviour
     private ParticleSystem.Particle[]
         mothBuffer = new ParticleSystem.Particle[100];
 
+    private float hunger = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +30,13 @@ public class FrogTongue : MonoBehaviour
         mothGroups = GameObject.FindGameObjectsWithTag("Moths");
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, this.transform.position);
-        lineRenderer.SetPosition(1, Vector3.zero);
+        lineRenderer.SetPosition(1, this.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
+        hunger += Time.deltaTime;
         if (target.HasValue && !ObjectInRange(target.Value))
         {
             targetSelf = true;
@@ -37,11 +44,17 @@ public class FrogTongue : MonoBehaviour
         }
         else if (!target.HasValue)
         {
+            if (!targetSelf && hunger < (eatingPeriod))
+            {
+                return;
+            }
+            hunger = 0;
             FindNewTarget();
         }
         if (target.HasValue)
         {
             float distanceToTarget = MoveTowardsObject(target.Value);
+            SetEdgeCollider();
             if (distanceToTarget < 0.1)
             {
                 targetSelf = !targetSelf;
@@ -63,7 +76,6 @@ public class FrogTongue : MonoBehaviour
             {
                 ParticleSystem partSys = flock.GetComponent<ParticleSystem>();
                 int numMoths = partSys.GetParticles(mothBuffer);
-                Debug.Log (numMoths);
                 if (numMoths > 0)
                 {
                     target =
@@ -100,5 +112,19 @@ public class FrogTongue : MonoBehaviour
         lineRenderer.SetPosition(1, newPosition);
 
         return vecToTarget.magnitude - distanceToMove;
+    }
+
+    void SetEdgeCollider()
+    {
+        List<Vector2> edges = new List<Vector2>();
+        for (int point = 0; point < lineRenderer.positionCount; point++)
+        {
+            Vector3 linePoint = lineRenderer.GetPosition(point);
+            edges
+                .Add(new Vector2(linePoint.x - this.transform.position.x,
+                    linePoint.y - this.transform.position.y));
+        }
+
+        edgeCollider.SetPoints (edges);
     }
 }
