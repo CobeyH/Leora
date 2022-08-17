@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-
     ParticleSystem partSys;
 
     List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
 
     float mothsInGoal;
-    GameObject[] trapLights;
-    GameObject[] goals;
 
     // Start is called before the first frame update
     void Start()
     {
         partSys = GetComponent<ParticleSystem>();
-        trapLights = GameObject.FindGameObjectsWithTag("TrapLight");
-        goals = GameObject.FindGameObjectsWithTag("Goal");
+        GameObject[] trapLights =
+            GameObject.FindGameObjectsWithTag("TrapLight");
+        GameObject[] goals = GameObject.FindGameObjectsWithTag("Goal");
         var trigger = partSys.trigger;
         foreach (GameObject trap in trapLights)
         {
@@ -34,8 +32,12 @@ public class Goal : MonoBehaviour
     void OnParticleTrigger()
     {
         // get the particles which matched the trigger conditions this frame
-        int numEnter = partSys.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter, out var enteredData);
-        
+        int numEnter =
+            partSys
+                .GetTriggerParticles(ParticleSystemTriggerEventType.Enter,
+                enter,
+                out var enteredData);
+
         // If no new moths are in the goal, then no work needs to be done.
         if (numEnter <= 0)
         {
@@ -47,18 +49,20 @@ public class Goal : MonoBehaviour
         {
             ParticleSystem.Particle p = enter[i];
 
-            if (LightLimit.IsOverVoltage || enteredData.GetCollider(i, 0).gameObject.tag != "TrapLight")
+            if (
+                LightLimit.IsOverVoltage ||
+                enteredData.GetCollider(i, 0).gameObject.tag != "TrapLight"
+            )
             {
                 mothsInGoal += 1;
-            } 
+            }
             p.remainingLifetime = 0;
             enter[i] = p;
         }
 
         // Increment progress bar if new moths made it into goal.
-
-        partSys.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
-
+        partSys
+            .SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
     }
 
     public float getMothsInGoal()
