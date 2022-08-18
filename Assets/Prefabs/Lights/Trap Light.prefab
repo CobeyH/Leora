@@ -51,6 +51,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5490333105552584143, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 074ba6024c5c94f7fbdafb1248996fe2, type: 3}
+    - target: {fileID: 5490333105552584143, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77c02caab4a876bd4aac7f7d5f1e06ee, type: 2}
     - target: {fileID: 5490333105552584178, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: m_Name
       value: Trap Light
@@ -71,9 +79,25 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9056604
       objectReference: {fileID: 0}
+    - target: {fileID: 5490333106156900489, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490333106156900489, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5490333106156900492, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: m_TagString
       value: TrapLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490333106156900495, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.052
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490333106156900495, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.711
       objectReference: {fileID: 0}
     - target: {fileID: 9137194527988666746, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: m_Enabled
