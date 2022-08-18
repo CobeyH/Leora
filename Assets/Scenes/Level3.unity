@@ -3764,11 +3764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6353249914795279372, guid: b1579d3d403f64442ae856b950c6e527, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.61
+      value: -2.231
       objectReference: {fileID: 0}
     - target: {fileID: 6353249914795279372, guid: b1579d3d403f64442ae856b950c6e527, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.57
+      value: -1.066
       objectReference: {fileID: 0}
     - target: {fileID: 6353249914795279372, guid: b1579d3d403f64442ae856b950c6e527, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3802,6 +3802,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6353249914795279373, guid: b1579d3d403f64442ae856b950c6e527, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77c02caab4a876bd4aac7f7d5f1e06ee, type: 2}
     - target: {fileID: 6353249914795279408, guid: b1579d3d403f64442ae856b950c6e527, type: 3}
       propertyPath: m_Name
       value: Trap Light
