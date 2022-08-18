@@ -12,6 +12,13 @@ public class IntensityRange : MonoBehaviour
     }
     void Update()
     {
-        controlledLight.pointLightOuterRadius = controlledLight.intensity * rangeMultiplier;
+        if (LightLimit.IsOverVoltage)
+        {
+            controlledLight.pointLightOuterRadius = 0;
+        }
+        else
+        {
+            controlledLight.pointLightOuterRadius = controlledLight.intensity * rangeMultiplier;
+        }
     }
 }

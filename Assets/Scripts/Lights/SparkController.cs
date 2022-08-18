@@ -5,10 +5,12 @@ using UnityEngine;
 public class SparkController : MonoBehaviour
 {
     public ParticleSystem sparks;
+    public UnityEngine.Rendering.Universal.Light2D light;
 
     // Update is called once per frame
     void Update()
     {
-        sparks.gameObject.SetActive(LightLimit.IsOverVoltage);
+        bool shouldSpark = LightLimit.IsOverVoltage && light.enabled;
+        sparks.gameObject.SetActive(shouldSpark);
     }
 }
