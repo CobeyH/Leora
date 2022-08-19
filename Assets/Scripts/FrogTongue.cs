@@ -12,6 +12,9 @@ public class FrogTongue : MonoBehaviour
 
     public float speed = 1;
 
+    [Range(10, 90)]
+    public int fieldOfView = 30;
+
     public GameObject tongue;
 
     private GameObject[] mothGroups;
@@ -91,7 +94,12 @@ public class FrogTongue : MonoBehaviour
 
     bool ObjectInRange(Vector3 target)
     {
-        if (Vector3.Distance(tongue.transform.position, target) < 5)
+        bool isInRange =
+            Vector3.Distance(tongue.transform.position, target) < 5;
+        Vector3 dirToTarget = target - tongue.transform.position;
+        bool isInFOV =
+            Vector3.Angle(dirToTarget, tongue.transform.up) < fieldOfView / 2f;
+        if (isInRange && isInFOV)
         {
             return true;
         }
