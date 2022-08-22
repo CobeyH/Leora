@@ -16,6 +16,7 @@ public class ProgressBar : MonoBehaviour
     private int totalMoths = 0;
     public static bool LevelComplete = false;
     public static bool LevelSkippable = false;
+    public static int butterflyCount = 0;
 
     List<Goal> goals = new List<Goal>();
 
@@ -65,6 +66,7 @@ public class ProgressBar : MonoBehaviour
             {
                 if (previousValue < req && slider.value >= req)
                 {
+                    butterflyCount++;
                     // Add fill to completed checkpoints
                     checkpoints[i].transform.GetChild(0).gameObject.SetActive(true);
                     emitter.Emit(100);
