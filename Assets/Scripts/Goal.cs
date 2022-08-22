@@ -8,7 +8,7 @@ public class Goal : MonoBehaviour
 
     List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
 
-    float mothsInGoal;
+    int mothsInGoal;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +54,7 @@ public class Goal : MonoBehaviour
                 enteredData.GetCollider(i, 0).gameObject.tag != "TrapLight"
             )
             {
-                mothsInGoal += 1;
+                mothsInGoal++;
             }
             p.remainingLifetime = 0;
             enter[i] = p;
@@ -65,7 +65,7 @@ public class Goal : MonoBehaviour
             .SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
     }
 
-    public float getMothsInGoal()
+    public int getMothsInGoal()
     {
         return mothsInGoal;
     }
