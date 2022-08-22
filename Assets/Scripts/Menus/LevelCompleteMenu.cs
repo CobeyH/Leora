@@ -9,13 +9,32 @@ public class LevelCompleteMenu : MonoBehaviour
     public GameObject CompletionMenuUI;
     public GameObject LevelSkipButton;
     public TMP_Text timeSpentDisplay;
+    public TMP_Text butterflyCountDisplay;
+    public GameObject checkpointPrefab;
+    private List<GameObject> butterflies = new List<GameObject>();
+    private float barWidth = 0;
+
     // Update is called once per frame
     void Update()
     {
 
         if (ProgressBar.LevelComplete)
         {
-            timeSpentDisplay.SetText(ConvertTime(Time.time));
+            timeSpentDisplay.SetText(ConvertTime(Time.timeSinceLevelLoad));
+            // butterflyCountDisplay.SetText(ProgressBar.butterflyCount.ToString());
+            // Create checkpoint markers.
+
+            // Adding butterfly counts on the game complete menu
+            for (int i = 0; i < ProgressBar.butterflyCount; i++)
+            {
+                barWidth = butterflyCountDisplay.GetComponent<RectTransform>().rect.width;
+                GameObject cp = Instantiate(checkpointPrefab, new Vector3((i / 2f) * barWidth - barWidth / 2f, 0, 0), Quaternion.identity);
+                cp.transform.localScale = new Vector3(cp.transform.localScale.x * 2, cp.transform.localScale.y * 2, 0); // change its local scale in x y z format
+                cp.transform.SetParent(butterflyCountDisplay.transform, false);
+                butterflies.Add(cp);
+                cp.transform.GetChild(0).gameObject.SetActive(true);
+            }
+
             ProgressBar.LevelComplete = false;
             CompletionMenuUI.SetActive(true);
             // Unlock the next level
