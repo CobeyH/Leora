@@ -8,12 +8,14 @@ public class LightAttraction : MonoBehaviour
     public float mothSpeed = 2f;
 
     private ParticleSystemForceField field;
+    public Rigidbody2D rigidBody;
     private List<Light2D> lightsInScene;
 
     // Start is called before the first frame update
     void Start()
     {
         field = GetComponent<ParticleSystemForceField>();
+        rigidBody = field.GetComponent<Rigidbody2D>();
         lightsInScene = new List<Light2D>(FindObjectsOfType<Light2D>());
 
         // Find all the global lights in the scene
@@ -48,8 +50,7 @@ public class LightAttraction : MonoBehaviour
         {
             netForce += AddForceFromLight(light, layer_mask);
         }
-        netForce = netForce.normalized * Time.deltaTime * mothSpeed;
-        transform.position += new Vector3(netForce.x, netForce.y, 0);
+        rigidBody.velocity = netForce.normalized * Time.deltaTime * mothSpeed * 100;
     }
 
     Vector2 AddForceFromLight(Light2D light, int layer_mask)
