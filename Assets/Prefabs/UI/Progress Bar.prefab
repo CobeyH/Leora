@@ -256,13 +256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b522655d6954a8e25b86c87a2ec33134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointRequirements:
-  - 0.5
-  - 0.75
-  - 0.98
-  checkpointPrefab: {fileID: 1969459294591930029, guid: 44833a3aecdcf9f1cb620efe45a926bb, type: 3}
+  checkpointPrefab: {fileID: 7341088669581280480, guid: 1ebc2f5576d35161ea59eef82287fac0, type: 3}
   emitter: {fileID: 8573477481866500588}
   slider: {fileID: 8573477480740889834}
+  tracker: {fileID: 0}
   fillSpeed: 0.5
 --- !u!1 &8573477481234588427
 GameObject:
