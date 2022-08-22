@@ -20,9 +20,8 @@ public class LevelCompleteMenu : MonoBehaviour
 
         if (ProgressBar.LevelComplete)
         {
+            updateScore();
             timeSpentDisplay.SetText(ConvertTime(Time.timeSinceLevelLoad));
-            // butterflyCountDisplay.SetText(ProgressBar.butterflyCount.ToString());
-            // Create checkpoint markers.
 
             // Adding butterfly counts on the game complete menu
             for (int i = 0; i < ProgressBar.butterflyCount; i++)
@@ -91,5 +90,32 @@ public class LevelCompleteMenu : MonoBehaviour
 
         return minutesString + ":" + secondsString;
 
+    }
+
+    public void updateScore() {
+        Scene scene = SceneManager.GetActiveScene();
+        int level = int.Parse(scene.name.Substring(5));
+        
+        if (PlayerPrefs.HasKey("Level" + level + "score"))
+        {
+            Debug.Log("level " + level);
+            Debug.Log("current score" + ProgressBar.butterflyCount);
+            Debug.Log("stored playerpref" + PlayerPrefs.GetInt("Level" + level + "score"));
+
+
+            Debug.Log("player has playerpref");
+            // if player got higher score this round, overwrite that value
+            if (ProgressBar.butterflyCount > PlayerPrefs.GetInt("Level" + level + "score"))
+            {
+                PlayerPrefs.SetInt("Level" + level + "score", ProgressBar.butterflyCount);
+                Debug.Log("higher score" + ProgressBar.butterflyCount);
+            }
+
+        } else
+        {
+            PlayerPrefs.SetInt("Level" + level + "score", ProgressBar.butterflyCount);
+            Debug.Log("player doesnt have pref" + ProgressBar.butterflyCount);
+
+        }
     }
 }
