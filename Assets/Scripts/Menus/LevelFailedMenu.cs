@@ -6,18 +6,38 @@ public class LevelFailedMenu : MonoBehaviour
 {
     public GameObject FailedMenuUI;
 
+    private LevelProgressTracker tracker;
+
+    private bool forceContinue = false;
+
+    void Start()
+    {
+        tracker =
+            GameObject
+                .FindGameObjectWithTag("GameManager")
+                .GetComponent<LevelProgressTracker>();
+    }
+
     // Display menu when the level is failed.
     void Update()
     {
-
+        if (!tracker.LevelIsCompletable())
+        {
+            ShowMenu();
+        }
     }
+
     public void ShowMenu()
     {
-        FailedMenuUI.SetActive(true);
+        if (!forceContinue)
+        {
+            FailedMenuUI.SetActive(true);
+        }
     }
 
     public void HideMenu()
     {
         FailedMenuUI.SetActive(false);
+        forceContinue = true;
     }
 }
