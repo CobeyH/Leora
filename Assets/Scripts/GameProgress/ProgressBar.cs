@@ -29,6 +29,8 @@ public class ProgressBar : MonoBehaviour
     {
         tracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<LevelProgressTracker>();
         float[] checkpointRequirements = tracker.GetCheckPointRequirements();
+        Debug.Log(checkpointRequirements);
+
         // Create checkpoint markers.
         foreach (float req in checkpointRequirements)
         {
@@ -51,10 +53,10 @@ public class ProgressBar : MonoBehaviour
             if (currentCheckpointCount > previousCheckpointsCount)
             {
                 // Add fill to completed checkpoints
-                checkpoints[currentCheckpointCount - 1].transform.GetChild(0).gameObject.SetActive(true);
+                checkpoints[previousCheckpointsCount].transform.GetChild(0).gameObject.SetActive(true);
                 emitter.Emit(100);
+                previousCheckpointsCount++;
             }
-            previousCheckpointsCount = currentCheckpointCount;
         }
     }
 

@@ -12,19 +12,25 @@ public class LevelCompleteMenu : MonoBehaviour
     public TMP_Text butterflyCountDisplay;
     public GameObject checkpointPrefab;
     private List<GameObject> butterflies = new List<GameObject>();
+    private LevelProgressTracker tracker;
     private float barWidth = 0;
+
+    void Start()
+    {
+        tracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<LevelProgressTracker>();
+    }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (ProgressBar.LevelComplete)
+        if (tracker.IsLevelComplete() && CompletionMenuUI.activeSelf == false)
         {
             updateScore();
             timeSpentDisplay.SetText(ConvertTime(Time.timeSinceLevelLoad));
 
             // Adding butterfly counts on the game complete menu
-            for (int i = 0; i < ProgressBar.butterflyCount; i++)
+            for (int i = 0; i < tracker.GetCheckpointsCompleted(); i++)
             {
                 barWidth = butterflyCountDisplay.GetComponent<RectTransform>().rect.width;
                 GameObject cp = Instantiate(checkpointPrefab, new Vector3((i / 2f) * barWidth - barWidth / 2f, 0, 0), Quaternion.identity);
@@ -34,7 +40,6 @@ public class LevelCompleteMenu : MonoBehaviour
                 cp.transform.GetChild(0).gameObject.SetActive(true);
             }
 
-            ProgressBar.LevelComplete = false;
             CompletionMenuUI.SetActive(true);
             // Unlock the next level
             int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
@@ -43,7 +48,7 @@ public class LevelCompleteMenu : MonoBehaviour
                 PlayerPrefs.SetInt("furthestUnlock", nextSceneIndex);
             }
         }
-        else if (ProgressBar.LevelSkippable)
+        else if (tracker.IsLevelSkippable())
         {
             LevelSkipButton.SetActive(true);
         }
@@ -54,12 +59,10 @@ public class LevelCompleteMenu : MonoBehaviour
         CompletionMenuUI.SetActive(false);
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(nextSceneIndex);
-        ProgressBar.LevelComplete = false;
     }
 
     public void HideSkipButton()
     {
-        ProgressBar.LevelSkippable = false;
         LevelSkipButton.SetActive(false);
     }
 
@@ -74,7 +77,8 @@ public class LevelCompleteMenu : MonoBehaviour
         if (seconds < 10)
         {
             secondsString = "0" + seconds.ToString();
-        } else
+        }
+        else
         {
             secondsString = seconds.ToString();
         }
@@ -92,29 +96,31 @@ public class LevelCompleteMenu : MonoBehaviour
 
     }
 
-    public void updateScore() {
+    public void updateScore()
+    {
         Scene scene = SceneManager.GetActiveScene();
         int level = int.Parse(scene.name.Substring(5));
-        
+
         if (PlayerPrefs.HasKey("Level" + level + "score"))
         {
             Debug.Log("level " + level);
-            Debug.Log("current score" + ProgressBar.butterflyCount);
+            Debug.Log("current score" + tracker.GetCheckpointsCompleted());
             Debug.Log("stored playerpref" + PlayerPrefs.GetInt("Level" + level + "score"));
 
 
             Debug.Log("player has playerpref");
             // if player got higher score this round, overwrite that value
-            if (ProgressBar.butterflyCount > PlayerPrefs.GetInt("Level" + level + "score"))
+            if (tracker.GetCheckpointsCompleted() > PlayerPrefs.GetInt("Level" + level + "score"))
             {
-                PlayerPrefs.SetInt("Level" + level + "score", ProgressBar.butterflyCount);
-                Debug.Log("higher score" + ProgressBar.butterflyCount);
+                PlayerPrefs.SetInt("Level" + level + "score", tracker.GetCheckpointsCompleted());
+                Debug.Log("higher score" + tracker.GetCheckpointsCompleted());
             }
 
-        } else
+        }
+        else
         {
-            PlayerPrefs.SetInt("Level" + level + "score", ProgressBar.butterflyCount);
-            Debug.Log("player doesnt have pref" + ProgressBar.butterflyCount);
+            PlayerPrefs.SetInt("Level" + level + "score", tracker.GetCheckpointsCompleted());
+            Debug.Log("player doesnt have pref" + tracker.GetCheckpointsCompleted());
 
         }
     }

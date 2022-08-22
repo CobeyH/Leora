@@ -8,8 +8,8 @@ public class LevelProgressTracker : MonoBehaviour
     [SerializeField]
     private float[] checkpointRequirements;
     List<Goal> goals = new List<Goal>();
-    public static bool LevelComplete = false;
-    public static bool LevelSkippable = false;
+    private bool LevelSkippable = false;
+    private bool LevelComplete = false;
     private int checkpointsCompleted = 0;
     private int totalMoths = 0;
     private int totalMothsInGoal = 0;
@@ -51,18 +51,21 @@ public class LevelProgressTracker : MonoBehaviour
         {
             if (req > progress)
             {
+                checkpointsCompleted = completedCheckpoints;
                 return;
             }
             LevelSkippable = true;
             completedCheckpoints++;
         }
+
+        checkpointsCompleted = completedCheckpoints;
         LevelComplete = true;
     }
 
 
     public float GetLevelProgress()
     {
-        return totalMothsInGoal / totalMoths;
+        return totalMothsInGoal / (float)totalMoths;
     }
 
     public float[] GetCheckPointRequirements()
@@ -73,5 +76,14 @@ public class LevelProgressTracker : MonoBehaviour
     public int GetCheckpointsCompleted()
     {
         return checkpointsCompleted;
+    }
+
+    public bool IsLevelComplete()
+    {
+        return LevelComplete;
+    }
+    public bool IsLevelSkippable()
+    {
+        return LevelSkippable;
     }
 }
