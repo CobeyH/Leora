@@ -100,28 +100,22 @@ public class LevelCompleteMenu : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         int level = int.Parse(scene.name.Substring(5));
+        int currentScore = tracker.GetCheckpointsCompleted();
+        string scoreString = "Level" + level + "score";
 
-        if (PlayerPrefs.HasKey("Level" + level + "score"))
+        if (PlayerPrefs.HasKey(scoreString))
         {
-            Debug.Log("level " + level);
-            Debug.Log("current score" + tracker.GetCheckpointsCompleted());
-            Debug.Log("stored playerpref" + PlayerPrefs.GetInt("Level" + level + "score"));
-
-
-            Debug.Log("player has playerpref");
+            int prevScore = PlayerPrefs.GetInt(scoreString);
+            
             // if player got higher score this round, overwrite that value
-            if (tracker.GetCheckpointsCompleted() > PlayerPrefs.GetInt("Level" + level + "score"))
+            if (tracker.GetCheckpointsCompleted() > prevScore)
             {
-                PlayerPrefs.SetInt("Level" + level + "score", tracker.GetCheckpointsCompleted());
-                Debug.Log("higher score" + tracker.GetCheckpointsCompleted());
+                PlayerPrefs.SetInt(scoreString, currentScore);
             }
-
         }
         else
         {
-            PlayerPrefs.SetInt("Level" + level + "score", tracker.GetCheckpointsCompleted());
-            Debug.Log("player doesnt have pref" + tracker.GetCheckpointsCompleted());
-
+            PlayerPrefs.SetInt(scoreString, currentScore);
         }
     }
 }
