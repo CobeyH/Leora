@@ -1,29 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class LevelCompleteMenu : MonoBehaviour
 {
     public GameObject CompletionMenuUI;
+
     public GameObject LevelSkipButton;
+
     public TMP_Text timeSpentDisplay;
+
     public TMP_Text butterflyCountDisplay;
+
     public GameObject checkpointPrefab;
+
     private List<GameObject> butterflies = new List<GameObject>();
+
     private LevelProgressTracker tracker;
+
     private float barWidth = 0;
 
     void Start()
     {
-        tracker = GameObject.FindGameObjectWithTag("GameManager").GetComponent<LevelProgressTracker>();
+        tracker =
+            GameObject
+                .FindGameObjectWithTag("ProgressManager")
+                .GetComponent<LevelProgressTracker>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (tracker.IsLevelComplete() && CompletionMenuUI.activeSelf == false)
         {
             updateScore();
@@ -32,15 +41,26 @@ public class LevelCompleteMenu : MonoBehaviour
             // Adding butterfly counts on the game complete menu
             for (int i = 0; i < tracker.GetCheckpointsCompleted(); i++)
             {
-                barWidth = butterflyCountDisplay.GetComponent<RectTransform>().rect.width;
-                GameObject cp = Instantiate(checkpointPrefab, new Vector3((i / 2f) * barWidth - barWidth / 2f, 0, 0), Quaternion.identity);
-                cp.transform.localScale = new Vector3(cp.transform.localScale.x * 2, cp.transform.localScale.y * 2, 0); // change its local scale in x y z format
+                barWidth =
+                    butterflyCountDisplay
+                        .GetComponent<RectTransform>()
+                        .rect
+                        .width;
+                GameObject cp =
+                    Instantiate(checkpointPrefab,
+                    new Vector3((i / 2f) * barWidth - barWidth / 2f, 0, 0),
+                    Quaternion.identity);
+                cp.transform.localScale =
+                    new Vector3(cp.transform.localScale.x * 2,
+                        cp.transform.localScale.y * 2,
+                        0); // change its local scale in x y z format
                 cp.transform.SetParent(butterflyCountDisplay.transform, false);
-                butterflies.Add(cp);
+                butterflies.Add (cp);
                 cp.transform.GetChild(0).gameObject.SetActive(true);
             }
 
             CompletionMenuUI.SetActive(true);
+
             // Unlock the next level
             int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
             if (nextSceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
@@ -58,7 +78,7 @@ public class LevelCompleteMenu : MonoBehaviour
     {
         CompletionMenuUI.SetActive(false);
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+        SceneManager.LoadScene (nextSceneIndex);
     }
 
     public void HideSkipButton()
@@ -93,7 +113,6 @@ public class LevelCompleteMenu : MonoBehaviour
         }
 
         return minutesString + ":" + secondsString;
-
     }
 
     public void updateScore()
@@ -106,16 +125,16 @@ public class LevelCompleteMenu : MonoBehaviour
         if (PlayerPrefs.HasKey(scoreString))
         {
             int prevScore = PlayerPrefs.GetInt(scoreString);
-            
+
             // if player got higher score this round, overwrite that value
             if (tracker.GetCheckpointsCompleted() > prevScore)
             {
-                PlayerPrefs.SetInt(scoreString, currentScore);
+                PlayerPrefs.SetInt (scoreString, currentScore);
             }
         }
         else
         {
-            PlayerPrefs.SetInt(scoreString, currentScore);
+            PlayerPrefs.SetInt (scoreString, currentScore);
         }
     }
 }

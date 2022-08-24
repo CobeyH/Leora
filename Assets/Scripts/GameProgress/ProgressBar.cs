@@ -32,7 +32,7 @@ public class ProgressBar : MonoBehaviour
     {
         tracker =
             GameObject
-                .FindGameObjectWithTag("GameManager")
+                .FindGameObjectWithTag("ProgressManager")
                 .GetComponent<LevelProgressTracker>();
         float[] checkpointRequirements = tracker.GetCheckPointRequirements();
 
