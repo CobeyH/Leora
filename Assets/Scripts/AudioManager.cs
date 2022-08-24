@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -41,7 +42,18 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        mainTheme.Play();
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (
+            currentScene.name == "LevelSelector" ||
+            currentScene.name == "StartScreen"
+        )
+        {
+            mainTheme.Play();
+        }
+        else
+        {
+            PlayMusic();
+        }
     }
 
     public void PlayMusic()
