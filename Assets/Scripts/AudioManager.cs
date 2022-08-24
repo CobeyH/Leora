@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -21,17 +22,17 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (instance == null)
+        if (instance != null)
         {
-            instance = this;
+            GameObject.Destroy (gameObject);
+            return;
         }
         else
         {
-            Destroy (gameObject);
-            return;
+            instance = this;
         }
-
         DontDestroyOnLoad (gameObject);
+
         AddAudioSources (sounds);
         AddAudioSources (musicTracks);
         mainTheme = gameObject.AddComponent<AudioSource>();
@@ -41,7 +42,18 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        mainTheme.Play();
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (
+            currentScene.name == "LevelSelector" ||
+            currentScene.name == "StartScreen"
+        )
+        {
+            mainTheme.Play();
+        }
+        else
+        {
+            PlayMusic();
+        }
     }
 
     public void PlayMusic()
