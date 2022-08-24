@@ -14,7 +14,7 @@ public class LevelFailedMenu : MonoBehaviour
     {
         tracker =
             GameObject
-                .FindGameObjectWithTag("GameManager")
+                .FindGameObjectWithTag("ProgressManager")
                 .GetComponent<LevelProgressTracker>();
     }
 
