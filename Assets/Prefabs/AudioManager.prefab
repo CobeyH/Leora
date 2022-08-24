@@ -87,6 +87,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Sparkles
+    clip: {fileID: 8300000, guid: 2b3a372eff7ee974b9dc729c0e876eb0, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   musicTracks:
   - name: delusion
     clip: {fileID: 8300000, guid: 16b93ae9570559006a0f93da2106ea69, type: 3}
