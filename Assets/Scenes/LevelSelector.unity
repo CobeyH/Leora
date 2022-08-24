@@ -3011,7 +3011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: buttonHover
+  - name: ButtonHover
     clip: {fileID: 8300000, guid: f9c05f9c0550eee5f8f5edbd9cf323b4, type: 3}
     volume: 1
     pitch: 1
@@ -3021,6 +3021,36 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8dad357a2a7da4564acbf41f5ce60e19, type: 3}
     volume: 1
     pitch: 0.7
+    loop: 0
+    source: {fileID: 0}
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: cc9f6c97a2d475d498c07243e55912b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Complete
+    clip: {fileID: 8300000, guid: 7e323f1c4e1c6014ba4ee91702589873, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PauseResume
+    clip: {fileID: 8300000, guid: 58ef6c72e6315f046849d723a55d7c3a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: LightOn
+    clip: {fileID: 8300000, guid: 58ef6c72e6315f046849d723a55d7c3a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: LightOff
+    clip: {fileID: 8300000, guid: 58ef6c72e6315f046849d723a55d7c3a, type: 3}
+    volume: 1
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   musicTracks:
@@ -3245,7 +3275,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.8350515
+  orthographic size: 6.1875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

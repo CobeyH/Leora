@@ -11,6 +11,16 @@ public class PauseMenu : MonoBehaviour
 
     public string menuScene;
 
+    private AudioManager audioManager;
+
+    void Start()
+    {
+        audioManager =
+    GameObject
+        .FindGameObjectWithTag("AudioManager")
+        .GetComponent<AudioManager>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -33,6 +43,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        audioManager.Play("PauseResume");
         HidePauseMenu();
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -45,6 +56,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        audioManager.Play("PauseResume");
         ShowPauseMenu();
         Time.timeScale = 0f;
         GameIsPaused = true;
