@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sparks: {fileID: 634278166950957639}
-  light: {fileID: 5490333106156900489}
+  controlledLight: {fileID: 5490333106156900489}
 --- !u!70 &9137194527988666746
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

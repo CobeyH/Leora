@@ -14,6 +14,10 @@ public class LightLimit : MonoBehaviour
 
     private List<Light2D> lightsInScene;
 
+    private AudioManager audioManager;
+
+    private bool voltageChange;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,11 @@ public class LightLimit : MonoBehaviour
         {
             lightsInScene.Remove (globalLight);
         }
+
+        audioManager =
+    GameObject
+        .FindGameObjectWithTag("AudioManager")
+        .GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -58,6 +67,23 @@ public class LightLimit : MonoBehaviour
         {
             IsOverVoltage = false;
             limitDisplay.color = new Color(255, 255, 255, 255);
+        }
+
+        if (voltageChange != IsOverVoltage)
+        {
+            SparkSound();
+        }
+        voltageChange = IsOverVoltage;
+    }
+
+    void SparkSound()
+    {
+        if (IsOverVoltage)
+        {
+            audioManager.Play("Sparkles");
+        } else
+        {
+            audioManager.Pause("Sparkles");
         }
     }
 }
