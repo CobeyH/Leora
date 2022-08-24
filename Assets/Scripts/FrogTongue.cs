@@ -17,6 +17,8 @@ public class FrogTongue : MonoBehaviour
 
     public GameObject tongue;
 
+    private AudioManager audioManager;
+
     private GameObject[] mothGroups;
 
     private Vector3? target;
@@ -32,10 +34,14 @@ public class FrogTongue : MonoBehaviour
     void Start()
     {
         // Find moth groups to eat
-        mothGroups = GameObject.FindGameObjectsWithTag("Moths");
+        mothGroups = GameObject.FindGameObjectsWithTag("MothForces");
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, tongue.transform.position);
         lineRenderer.SetPosition(1, tongue.transform.position);
+        audioManager =
+            GameObject
+                .FindGameObjectWithTag("AudioManager")
+                .GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -49,11 +55,10 @@ public class FrogTongue : MonoBehaviour
         }
         else if (!target.HasValue)
         {
-            if (!targetSelf && hunger < (eatingPeriod))
+            if (!targetSelf && hunger < eatingPeriod)
             {
                 return;
             }
-            hunger = 0;
             FindNewTarget();
         }
         if (target.HasValue)
@@ -79,14 +84,17 @@ public class FrogTongue : MonoBehaviour
         {
             if (ObjectInRange(flock.transform.position))
             {
-                ParticleSystem partSys = flock.GetComponent<ParticleSystem>();
-                int numMoths = partSys.GetParticles(mothBuffer);
-                if (numMoths > 0)
+                Vector3 targetPos = flock.transform.position;
+                target =
+                    new Vector3(targetPos.x + Random.Range(-1, 1),
+                        targetPos.y + Random.Range(-1, 1),
+                        0);
+                if (audioManager != null)
                 {
-                    target =
-                        flock.transform.TransformPoint(mothBuffer[0].position);
-                    return;
+                    audioManager.Play("Frog");
                 }
+                hunger = 0;
+                return;
             }
         }
         target = null;

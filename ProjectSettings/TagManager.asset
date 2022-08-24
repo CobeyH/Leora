@@ -8,6 +8,9 @@ TagManager:
   - TrapLight
   - Goal
   - ProgressManager
+  - GameManager
+  - AudioManager
+  - MothForces
   layers:
   - Default
   - TransparentFX
