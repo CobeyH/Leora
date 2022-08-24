@@ -9,19 +9,28 @@ public class LightController : MonoBehaviour
 
     public bool startOn = false;
 
+    private AudioManager audioManager;
+
     void Start()
     {
         myLight.enabled = startOn;
         myLight.intensity = Mathf.Round(myLight.intensity);
+
+        audioManager =
+    GameObject
+        .FindGameObjectWithTag("AudioManager")
+        .GetComponent<AudioManager>();
     }
 
     void OnMouseDown()
     {
         toggleLight();
+        audioManager.Play("LightOn");
     }
 
     void toggleLight()
     {
         myLight.enabled = !myLight.enabled;
+        audioManager.Play("LightOff");
     }
 }

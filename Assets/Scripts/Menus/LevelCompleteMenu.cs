@@ -22,12 +22,19 @@ public class LevelCompleteMenu : MonoBehaviour
 
     private float barWidth = 0;
 
+    private AudioManager audioManager;
+
     void Start()
     {
         tracker =
             GameObject
                 .FindGameObjectWithTag("ProgressManager")
                 .GetComponent<LevelProgressTracker>();
+
+        audioManager =
+    GameObject
+        .FindGameObjectWithTag("AudioManager")
+        .GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -59,6 +66,7 @@ public class LevelCompleteMenu : MonoBehaviour
                 cp.transform.GetChild(0).gameObject.SetActive(true);
             }
 
+            audioManager.Play("Complete");
             CompletionMenuUI.SetActive(true);
 
             // Unlock the next level
