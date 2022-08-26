@@ -7,6 +7,7 @@ public class FrogTongue : MonoBehaviour
     public LineRenderer lineRenderer;
 
     public EdgeCollider2D edgeCollider;
+    public AnimationCurve accelerationCurve;
 
     public int eatingPeriod = 1;
 
@@ -29,6 +30,7 @@ public class FrogTongue : MonoBehaviour
         mothBuffer = new ParticleSystem.Particle[100];
 
     private float hunger = 0;
+    private float timeElapsed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,7 @@ public class FrogTongue : MonoBehaviour
     void Update()
     {
         hunger += Time.deltaTime;
+        timeElapsed += Time.deltaTime;
         if (target.HasValue && !ObjectInRange(target.Value))
         {
             targetSelf = true;
@@ -75,6 +78,7 @@ public class FrogTongue : MonoBehaviour
 
     void FindNewTarget()
     {
+        timeElapsed = 0;
         if (targetSelf)
         {
             target = tongue.transform.position;
@@ -123,7 +127,7 @@ public class FrogTongue : MonoBehaviour
         Vector3 oldPosition = lineRenderer.GetPosition(1);
         Vector3 vecToTarget = target - oldPosition;
         Vector3 dirToTarget = vecToTarget.normalized;
-        float distanceToMove = speed * Time.deltaTime;
+        float distanceToMove = speed * Time.deltaTime * accelerationCurve.Evaluate(timeElapsed);
 
         // Update tongue end position
         Vector3 newPosition = oldPosition + dirToTarget * distanceToMove;
@@ -143,6 +147,6 @@ public class FrogTongue : MonoBehaviour
             edges.Add(new Vector2(linePoint.x, linePoint.y));
         }
 
-        edgeCollider.SetPoints (edges);
+        edgeCollider.SetPoints(edges);
     }
 }

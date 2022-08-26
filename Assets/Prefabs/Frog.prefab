@@ -133,6 +133,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 3200697175394705766}
   edgeCollider: {fileID: 7521166667555434458}
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.09659425
+      value: 3.9736462
+      inSlope: 6.0196137
+      outSlope: 6.0196137
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5546821
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.307434
+      value: 1.8917897
+      inSlope: -8.601762
+      outSlope: -8.601762
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07302646
+      outWeight: 0.122710116
+    - serializedVersion: 3
+      time: 0.5998253
+      value: 1.2845268
+      inSlope: -0.029314
+      outSlope: -0.029314
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17010617
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1.2036743
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   eatingPeriod: 1
   speed: 3
   fieldOfView: 30
