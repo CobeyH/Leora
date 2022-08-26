@@ -14,10 +14,11 @@ public class ProgressManager : MonoBehaviour
 
     private void UpdateButtonInteractions()
     {
-        int numUnlocked = PlayerPrefs.GetInt("furthestUnlock", 1);
+        int numUnlocked = PlayerPrefs.GetInt("furthestUnlock", 0);
+
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            if (i + 1 > numUnlocked)
+            if (i > numUnlocked)
             {
                 levelButtons[i].interactable = false;
             }

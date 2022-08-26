@@ -44,37 +44,12 @@ public class LevelCompleteMenu : MonoBehaviour
         {
             updateScore();
             timeSpentDisplay.SetText(ConvertTime(Time.timeSinceLevelLoad));
-            Debug.Log("We are here");
-            // Adding butterfly counts on the game complete menu
-            for (int i = 0; i < tracker.GetCheckpointsCompleted(); i++)
-            {
-                barWidth =
-                    butterflyCountDisplay
-                        .GetComponent<RectTransform>()
-                        .rect
-                        .width;
-                GameObject cp =
-                    Instantiate(checkpointPrefab,
-                    new Vector3((i / 2f) * barWidth - barWidth / 2f, 0, 0),
-                    Quaternion.identity);
-                cp.transform.localScale =
-                    new Vector3(cp.transform.localScale.x * 2,
-                        cp.transform.localScale.y * 2,
-                        0); // change its local scale in x y z format
-                cp.transform.SetParent(butterflyCountDisplay.transform, false);
-                butterflies.Add(cp);
-                cp.transform.GetChild(0).gameObject.SetActive(true);
-            }
-
+            CreateCheckpointMarkers();
             audioManager.Play("Complete");
             CompletionMenuUI.SetActive(true);
 
             // Unlock the next level
-            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            if (nextSceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
-            {
-                PlayerPrefs.SetInt("furthestUnlock", nextSceneIndex);
-            }
+            UnlockNextLevel();
         }
         else if (tracker.IsLevelSkippable())
         {
@@ -142,6 +117,39 @@ public class LevelCompleteMenu : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt(scoreString, currentScore);
+        }
+    }
+
+    // Adding butterfly counts on the game complete menu
+    private void CreateCheckpointMarkers()
+    {
+        barWidth =
+            butterflyCountDisplay
+                .GetComponent<RectTransform>()
+                .rect
+                .width;
+        for (int i = 0; i < tracker.GetCheckpointsCompleted(); i++)
+        {
+            GameObject cp =
+                Instantiate(checkpointPrefab,
+                new Vector3((i / 2f) * barWidth - barWidth / 2f, 0, 0),
+                Quaternion.identity);
+            cp.transform.localScale =
+                new Vector3(cp.transform.localScale.x * 2,
+                    cp.transform.localScale.y * 2,
+                    0); // change its local scale in x y z format
+            cp.transform.SetParent(butterflyCountDisplay.transform, false);
+            butterflies.Add(cp);
+            cp.transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
+    private void UnlockNextLevel()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex - 1;
+        if (nextSceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
+        {
+            PlayerPrefs.SetInt("furthestUnlock", nextSceneIndex);
         }
     }
 }
