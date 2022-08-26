@@ -46,7 +46,7 @@ public class ProgressBar : MonoBehaviour
                 new Vector3(i * spacing - barWidth / 2f, 0, 0),
                 Quaternion.identity);
             cp.transform.SetParent(this.transform, false);
-            checkpoints.Add (cp);
+            checkpoints.Add(cp);
             checkpointFills
                 .Add(cp.transform.GetChild(0).gameObject.GetComponent<Image>());
             i++;
@@ -74,7 +74,7 @@ public class ProgressBar : MonoBehaviour
                     : checkpointReqs[checkpointsFilled];
 
             // Add fill to completed checkpoints
-            float newFill = Mathf.InverseLerp(reqStart, reqEnd, targetValue);
+            float newFill = Mathf.InverseLerp(reqStart, reqEnd, currentValue);
             checkpointFills[checkpointsFilled].fillAmount = newFill;
 
             if (newFill == 1)
