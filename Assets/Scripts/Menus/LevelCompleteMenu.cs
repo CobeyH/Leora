@@ -44,7 +44,7 @@ public class LevelCompleteMenu : MonoBehaviour
         {
             updateScore();
             timeSpentDisplay.SetText(ConvertTime(Time.timeSinceLevelLoad));
-
+            Debug.Log("We are here");
             // Adding butterfly counts on the game complete menu
             for (int i = 0; i < tracker.GetCheckpointsCompleted(); i++)
             {
@@ -62,7 +62,7 @@ public class LevelCompleteMenu : MonoBehaviour
                         cp.transform.localScale.y * 2,
                         0); // change its local scale in x y z format
                 cp.transform.SetParent(butterflyCountDisplay.transform, false);
-                butterflies.Add (cp);
+                butterflies.Add(cp);
                 cp.transform.GetChild(0).gameObject.SetActive(true);
             }
 
@@ -84,9 +84,8 @@ public class LevelCompleteMenu : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        CompletionMenuUI.SetActive(false);
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene (nextSceneIndex);
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     public void HideSkipButton()
@@ -137,12 +136,12 @@ public class LevelCompleteMenu : MonoBehaviour
             // if player got higher score this round, overwrite that value
             if (tracker.GetCheckpointsCompleted() > prevScore)
             {
-                PlayerPrefs.SetInt (scoreString, currentScore);
+                PlayerPrefs.SetInt(scoreString, currentScore);
             }
         }
         else
         {
-            PlayerPrefs.SetInt (scoreString, currentScore);
+            PlayerPrefs.SetInt(scoreString, currentScore);
         }
     }
 }
