@@ -13,8 +13,6 @@ public class LevelProgressTracker : MonoBehaviour
 
     private bool LevelSkippable = false;
 
-    private bool LevelComplete = false;
-
     private int checkpointsCompleted = 0;
 
     private int totalMoths = 0;
@@ -48,7 +46,7 @@ public class LevelProgressTracker : MonoBehaviour
         float currentProgress = GetLevelProgress();
         if (currentProgress > previousProgress)
         {
-            UpdateCompletedCheckpoints (currentProgress);
+            UpdateCompletedCheckpoints(currentProgress);
         }
         previousProgress = currentProgress;
     }
@@ -68,12 +66,11 @@ public class LevelProgressTracker : MonoBehaviour
         }
 
         checkpointsCompleted = completedCheckpoints;
-        LevelComplete = true;
     }
 
     public float GetLevelProgress()
     {
-        return totalMothsInGoal / (float) totalMoths;
+        return totalMothsInGoal / (float)totalMoths;
     }
 
     public float[] GetCheckPointRequirements()
@@ -88,7 +85,13 @@ public class LevelProgressTracker : MonoBehaviour
 
     public bool IsLevelComplete()
     {
-        return LevelComplete;
+        // If all the checkpoints are complete then the level is done.
+        if (checkpointsCompleted == checkpointRequirements.Length) return true;
+        // If the first checkpoint is complete the level cannot be complete.
+        if (checkpointsCompleted < 1) return false;
+        // If at least one checkpoint has been passed but it's impossible to get more, then terminate early.
+        return !IsNextCheckpointReachable();
+
     }
 
     public bool IsLevelSkippable()
@@ -96,19 +99,24 @@ public class LevelProgressTracker : MonoBehaviour
         return LevelSkippable;
     }
 
-    public bool LevelIsCompletable()
+    public bool IsCheckpointReachable(int checkpointIndex)
     {
-        if (checkpointRequirements == null || checkpointRequirements.Length == 0
-        )
-        {
-            return true;
-        }
+        if (checkpointRequirements == null || checkpointRequirements.Length == 0) return true;
+        // It's impossible to reach a checkpoint that doesn't exist.
+        Debug.Log(checkpointIndex);
+        if (checkpointIndex >= checkpointRequirements.Length) return false;
         int mothsAlive = 0;
         foreach (ParticleSystem flock in flocks)
         {
             mothsAlive += flock.particleCount;
         }
-        return (totalMothsInGoal + mothsAlive) / (float) totalMoths >=
-        checkpointRequirements[0];
+        return (totalMothsInGoal + mothsAlive) / (float)totalMoths >=
+        checkpointRequirements[checkpointIndex];
+    }
+
+    // Checks if it's possible to reach the next checkpoint with the moths remaining.
+    public bool IsNextCheckpointReachable()
+    {
+        return IsCheckpointReachable(checkpointsCompleted);
     }
 }

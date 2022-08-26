@@ -21,7 +21,7 @@ public class LevelFailedMenu : MonoBehaviour
     // Display menu when the level is failed.
     void Update()
     {
-        if (!tracker.LevelIsCompletable())
+        if (!tracker.IsCheckpointReachable(0))
         {
             ShowMenu();
         }
