@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
@@ -18,23 +19,24 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     private Sound currentSong;
+    private List<AudioSource> activeAudioSources = new List<AudioSource>();
 
     // Start is called before the first frame update
     void Awake()
     {
         if (instance != null)
         {
-            GameObject.Destroy (gameObject);
+            GameObject.Destroy(gameObject);
             return;
         }
         else
         {
             instance = this;
         }
-        DontDestroyOnLoad (gameObject);
+        DontDestroyOnLoad(gameObject);
 
-        AddAudioSources (sounds);
-        AddAudioSources (musicTracks);
+        AddAudioSources(sounds);
+        AddAudioSources(musicTracks);
         mainTheme = gameObject.AddComponent<AudioSource>();
         mainTheme.clip = themeClip;
         mainTheme.volume = 0.5f;
@@ -115,6 +117,27 @@ public class AudioManager : MonoBehaviour
         {
             s.source.Stop();
             return;
+        }
+    }
+
+    public void PauseAllSounds()
+    {
+        activeAudioSources.Clear();
+        foreach (Sound s in sounds)
+        {
+            if (s.source.isPlaying)
+            {
+                activeAudioSources.Add(s.source);
+                s.source.Pause();
+            }
+        }
+    }
+
+    public void ResumeSounds()
+    {
+        foreach (AudioSource s in activeAudioSources)
+        {
+            s.UnPause();
         }
     }
 }

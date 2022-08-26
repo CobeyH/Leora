@@ -54,7 +54,7 @@ MonoBehaviour:
   - name: Frog
     clip: {fileID: 8300000, guid: 8dad357a2a7da4564acbf41f5ce60e19, type: 3}
     volume: 1
-    pitch: 0.7
+    pitch: 0.6
     loop: 0
     source: {fileID: 0}
   - name: ButtonClick
