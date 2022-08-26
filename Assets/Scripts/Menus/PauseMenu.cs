@@ -47,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         HidePauseMenu();
         Time.timeScale = 1f;
         GameIsPaused = false;
+        audioManager.ResumeSounds();
     }
 
     public void HidePauseMenu()
@@ -60,6 +61,7 @@ public class PauseMenu : MonoBehaviour
         ShowPauseMenu();
         Time.timeScale = 0f;
         GameIsPaused = true;
+        audioManager.PauseAllSounds();
     }
 
     public void ShowPauseMenu()
@@ -70,7 +72,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Resume();
-        SceneManager.LoadScene (menuScene);
+        SceneManager.LoadScene(menuScene);
         GameObject audioManager = GameObject.Find("AudioManager");
         audioManager.GetComponent<AudioManager>().PlayMainTheme();
     }
