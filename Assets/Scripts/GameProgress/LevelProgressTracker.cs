@@ -103,7 +103,6 @@ public class LevelProgressTracker : MonoBehaviour
     {
         if (checkpointRequirements == null || checkpointRequirements.Length == 0) return true;
         // It's impossible to reach a checkpoint that doesn't exist.
-        Debug.Log(checkpointIndex);
         if (checkpointIndex >= checkpointRequirements.Length) return false;
         int mothsAlive = 0;
         foreach (ParticleSystem flock in flocks)
