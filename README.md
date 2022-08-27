@@ -41,7 +41,7 @@ The attraction force from each light is summed to produce a final resultant vect
 Directional lights are a variant of the normal light prefab that have a configurable angle of light projection. The moths are only attracted to the light if they are contained within its field of view. Colliders are attached to the end of the each leaf to allow the user to adjust the angle during the game. This increases the flexibility and interaction of the puzzles.
 
 ![image](https://user-images.githubusercontent.com/32989729/187002862-9e1e8de5-fabb-46ca-9e2c-8df1f9459b39.png)
-![image](https://user-images.githubusercontent.com/32989729/187003147-2acd14ae-1e44-4b68-baf5-ef34ea34c4b8.png)
+![image](https://user-images.githubusercontent.com/32989729/187009624-1cbcf6d3-8db7-41b0-bbca-c2444bf7171d.png)
 
 ### Dimmer sliders
 
