@@ -41,7 +41,7 @@ Material:
     - _DistortionAmount: 0.1
     - _Height: 0.1
     - _NoiseAmount: 10
-    - _Speed: 0.6
+    - _Speed: -0.6
     - _Width: 1
     m_Colors: []
   m_BuildTextureStacks: []
