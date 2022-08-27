@@ -593,6 +593,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1385192936}
     m_Modifications:
+    - target: {fileID: 1052195830671741958, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1730573610887708328, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -604,6 +608,18 @@ PrefabInstance:
     - target: {fileID: 3138346876658882657, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259840024024980651, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259840024024980651, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259840024024980651, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3743353115096189989, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_Pivot.x
@@ -716,6 +732,10 @@ PrefabInstance:
     - target: {fileID: 8205329773771903033, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017602559384082315, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
@@ -1179,7 +1199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577258862630230776, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: orthographic size
-      value: 5.821045
+      value: 3.8374681
       objectReference: {fileID: 0}
     - target: {fileID: 6577258862630230779, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: m_Name

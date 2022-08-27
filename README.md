@@ -1,6 +1,6 @@
 # MothLight
 
-MothLight is a 2D puzzle game in which the player controls lights in the environment to guide flocks of moths to a goal. This project was undertaken over the past 4 months to build Unity skills for future employment.
+MothLight is a 2D puzzle game in which the player controls lights in the environment to guide flocks of moths to a goal. This project was started in June 2022 to build Unity skills for future employment.
 Some of the key concepts used are listed below:
 
 - Scene Management
