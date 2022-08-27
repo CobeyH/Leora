@@ -40,7 +40,7 @@ public class LightRotation : MonoBehaviour
     void UpdateLeafPositions()
     {
         float angle = controlledLight.pointLightOuterAngle;
-        leftPivot.transform.eulerAngles = new Vector3(0, 0, -1 * (angle / 2 - 40));
-        rightPivot.transform.eulerAngles = new Vector3(0, 0, (angle / 2 - 40));
+        leftPivot.transform.localEulerAngles = new Vector3(0, 0, -1 * (angle / 2 - 40));
+        rightPivot.transform.localEulerAngles = new Vector3(0, 0, (angle / 2 - 40));
     }
 }
