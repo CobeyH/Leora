@@ -104,8 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkpointPrefab: {fileID: 7341088669581280480, guid: 1ebc2f5576d35161ea59eef82287fac0, type: 3}
   emitter: {fileID: 8573477481866500588}
-  slider: {fileID: 8573477480740889834}
-  fillSpeed: 0.5
+  fillSpeed: 1.2
 --- !u!1 &8573477481866500587
 GameObject:
   m_ObjectHideFlags: 0
