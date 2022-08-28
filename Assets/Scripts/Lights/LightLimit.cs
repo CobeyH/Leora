@@ -15,6 +15,7 @@ public class LightLimit : MonoBehaviour
     private List<Light2D> lightsInScene;
 
     private AudioManager audioManager;
+    [SerializeField]
     private ParticleSystem sparks;
 
     private bool wasOverVoltage;
@@ -24,7 +25,6 @@ public class LightLimit : MonoBehaviour
     {
         lightsInScene = new List<Light2D>(FindObjectsOfType<Light2D>());
         voltageIndicator = gameObject.GetComponent<Slider>();
-        sparks = gameObject.GetComponent<ParticleSystem>();
 
         // Find all the global lights in the scene
         List<Light2D> globalLights = new List<Light2D>();
@@ -60,7 +60,7 @@ public class LightLimit : MonoBehaviour
             }
         }
         IsOverVoltage = voltageUsed > voltageLimit;
-        UpdateVoltageIndicator(voltageUsed);
+        UpdateVoltageIndicator(voltageUsed / (float)voltageLimit);
 
         if (wasOverVoltage != IsOverVoltage)
         {
