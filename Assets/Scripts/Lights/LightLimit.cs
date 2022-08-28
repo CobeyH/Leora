@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class LightLimit : MonoBehaviour
 {
     public int voltageLimit;
-
-    public TMP_Text limitDisplay;
+    public float fillSpeed;
 
     public static bool IsOverVoltage = false;
 
+    private Slider voltageIndicator;
     private List<Light2D> lightsInScene;
 
     private AudioManager audioManager;
@@ -22,6 +22,7 @@ public class LightLimit : MonoBehaviour
     void Start()
     {
         lightsInScene = new List<Light2D>(FindObjectsOfType<Light2D>());
+        voltageIndicator = gameObject.GetComponent<Slider>();
 
         // Find all the global lights in the scene
         List<Light2D> globalLights = new List<Light2D>();
@@ -56,24 +57,22 @@ public class LightLimit : MonoBehaviour
                 voltageUsed += light.intensity;
             }
         }
-        limitDisplay.text =
-            voltageUsed.ToString() + " / " + voltageLimit.ToString();
-        if (voltageUsed > voltageLimit)
-        {
-            IsOverVoltage = true;
-            limitDisplay.color = new Color(255, 0, 0, 255);
-        }
-        else
-        {
-            IsOverVoltage = false;
-            limitDisplay.color = new Color(255, 255, 255, 255);
-        }
+        IsOverVoltage = voltageUsed > voltageLimit;
+        UpdateVoltageIndicator(voltageUsed);
 
         if (wasOverVoltage != IsOverVoltage)
         {
             SparkSound();
         }
         wasOverVoltage = IsOverVoltage;
+    }
+
+
+    void UpdateVoltageIndicator(float target)
+    {
+        if (target == voltageIndicator.value) return;
+        int direction = target > voltageIndicator.value ? 1 : -1;
+        voltageIndicator.value += direction * Time.deltaTime * fillSpeed;
     }
 
     void SparkSound()
