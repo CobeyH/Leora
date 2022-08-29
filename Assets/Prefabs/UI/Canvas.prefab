@@ -6393,7 +6393,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 40.000122, y: -30}
-  m_SizeDelta: {x: 160, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &9095756648451741170
 MonoBehaviour:
@@ -6459,7 +6459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voltageLimit: 2
-  fillSpeed: 1.5
+  fillSpeed: 5
   sparks: {fileID: 6644087243754641701}
 --- !u!1 &2329402037758546079
 GameObject:

@@ -72,7 +72,8 @@ public class LightLimit : MonoBehaviour
 
     void UpdateVoltageIndicator(float target)
     {
-        if (target == voltageIndicator.value) return;
+        // If it's close to the correct value then stop updating.
+        if (Mathf.Abs(target - voltageIndicator.value) < 0.01) return;
         int direction = target > voltageIndicator.value ? 1 : -1;
         voltageIndicator.value += direction * Time.deltaTime * fillSpeed;
     }
