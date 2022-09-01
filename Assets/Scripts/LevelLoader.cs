@@ -25,6 +25,12 @@ public class LevelLoader : MonoBehaviour
         object[] parms = new object[1] { index };
         instance.StartCoroutine("LoadLevel", parms);
     }
+
+    public static void RestartLevel()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        StartLevelLoadCoroutine(currentSceneName);
+    }
     public static void StartLevelLoadCoroutine(string index)
     {
         object[] parms = new object[1] { index };

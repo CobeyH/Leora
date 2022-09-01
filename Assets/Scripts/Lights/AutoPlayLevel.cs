@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.SceneManagement;
 
 public class AutoPlayLevel : MonoBehaviour
 {
@@ -15,7 +14,7 @@ public class AutoPlayLevel : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadScene("LevelSelector");
+            LevelLoader.StartLevelLoadCoroutine("LevelSelector");
         }
 
         // Turn off and on lights to auto complete the level
