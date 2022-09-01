@@ -59,8 +59,7 @@ public class LevelCompleteMenu : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+        LevelLoader.StartNextLevelCoroutine();
     }
 
     public void HideSkipButton()
