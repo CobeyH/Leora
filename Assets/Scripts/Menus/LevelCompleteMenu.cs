@@ -59,8 +59,7 @@ public class LevelCompleteMenu : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+        LevelLoader.StartNextLevelCoroutine();
     }
 
     public void HideSkipButton()
@@ -70,31 +69,10 @@ public class LevelCompleteMenu : MonoBehaviour
 
     public string ConvertTime(float deltaTime)
     {
-        float minutes = Mathf.Floor(deltaTime / 60);
-        float seconds = Mathf.Floor(deltaTime % 60);
+        string minutes = Mathf.Floor(deltaTime / 60).ToString("00");
+        string seconds = Mathf.Floor(deltaTime % 60).ToString("00");
 
-        string secondsString;
-        string minutesString;
-
-        if (seconds < 10)
-        {
-            secondsString = "0" + seconds.ToString();
-        }
-        else
-        {
-            secondsString = seconds.ToString();
-        }
-
-        if (minutes < 10)
-        {
-            minutesString = "0" + minutes.ToString();
-        }
-        else
-        {
-            minutesString = minutes.ToString();
-        }
-
-        return minutesString + ":" + secondsString;
+        return minutes + ":" + seconds;
     }
 
     public void updateScore()

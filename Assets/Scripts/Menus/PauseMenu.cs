@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -72,14 +71,13 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Resume();
-        SceneManager.LoadScene(menuScene);
+        LevelLoader.StartLevelLoadCoroutine(menuScene);
         GameObject audioManager = GameObject.Find("AudioManager");
         audioManager.GetComponent<AudioManager>().PlayMainTheme();
     }
 
     public void RestartLevel()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        LevelLoader.RestartLevel();
     }
 }
