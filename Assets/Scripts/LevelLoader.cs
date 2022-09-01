@@ -13,23 +13,20 @@ public class LevelLoader : MonoBehaviour
     {
         instance = this;
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public static void StartNextLevelCoroutine()
     {
-        instance.StartCoroutine("LoadNextLevel");
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        object[] parms = new object[1] { nextSceneIndex };
+        instance.StartCoroutine("LoadLevel", parms);
     }
 
-    IEnumerator LoadNextLevel()
+    IEnumerator LoadLevel(object[] parms)
     {
+        int nextSceneIndex = (int)parms[0];
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
 
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(nextSceneIndex);
     }
 }
