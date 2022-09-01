@@ -17,16 +17,36 @@ public class LevelLoader : MonoBehaviour
     public static void StartNextLevelCoroutine()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        object[] parms = new object[1] { nextSceneIndex };
+        StartLevelLoadCoroutine(nextSceneIndex);
+    }
+
+    public static void StartLevelLoadCoroutine(int index)
+    {
+        object[] parms = new object[1] { index };
+        instance.StartCoroutine("LoadLevel", parms);
+    }
+    public static void StartLevelLoadCoroutine(string index)
+    {
+        object[] parms = new object[1] { index };
         instance.StartCoroutine("LoadLevel", parms);
     }
 
+    // Start a coroutine to play a scene transition animation and load the scene.
     IEnumerator LoadLevel(object[] parms)
     {
-        int nextSceneIndex = (int)parms[0];
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene(nextSceneIndex);
+        // This part could probably be improved.
+        // The coroutine must accept both integers and strings because either
+        // can be used as an index for LoadScene
+        if (parms[0] is string)
+        {
+            SceneManager.LoadScene((string)parms[0]);
+        }
+        else
+        {
+            SceneManager.LoadScene((int)parms[0]);
+        }
     }
 }
