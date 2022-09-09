@@ -14,7 +14,7 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer mainMixer;
     public Slider volumeSlider;
     public Toggle fullScreenToggle;
-    public TMP_Dropdown greaphicQualityDropdown;
+    public TMP_Dropdown graphicQualityDropdown;
 
     void Start()
     {
@@ -85,11 +85,11 @@ public class SettingsMenu : MonoBehaviour
 
         if (PlayerPrefs.HasKey("quality"))
         {
-            greaphicQualityDropdown.value = PlayerPrefs.GetInt("quality");
+            graphicQualityDropdown.value = PlayerPrefs.GetInt("quality");
         }
         else
         {
-            greaphicQualityDropdown.value = 5;
+            graphicQualityDropdown.value = 5;
         }
         if (PlayerPrefs.HasKey("fullscreen"))
         {
