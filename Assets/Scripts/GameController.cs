@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    bool isGameOver = false;
-
     public GameObject gameLostMenu;
 
     public GameObject gameWonMenu;
@@ -33,6 +31,7 @@ public class GameController : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         audioManager.PlayMusic();
         StartCoroutine(CheckLevelFailed());
+        StartCoroutine(CheckLevelWon());
     }
 
     void Update()
@@ -51,6 +50,19 @@ public class GameController : MonoBehaviour
             if (tracker.IsLevelFailed())
             {
                 gameLostMenu.GetComponent<MenuController>().ShowMenu();
+
+                yield break;
+            }
+        }
+    }
+    IEnumerator CheckLevelWon()
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(0.5f);
+            if (tracker.IsLevelComplete())
+            {
+                gameWonMenu.GetComponent<MenuController>().ShowMenu();
 
                 yield break;
             }
@@ -85,7 +97,6 @@ public class GameController : MonoBehaviour
 
     public void RestartLevel()
     {
-        isGameOver = false;
         int levelIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(levelIndex);
     }
