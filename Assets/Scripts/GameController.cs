@@ -101,19 +101,6 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(levelIndex);
     }
 
-    public void LoadNextLevel()
-    {
-        // TODO: if this is the last level
-        if (true)
-        {
-            LoadMenu();
-        }
-        else
-        {
-            // TODO: Load the next level
-        }
-    }
-
     public void LoadMenu()
     {
         SceneManager.LoadScene("LevelSelector");

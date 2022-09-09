@@ -39,4 +39,9 @@ public class MenuController : MonoBehaviour
     {
         gameController.LoadMenu();
     }
+
+    public void LoadNextLevel()
+    {
+        LevelLoader.LoadNextLevel();
+    }
 }

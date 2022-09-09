@@ -14,10 +14,27 @@ public class LevelLoader : MonoBehaviour
         instance = this;
     }
 
-    public static void StartNextLevelCoroutine()
+    public static void LoadNextLevel()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        StartLevelLoadCoroutine(nextSceneIndex);
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            UnlockLevel(nextSceneIndex);
+            StartLevelLoadCoroutine(nextSceneIndex);
+            // If this is the last level then load the menu
+        }
+        else
+        {
+            StartLevelLoadCoroutine("LevelSelector");
+        }
+    }
+
+    public static void UnlockLevel(int sceneIndex)
+    {
+        if (sceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
+        {
+            PlayerPrefs.SetInt("furthestUnlock", sceneIndex);
+        }
     }
 
     public static void StartLevelLoadCoroutine(int index)
