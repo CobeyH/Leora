@@ -4,10 +4,13 @@ public class MenuController : MonoBehaviour
 {
     GameController gameController;
 
-    void Start()
+    void Awake()
     {
         gameController = FindObjectOfType<GameController>();
+    }
 
+    void Start()
+    {
         // All menus should start invisible
         gameObject.SetActive(false);
     }

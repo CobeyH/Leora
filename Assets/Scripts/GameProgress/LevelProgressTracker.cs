@@ -22,7 +22,7 @@ public class LevelProgressTracker : MonoBehaviour
     private float previousProgress = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Get count of moths in scene.
         GameObject[] mothFlocks = GameObject.FindGameObjectsWithTag("Moths");
@@ -99,16 +99,24 @@ public class LevelProgressTracker : MonoBehaviour
         return LevelSkippable;
     }
 
+    public bool IsLevelFailed()
+    {
+        return !IsCheckpointReachable(0);
+    }
+
     public bool IsCheckpointReachable(int checkpointIndex)
     {
         if (checkpointRequirements == null || checkpointRequirements.Length == 0) return true;
+
         // It's impossible to reach a checkpoint that doesn't exist.
         if (checkpointIndex >= checkpointRequirements.Length) return false;
         int mothsAlive = 0;
+
         foreach (ParticleSystem flock in flocks)
         {
             mothsAlive += flock.particleCount;
         }
+
         return (totalMothsInGoal + mothsAlive) / (float)totalMoths >=
         checkpointRequirements[checkpointIndex];
     }

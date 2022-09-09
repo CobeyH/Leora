@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,8 +14,17 @@ public class GameController : MonoBehaviour
     public GameObject pauseMenu;
 
     public GameObject dofVolume;
+    private LevelProgressTracker tracker;
 
     AudioManager audioManager;
+
+    void Awake()
+    {
+        tracker =
+            GameObject
+                .FindGameObjectWithTag("ProgressManager")
+                .GetComponent<LevelProgressTracker>();
+    }
 
     void Start()
     {
@@ -24,6 +32,7 @@ public class GameController : MonoBehaviour
         dofVolume.SetActive(false);
         audioManager = FindObjectOfType<AudioManager>();
         audioManager.PlayMusic();
+        StartCoroutine(CheckLevelFailed());
     }
 
     void Update()
@@ -31,6 +40,20 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePauseMenu();
+        }
+    }
+
+    IEnumerator CheckLevelFailed()
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(0.5f);
+            if (tracker.IsLevelFailed())
+            {
+                gameLostMenu.GetComponent<MenuController>().ShowMenu();
+
+                yield break;
+            }
         }
     }
 
@@ -50,33 +73,6 @@ public class GameController : MonoBehaviour
             EnableDOF();
         }
     }
-
-    void HandleGameOver(GameObject menuObject)
-    {
-        if (!isGameOver && menuObject != null)
-        {
-            isGameOver = true;
-            audioManager.Pause("Music");
-            // End the game. Open menus
-        }
-    }
-
-    public void LoseGame()
-    {
-        HandleGameOver(gameLostMenu);
-    }
-
-    public void WinGame()
-    {
-        HandleGameOver(gameWonMenu);
-        audioManager.Play("Victory");
-        int furthestLevel = PlayerPrefs.GetInt("progress");
-        if (SceneManager.GetActiveScene().buildIndex == furthestLevel)
-        {
-            PlayerPrefs.SetInt("progress", furthestLevel + 1);
-        }
-    }
-
     public void EnableDOF()
     {
         dofVolume.SetActive(true);
