@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -97,12 +96,11 @@ public class GameController : MonoBehaviour
 
     public void RestartLevel()
     {
-        int levelIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(levelIndex);
+        LevelLoader.RestartLevel();
     }
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("LevelSelector");
+        LevelLoader.LoadLevel("LevelSelector");
     }
 }

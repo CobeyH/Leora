@@ -48,6 +48,12 @@ public class LevelLoader : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         StartLevelLoadCoroutine(currentSceneName);
     }
+
+    public static void LoadLevel(string sceneName)
+    {
+        StartLevelLoadCoroutine(sceneName);
+    }
+
     public static void StartLevelLoadCoroutine(string index)
     {
         object[] parms = new object[1] { index };
