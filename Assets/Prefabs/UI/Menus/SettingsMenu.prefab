@@ -2689,6 +2689,7 @@ GameObject:
   - component: {fileID: 3105050790575698121}
   - component: {fileID: 6058842126840317698}
   - component: {fileID: 3470805417572605770}
+  - component: {fileID: 6800603495522379107}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -2768,7 +2769,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df07db8eac9e4f7fb5d4c4c246704b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuUI: {fileID: 5759942792239276505}
 --- !u!114 &3470805417572605770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2782,11 +2782,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SettingsMenuUI: {fileID: 5759942792239276505}
-  resolutionDropdown: {fileID: 7862548963150950401}
+  resolutionDropdown: {fileID: 8854518294147550279}
   mainMixer: {fileID: 24100000, guid: e80bc5ca3749e422b9af3805a1e29ae4, type: 2}
   volumeSlider: {fileID: 8224761273547729376}
   fullScreenToggle: {fileID: 7769216359699580896}
   graphicQualityDropdown: {fileID: 7862548963150950401}
+--- !u!114 &6800603495522379107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5759942792239276505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb191108c8614033f8965646e9a2e3d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5787154406099074719
 GameObject:
   m_ObjectHideFlags: 0
@@ -4251,14 +4263,20 @@ PrefabInstance:
     - target: {fileID: 3317582958856787251, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6058842126840317698}
+      objectReference: {fileID: 6800603495522379107}
     - target: {fileID: 3317582958856787251, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HideMenu
+      value: HideSettings
       objectReference: {fileID: 0}
     - target: {fileID: 3317582958856787251, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuController, Assembly-CSharp
+      value: OpenSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3317582959957048371, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
+      propertyPath: m_text
+      value: 'Apply
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}

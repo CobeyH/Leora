@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
     {
         MenuController menuController =
             pauseMenu.GetComponent<MenuController>();
-        bool isGamePaused = menuController.MenuUI.activeSelf;
+        bool isGamePaused = menuController.gameObject.activeSelf;
         if (isGamePaused)
         {
             menuController.HideMenu();
@@ -63,12 +63,12 @@ public class GameController : MonoBehaviour
 
     public void LoseGame()
     {
-        HandleGameOver (gameLostMenu);
+        HandleGameOver(gameLostMenu);
     }
 
     public void WinGame()
     {
-        HandleGameOver (gameWonMenu);
+        HandleGameOver(gameWonMenu);
         audioManager.Play("Victory");
         int furthestLevel = PlayerPrefs.GetInt("progress");
         if (SceneManager.GetActiveScene().buildIndex == furthestLevel)
@@ -91,7 +91,7 @@ public class GameController : MonoBehaviour
     {
         isGameOver = false;
         int levelIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene (levelIndex);
+        SceneManager.LoadScene(levelIndex);
     }
 
     public void LoadNextLevel()

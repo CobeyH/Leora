@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject MenuUI;
-
     GameController gameController;
 
     void Start()
@@ -16,12 +14,12 @@ public class MenuController : MonoBehaviour
 
     public void ShowMenu()
     {
-        MenuUI.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public void HideMenu()
     {
-        MenuUI.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void RestartLevel()

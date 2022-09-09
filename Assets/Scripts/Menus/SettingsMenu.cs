@@ -16,7 +16,7 @@ public class SettingsMenu : MonoBehaviour
     public Toggle fullScreenToggle;
     public TMP_Dropdown graphicQualityDropdown;
 
-    void Start()
+    void Awake()
     {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
