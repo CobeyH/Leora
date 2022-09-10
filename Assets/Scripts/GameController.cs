@@ -76,22 +76,24 @@ public class GameController : MonoBehaviour
         if (isGamePaused)
         {
             menuController.HideMenu();
-            DisableDOF();
+            ResumeGame();
         }
         else
         {
             menuController.ShowMenu();
-            EnableDOF();
+            PauseGame();
         }
     }
-    public void EnableDOF()
+    public void PauseGame()
     {
         dofVolume.SetActive(true);
+        Time.timeScale = 0;
     }
 
-    public void DisableDOF()
+    public void ResumeGame()
     {
         dofVolume.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void RestartLevel()

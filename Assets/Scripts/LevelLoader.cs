@@ -63,6 +63,7 @@ public class LevelLoader : MonoBehaviour
     // Start a coroutine to play a scene transition animation and load the scene.
     IEnumerator LoadLevel(object[] parms)
     {
+        Time.timeScale = 1;
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
 

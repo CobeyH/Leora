@@ -18,11 +18,13 @@ public class MenuController : MonoBehaviour
     public void ShowMenu()
     {
         gameObject.SetActive(true);
+        gameController.PauseGame();
     }
 
     public void HideMenu()
     {
         gameObject.SetActive(false);
+        gameController.ResumeGame();
     }
 
     public void RestartLevel()

@@ -5077,7 +5077,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2350571062062204379}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelCompleteMenu, Assembly-CSharp
         m_MethodName: LoadNextLevel
         m_Mode: 1
@@ -5089,7 +5089,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2350571062062204379}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelCompleteMenu, Assembly-CSharp
         m_MethodName: HideSkipButton
         m_Mode: 1
@@ -5118,7 +5118,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2690229150219808735}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
           m_MethodName: PlayHoverSound
           m_Mode: 1
@@ -5142,11 +5142,6 @@ GameObject:
   - component: {fileID: 3743353115096189985}
   - component: {fileID: 3743353115096189986}
   - component: {fileID: 3743353115096189987}
-  - component: {fileID: 3743353115096189988}
-  - component: {fileID: 2350571062062204379}
-  - component: {fileID: 480227373694070440}
-  - component: {fileID: 4376894706291180984}
-  - component: {fileID: 2690229150219808735}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5238,80 +5233,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3743353115096189988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3743353115096189990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7827133e8a9dd66a25f39c6c69ae53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseMenuUI: {fileID: 0}
-  menuScene: LevelSelector
---- !u!114 &2350571062062204379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3743353115096189990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbe60d5d7668a1014bb331a1af16ba68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CompletionMenuUI: {fileID: 0}
-  LevelSkipButton: {fileID: 2406936636112625261}
-  timeSpentDisplay: {fileID: 0}
-  butterflyCountDisplay: {fileID: 0}
-  checkpointPrefab: {fileID: 1969459294591930029, guid: 44833a3aecdcf9f1cb620efe45a926bb, type: 3}
---- !u!114 &480227373694070440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3743353115096189990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c15f3965c236fa587c858e7f4d4b25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SettingsMenuUI: {fileID: 0}
-  resolutionDropdown: {fileID: 0}
-  mainMixer: {fileID: 24100000, guid: e80bc5ca3749e422b9af3805a1e29ae4, type: 2}
-  volumeSlider: {fileID: 0}
-  fullScreenToggle: {fileID: 0}
-  graphicQualityDropdown: {fileID: 0}
---- !u!114 &4376894706291180984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3743353115096189990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3626c9d115c70cc42a636c48ad8d59c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FailedMenuUI: {fileID: 0}
---- !u!114 &2690229150219808735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3743353115096189990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 951997aba10078e93889cd0482f3c8b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3746102564467163724
 GameObject:
   m_ObjectHideFlags: 0
