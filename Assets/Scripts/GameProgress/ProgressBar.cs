@@ -46,7 +46,7 @@ public class ProgressBar : MonoBehaviour
                 new Vector3(i * spacing - barWidth / 2f, 0, 0),
                 Quaternion.identity);
             cp.transform.SetParent(this.transform, false);
-            checkpoints.Add(cp);
+            checkpoints.Add (cp);
             checkpointFills
                 .Add(cp.transform.GetChild(0).gameObject.GetComponent<Image>());
             i++;
@@ -63,7 +63,7 @@ public class ProgressBar : MonoBehaviour
         }
         if (currentValue < targetValue)
         {
-            currentValue += fillSpeed * Time.deltaTime;
+            currentValue += fillSpeed * Time.fixedDeltaTime;
             float reqStart =
                 checkpointsFilled == 0
                     ? 0

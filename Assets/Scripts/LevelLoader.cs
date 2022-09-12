@@ -14,10 +14,27 @@ public class LevelLoader : MonoBehaviour
         instance = this;
     }
 
-    public static void StartNextLevelCoroutine()
+    public static void LoadNextLevel()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        StartLevelLoadCoroutine(nextSceneIndex);
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            UnlockLevel(nextSceneIndex);
+            StartLevelLoadCoroutine(nextSceneIndex);
+            // If this is the last level then load the menu
+        }
+        else
+        {
+            StartLevelLoadCoroutine("LevelSelector");
+        }
+    }
+
+    public static void UnlockLevel(int sceneIndex)
+    {
+        if (sceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
+        {
+            PlayerPrefs.SetInt("furthestUnlock", sceneIndex);
+        }
     }
 
     public static void StartLevelLoadCoroutine(int index)
@@ -31,6 +48,12 @@ public class LevelLoader : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         StartLevelLoadCoroutine(currentSceneName);
     }
+
+    public static void LoadLevel(string sceneName)
+    {
+        StartLevelLoadCoroutine(sceneName);
+    }
+
     public static void StartLevelLoadCoroutine(string index)
     {
         object[] parms = new object[1] { index };
@@ -40,6 +63,7 @@ public class LevelLoader : MonoBehaviour
     // Start a coroutine to play a scene transition animation and load the scene.
     IEnumerator LoadLevel(object[] parms)
     {
+        Time.timeScale = 1;
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
 
