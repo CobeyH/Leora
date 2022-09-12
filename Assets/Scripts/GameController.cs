@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject pauseMenu;
 
     public GameObject dofVolume;
+
     private LevelProgressTracker tracker;
 
     AudioManager audioManager;
@@ -27,7 +28,9 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1f;
         dofVolume.SetActive(false);
-        audioManager = FindObjectOfType<AudioManager>();
+        GameObject audioObject =
+            GameObject.FindGameObjectWithTag("AudioManager");
+        audioManager = audioObject.GetComponent<AudioManager>();
         audioManager.PlayMusic();
         StartCoroutine(CheckLevelFailed());
         StartCoroutine(CheckLevelWon());
@@ -54,6 +57,7 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
     IEnumerator CheckLevelWon()
     {
         while (true)
@@ -84,6 +88,7 @@ public class GameController : MonoBehaviour
             PauseGame();
         }
     }
+
     public void PauseGame()
     {
         dofVolume.SetActive(true);
