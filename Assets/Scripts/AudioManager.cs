@@ -33,6 +33,8 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
         }
+        // Move the object into the root so it can be destroyed on load
+        transform.parent = null;
         DontDestroyOnLoad(gameObject);
 
         AddAudioSources(sounds);
