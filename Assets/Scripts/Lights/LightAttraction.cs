@@ -7,9 +7,9 @@ public class LightAttraction : MonoBehaviour
 {
     public float mothSpeed = 2f;
 
-    private ParticleSystemForceField field;
-    public Rigidbody2D rigidBody;
-    private List<Light2D> lightsInScene;
+    ParticleSystemForceField field;
+    Rigidbody2D rigidBody;
+    List<Light2D> lightsInScene;
 
     // Start is called before the first frame update
     void Start()

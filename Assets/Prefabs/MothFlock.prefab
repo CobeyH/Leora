@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2938814413458364554}
   - component: {fileID: 1620006874478156726}
   m_Layer: 6
-  m_Name: Moth Forces
+  m_Name: MothFlock
   m_TagString: MothForces
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3854380182497185524}
+  - {fileID: 8770528019953004970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -544,7 +545,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mothSpeed: 7
-  rigidBody: {fileID: 0}
 --- !u!58 &2938814413458364554
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1109,3 +1109,57 @@ ParticleSystemForceField:
         m_RotationOrder: 4
     m_MultiplyDragByParticleSize: 1
     m_MultiplyDragByParticleVelocity: 1
+--- !u!1001 &3230894628727196210
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3854380181968057030}
+    m_Modifications:
+    - target: {fileID: 6152301163840027543, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_Name
+      value: Moth Particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+--- !u!4 &8770528019953004970 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6152301163840027544, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+  m_PrefabInstance: {fileID: 3230894628727196210}
+  m_PrefabAsset: {fileID: 0}
