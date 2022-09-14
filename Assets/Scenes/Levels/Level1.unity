@@ -7291,7 +7291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5889620949529498332, guid: ea759c1eedb5bb3dcbede1c62733087b, type: 3}
       propertyPath: orthographic size
-      value: 6.1850986
+      value: 6.1825776
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea759c1eedb5bb3dcbede1c62733087b, type: 3}
@@ -7588,6 +7588,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2327581131591501566, guid: 151d0240725671cd88b9d18c0ee6a625, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327581131591501567, guid: 151d0240725671cd88b9d18c0ee6a625, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
