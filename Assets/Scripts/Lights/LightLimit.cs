@@ -60,7 +60,8 @@ public class LightLimit : MonoBehaviour
             }
         }
         IsOverVoltage = voltageUsed > voltageLimit;
-        UpdateVoltageIndicator(voltageUsed / (float)voltageLimit);
+        float indicatorTarget = Mathf.Clamp(voltageUsed / (float)voltageLimit, 0, 1);
+        UpdateVoltageIndicator(indicatorTarget);
 
         if (wasOverVoltage != IsOverVoltage)
         {
