@@ -65,3 +65,4 @@ MonoBehaviour:
   gameWonMenu: {fileID: 6849549538081980098, guid: 33fb6b35a3f38e0e389ee0e206a70fdf, type: 3}
   pauseMenu: {fileID: 1455487427743739148, guid: b90d0d07dc178335c93299e497f36081, type: 3}
   dofVolume: {fileID: 9001434125946070450, guid: 747235ca93babdafaaaf78fcab4138a6, type: 3}
+  cursorIcon: {fileID: 2800000, guid: 5988a2020badc834c96521b52b6a08f5, type: 3}
