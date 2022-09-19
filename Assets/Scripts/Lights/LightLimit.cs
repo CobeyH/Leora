@@ -7,14 +7,17 @@ using UnityEngine.UI;
 public class LightLimit : MonoBehaviour
 {
     public int voltageLimit;
+
     public float fillSpeed;
 
     public static bool IsOverVoltage = false;
 
     private Slider voltageIndicator;
-    private List<Light2D> lightsInScene;
+
+    private List<Light2D> pointLights = new List<Light2D>();
 
     private AudioManager audioManager;
+
     [SerializeField]
     private ParticleSystem sparks;
 
@@ -23,36 +26,29 @@ public class LightLimit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lightsInScene = new List<Light2D>(FindObjectsOfType<Light2D>());
+        List<Light2D> lightsInScene =
+            new List<Light2D>(FindObjectsOfType<Light2D>());
         voltageIndicator = gameObject.GetComponent<Slider>();
 
-        // Find all the global lights in the scene
-        List<Light2D> globalLights = new List<Light2D>();
         foreach (Light2D light in lightsInScene)
         {
-            if (light.lightType == Light2D.LightType.Global)
+            if (light.lightType == Light2D.LightType.Point)
             {
-                globalLights.Add(light);
+                pointLights.Add (light);
             }
         }
 
-        // Delete the global light from the list
-        foreach (Light2D globalLight in globalLights)
-        {
-            lightsInScene.Remove(globalLight);
-        }
-
         audioManager =
-    GameObject
-        .FindGameObjectWithTag("AudioManager")
-        .GetComponent<AudioManager>();
+            GameObject
+                .FindGameObjectWithTag("AudioManager")
+                .GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float voltageUsed = 0;
-        foreach (Light2D light in lightsInScene)
+        foreach (Light2D light in pointLights)
         {
             if (light.enabled)
             {
@@ -60,8 +56,9 @@ public class LightLimit : MonoBehaviour
             }
         }
         IsOverVoltage = voltageUsed > voltageLimit;
-        float indicatorTarget = Mathf.Clamp(voltageUsed / (float)voltageLimit, 0, 1);
-        UpdateVoltageIndicator(indicatorTarget);
+        float indicatorTarget =
+            Mathf.Clamp(voltageUsed / (float) voltageLimit, 0, 1);
+        UpdateVoltageIndicator (indicatorTarget);
 
         if (wasOverVoltage != IsOverVoltage)
         {
@@ -69,7 +66,6 @@ public class LightLimit : MonoBehaviour
         }
         wasOverVoltage = IsOverVoltage;
     }
-
 
     void UpdateVoltageIndicator(float target)
     {
