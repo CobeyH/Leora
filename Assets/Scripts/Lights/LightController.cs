@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class LightController : MonoBehaviour
 {
     public Light2D myLight;
+
+    public Light2D lightBeams;
 
     public bool startOn = false;
 
@@ -14,12 +14,13 @@ public class LightController : MonoBehaviour
     void Start()
     {
         myLight.enabled = startOn;
+        lightBeams.enabled = startOn;
         myLight.intensity = Mathf.Round(myLight.intensity);
 
         audioManager =
-    GameObject
-        .FindGameObjectWithTag("AudioManager")
-        .GetComponent<AudioManager>();
+            GameObject
+                .FindGameObjectWithTag("AudioManager")
+                .GetComponent<AudioManager>();
     }
 
     void OnMouseDown()
@@ -31,6 +32,7 @@ public class LightController : MonoBehaviour
     void toggleLight()
     {
         myLight.enabled = !myLight.enabled;
+        lightBeams.enabled = myLight.enabled;
         audioManager.Play("LightOff");
     }
 }

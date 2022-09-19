@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLight: {fileID: 5490333106156900489}
+  lightBeams: {fileID: 3237902851604274026}
   startOn: 0
 --- !u!58 &518453145197026385
 CircleCollider2D:
@@ -293,6 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlledLight: {fileID: 5490333106156900489}
+  lightBeams: {fileID: 3237902851604274026}
+  beamIntensity: 1.5
 --- !u!114 &1047800274613189536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +321,7 @@ GameObject:
   - component: {fileID: 784975542209855363}
   - component: {fileID: 3237902851604274026}
   m_Layer: 0
-  m_Name: Light 2D
+  m_Name: Beams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,6 +670,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5490333106156900495}
     m_Modifications:
+    - target: {fileID: 2057606824703212134, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057606824703212134, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
+      propertyPath: ExternalForcesModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057606824703212134, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057606824703212134, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3770448330058761968, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
       propertyPath: m_Name
       value: Sparks
@@ -697,19 +716,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8467900383550091120, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8467900383550091120, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8467900383550091120, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8467900383550091120, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.38268343
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8467900383550091120, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -721,7 +740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8467900383550091120, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 45
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
