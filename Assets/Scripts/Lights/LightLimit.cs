@@ -1,8 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+
+public struct PointLight
+{
+    public PointLight(LightController C, Light2D L)
+    {
+        controller = C;
+        light = L;
+    }
+
+    public LightController controller;
+
+    public Light2D light;
+}
 
 public class LightLimit : MonoBehaviour
 {
@@ -14,7 +26,7 @@ public class LightLimit : MonoBehaviour
 
     private Slider voltageIndicator;
 
-    private List<Light2D> pointLights = new List<Light2D>();
+    private List<PointLight> pointLights = new List<PointLight>();
 
     private AudioManager audioManager;
 
@@ -34,7 +46,10 @@ public class LightLimit : MonoBehaviour
         {
             if (light.lightType == Light2D.LightType.Point)
             {
-                pointLights.Add (light);
+                PointLight nextLight =
+                    new PointLight(light.GetComponent<LightController>(),
+                        light);
+                pointLights.Add (nextLight);
             }
         }
 
@@ -48,11 +63,11 @@ public class LightLimit : MonoBehaviour
     void Update()
     {
         float voltageUsed = 0;
-        foreach (Light2D light in pointLights)
+        foreach (PointLight pl in pointLights)
         {
-            if (light.enabled)
+            if (pl.controller.isOn)
             {
-                voltageUsed += light.intensity;
+                voltageUsed += pl.light.intensity;
             }
         }
         IsOverVoltage = voltageUsed > voltageLimit;

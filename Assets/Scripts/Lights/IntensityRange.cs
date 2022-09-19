@@ -19,12 +19,7 @@ public class IntensityRange : MonoBehaviour
 
     void Update()
     {
-        if (LightLimit.IsOverVoltage)
-        {
-            controlledLight.pointLightOuterRadius = 0;
-            lightBeams.transform.localScale = Vector3.zero;
-        }
-        else
+        if (controlledLight.enabled)
         {
             float intensity = controlledLight.intensity;
             controlledLight.pointLightOuterRadius = intensity * rangeMultiplier;
