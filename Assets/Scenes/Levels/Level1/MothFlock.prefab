@@ -544,7 +544,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5afba06ec10bbd0ebc19bb9067c018f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mothSpeed: 7
+  mothSpeed: 4
+  plot:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!58 &2938814413458364554
 CircleCollider2D:
   m_ObjectHideFlags: 0
