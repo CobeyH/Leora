@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -6,12 +5,17 @@ using UnityEngine.Rendering.Universal;
 public class LightAttraction : MonoBehaviour
 {
     public float mothSpeed = 2f;
+
     public AnimationCurve plot = new AnimationCurve();
 
     ParticleSystemForceField field;
+
     Rigidbody2D rigidBody;
+
     List<Light2D> lightsInScene;
+
     Vector2 netForce = Vector2.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,21 +29,21 @@ public class LightAttraction : MonoBehaviour
         {
             if (light.lightType == Light2D.LightType.Global)
             {
-                globalLights.Add(light);
+                globalLights.Add (light);
             }
         }
 
         // Delete the global light from the list
         foreach (Light2D globalLight in globalLights)
         {
-            lightsInScene.Remove(globalLight);
+            lightsInScene.Remove (globalLight);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lightsInScene.Count <= 0 || LightLimit.IsOverVoltage)
+        if (lightsInScene.Count <= 0)
         {
             return;
         }
@@ -55,34 +59,41 @@ public class LightAttraction : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (netForce.magnitude == 0)
+        {
+            rigidBody.velocity = Vector2.zero;
+            return;
+        }
         rigidBody.velocity = netForce.normalized * mothSpeed;
     }
 
     Vector2 AddForceFromLight(Light2D light, int layer_mask)
     {
-
         // Check if there is a clear line between the field and the light.
         // Also ignore global lights
         if (
             light.enabled &&
-            !Physics2D.Linecast(transform.position, light.transform.position, layer_mask)
+            !Physics2D
+                .Linecast(transform.position,
+                light.transform.position,
+                layer_mask)
         )
         {
-            Vector2 vecToLight =
-                light.transform.position - transform.position;
+            Vector2 vecToLight = light.transform.position - transform.position;
 
-            if ((light.lightType == Light2D.LightType.Point
-             && !MothsInBeam(light, vecToLight))
-             || !LightInRange(light, vecToLight)) return Vector2.zero;
+            if (
+                (
+                light.lightType == Light2D.LightType.Point &&
+                !MothsInBeam(light, vecToLight)
+                ) ||
+                !LightInRange(light, vecToLight)
+            ) return Vector2.zero;
+
             // Make moths attracted in the direction of the light.
             // Moths are more attracted to stronger lights.
             // Moths are less attracted to far away lights.
-
-           
             return vecToLight.normalized *
-               (
-               light.intensity / (Mathf.Pow(vecToLight.magnitude, 2) + 1)
-               );
+            (light.intensity / (Mathf.Pow(vecToLight.magnitude, 2) + 1));
         }
         return Vector2.zero;
     }
@@ -90,12 +101,16 @@ public class LightAttraction : MonoBehaviour
     private bool LightInRange(Light2D light, Vector2 vecToLight)
     {
         float distanceToLight = vecToLight.magnitude;
-        if (distanceToLight > light.pointLightOuterRadius || distanceToLight < light.pointLightInnerRadius)
+        if (
+            distanceToLight > light.pointLightOuterRadius ||
+            distanceToLight < light.pointLightInnerRadius
+        )
         {
             return false;
         }
         return true;
     }
+
     private bool MothsInBeam(Light2D light, Vector2 vecToLight)
     {
         // Make sure the point light area is pointing in the direction of the moths.
@@ -106,7 +121,9 @@ public class LightAttraction : MonoBehaviour
             return true;
         }
         float lightRotation = getZRotation(light);
-        Vector2 lightForward = new Vector2(Mathf.Cos(lightRotation + Mathf.PI / 2f), Mathf.Sin(lightRotation + Mathf.PI / 2f));
+        Vector2 lightForward =
+            new Vector2(Mathf.Cos(lightRotation + Mathf.PI / 2f),
+                Mathf.Sin(lightRotation + Mathf.PI / 2f));
         float angleToLight = Vector2.Angle(vecToLight, -lightForward);
         if (angleToLight > outerAngle / 2)
         {
