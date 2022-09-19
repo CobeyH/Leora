@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour
         GameObject audioObject =
             GameObject.FindGameObjectWithTag("AudioManager");
         audioManager = audioObject.GetComponent<AudioManager>();
-        audioManager.PlayMusic();
         StartCoroutine(CheckLevelFailed());
         StartCoroutine(CheckLevelWon());
     }
