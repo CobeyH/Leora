@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9121089505459865186}
   - component: {fileID: 1632032132421426409}
   - component: {fileID: 6652412286307808354}
+  - component: {fileID: 3930518937705651492}
   m_Layer: 0
   m_Name: Leaf
   m_TagString: Untagged
@@ -120,7 +121,7 @@ MonoBehaviour:
   - {x: -0.1015003, y: -0.12848139, z: 0.00000001659646}
   m_ShapePathHash: 1745455455
   m_Mesh: {fileID: 0}
-  m_InstanceId: 132686
+  m_InstanceId: 31412
 --- !u!58 &6652412286307808354
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,3 +138,16 @@ CircleCollider2D:
   m_Offset: {x: 0.31, y: 0.48}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &3930518937705651492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947732960673342749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35978b6064f41839e95c3e4a417b62a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverTexture: {fileID: 2800000, guid: 3a723fef0f816fa41864b6f197a7d9d9, type: 3}
