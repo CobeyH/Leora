@@ -7,10 +7,17 @@ public class SparkController : MonoBehaviour
 
     public Light2D controlledLight;
 
+    private LightController controller;
+
+    void Awake()
+    {
+        controller = controlledLight.GetComponent<LightController>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        bool shouldSpark = LightLimit.IsOverVoltage && controlledLight.enabled;
+        bool shouldSpark = LightLimit.IsOverVoltage && controller.isOn;
         sparks.gameObject.SetActive (shouldSpark);
     }
 }

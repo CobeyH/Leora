@@ -9,6 +9,9 @@ public class LightController : MonoBehaviour
 
     public bool startOn = false;
 
+    [HideInInspector]
+    public bool isOn;
+
     private AudioManager audioManager;
 
     void Start()
@@ -16,11 +19,26 @@ public class LightController : MonoBehaviour
         myLight.enabled = startOn;
         lightBeams.enabled = startOn;
         myLight.intensity = Mathf.Round(myLight.intensity);
+        isOn = startOn;
 
         audioManager =
             GameObject
                 .FindGameObjectWithTag("AudioManager")
                 .GetComponent<AudioManager>();
+    }
+
+    void Update()
+    {
+        if (LightLimit.IsOverVoltage)
+        {
+            myLight.enabled = false;
+            lightBeams.enabled = false;
+        }
+        else
+        {
+            myLight.enabled = isOn;
+            lightBeams.enabled = isOn;
+        }
     }
 
     void OnMouseDown()
@@ -31,8 +49,9 @@ public class LightController : MonoBehaviour
 
     void toggleLight()
     {
-        myLight.enabled = !myLight.enabled;
-        lightBeams.enabled = myLight.enabled;
         audioManager.Play("LightOff");
+        isOn = !isOn;
+        myLight.enabled = isOn;
+        lightBeams.enabled = isOn;
     }
 }
