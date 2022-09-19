@@ -6,11 +6,12 @@ using UnityEngine.Rendering.Universal;
 public class LightAttraction : MonoBehaviour
 {
     public float mothSpeed = 2f;
+    public AnimationCurve plot = new AnimationCurve();
 
     ParticleSystemForceField field;
     Rigidbody2D rigidBody;
     List<Light2D> lightsInScene;
-
+    Vector2 netForce = Vector2.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,13 +45,17 @@ public class LightAttraction : MonoBehaviour
         }
 
         // Calculate the net force applied to the moths by all lights
-        Vector2 netForce = Vector2.zero;
+        netForce = Vector2.zero;
         int layer_mask = LayerMask.GetMask("Default");
         foreach (Light2D light in lightsInScene)
         {
             netForce += AddForceFromLight(light, layer_mask);
         }
-        rigidBody.velocity = netForce.normalized * Time.deltaTime * mothSpeed * 100;
+    }
+
+    private void FixedUpdate()
+    {
+        rigidBody.velocity = netForce.normalized * mothSpeed;
     }
 
     Vector2 AddForceFromLight(Light2D light, int layer_mask)
@@ -72,6 +77,8 @@ public class LightAttraction : MonoBehaviour
             // Make moths attracted in the direction of the light.
             // Moths are more attracted to stronger lights.
             // Moths are less attracted to far away lights.
+
+           
             return vecToLight.normalized *
                (
                light.intensity / (Mathf.Pow(vecToLight.magnitude, 2) + 1)
