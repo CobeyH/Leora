@@ -1122,6 +1122,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3854380181968057030}
     m_Modifications:
+    - target: {fileID: 6152301163840027542, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152301163840027542, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1223874547
+      objectReference: {fileID: 0}
     - target: {fileID: 6152301163840027543, guid: b8bab80e91b07f8808a1be497982bd48, type: 3}
       propertyPath: m_Name
       value: Moth Particles

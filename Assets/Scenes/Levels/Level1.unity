@@ -162,6 +162,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 946901785}
     m_Modifications:
+    - target: {fileID: 6623328211781056329, guid: c6ac6b64ad4118735ba6be95674e5bf4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2043337750}
     - target: {fileID: 6623328212600153096, guid: c6ac6b64ad4118735ba6be95674e5bf4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -341,7 +345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5889620949529498332, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: orthographic size
-      value: 4.8350515
+      value: 6.1856165
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
@@ -7376,6 +7380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MothFlock
       objectReference: {fileID: 0}
+    - target: {fileID: 8770528019953004964, guid: edc6ffd852ceaaa7e97fa11ae5e327c3, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edc6ffd852ceaaa7e97fa11ae5e327c3, type: 3}
 --- !u!4 &1198309758 stripped
@@ -7419,7 +7427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5490333105552584142, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 5490333105552584142, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: m_LocalPosition.z

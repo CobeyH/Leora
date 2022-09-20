@@ -763,7 +763,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 0fdc9721acdb40c669919cedc41f3c53, type: 3}
+      name: _Emission
     nameFileIdTable:
       Mossy - Decorations&Hazards_4: 1437571976
       Mossy - Decorations&Hazards_3: 1896329362
