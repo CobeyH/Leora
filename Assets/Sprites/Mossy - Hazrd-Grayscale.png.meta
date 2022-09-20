@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cf5fb94e75bfa8e0184fd710ead511a7
+guid: 208c4c8031cd4f65fb6b8a4c2fb40ede
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -100,11 +100,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_0
+      name: Mossy - Hazrd-Grayscale_0
       rect:
         serializedVersion: 2
         x: 231
@@ -118,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc19923704dede366a5bce764b9f0e22
-      internalID: 474320931
+      spriteID: 687d448074745cb14b0862e29875787f
+      internalID: -809327676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_1
+      name: Mossy - Hazrd-Grayscale_1
       rect:
         serializedVersion: 2
         x: 1594
@@ -139,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd3a87d1edac3f1138a06b3189c7eb63
-      internalID: -1691158995
+      spriteID: 8165159da0dcf98ed85d0a2ff8fe65f3
+      internalID: 1126451028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_2
+      name: Mossy - Hazrd-Grayscale_2
       rect:
         serializedVersion: 2
         x: 2891
@@ -160,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0df500ee4fdda2160852f62c9abd0f70
-      internalID: 1807009837
+      spriteID: bef94ec60e8f50a70904bfe879ce9560
+      internalID: -1045760992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_3
+      name: Mossy - Hazrd-Grayscale_3
       rect:
         serializedVersion: 2
         x: 123
@@ -181,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85af2ebedaf501cda802ae76d029646e
-      internalID: 1896329362
+      spriteID: 0703a0e49a30d9b1a89303f4f6954c68
+      internalID: -111553812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_4
+      name: Mossy - Hazrd-Grayscale_4
       rect:
         serializedVersion: 2
         x: 2065
@@ -202,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a48a8a1c6d59344199c3e27afbe7e0a
-      internalID: 1437571976
+      spriteID: 77072599fb8a12a68963514a41c0eb00
+      internalID: -462207208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_5
+      name: Mossy - Hazrd-Grayscale_5
       rect:
         serializedVersion: 2
         x: 433
@@ -223,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfce60eec6e1a5067baff9c052878b39
-      internalID: -625840661
+      spriteID: cb5156a0f10266d6d9878c06c3606e09
+      internalID: -1516457634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_6
+      name: Mossy - Hazrd-Grayscale_6
       rect:
         serializedVersion: 2
         x: 1663
@@ -244,14 +256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baf000a49f1d91aff80c6a90ec8ef895
-      internalID: 705583443
+      spriteID: 9692c02bfe1863ee4a0091dcd582e6d6
+      internalID: 291870723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_7
+      name: Mossy - Hazrd-Grayscale_7
       rect:
         serializedVersion: 2
         x: 2341
@@ -265,14 +277,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 309c8b314944a17208a57881608086e3
-      internalID: 798374957
+      spriteID: 8f30afeb134d994e6a0f481eb0004bdf
+      internalID: -55255396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_8
+      name: Mossy - Hazrd-Grayscale_8
       rect:
         serializedVersion: 2
         x: 3163
@@ -286,14 +298,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91e2d4be009e68e1a85e1fc3a62f7a24
-      internalID: 1430912613
+      spriteID: 6893f339c8f4d29bf899aef716a73022
+      internalID: 611429424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_9
+      name: Mossy - Hazrd-Grayscale_9
       rect:
         serializedVersion: 2
         x: 95
@@ -307,14 +319,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c12810cb2e1ff9eba9639a51f4fad72
-      internalID: -1230226512
+      spriteID: ea48a984e13f81b93952710b2419ef98
+      internalID: 1760875453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_10
+      name: Mossy - Hazrd-Grayscale_10
       rect:
         serializedVersion: 2
         x: 655
@@ -328,14 +340,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2efcdc6265382d736bc6bc6f2a376460
-      internalID: -1314327648
+      spriteID: 72bcdd5118a41094f83c5304a8e3c3d3
+      internalID: 1357015827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_11
+      name: Mossy - Hazrd-Grayscale_11
       rect:
         serializedVersion: 2
         x: 1233
@@ -349,20 +361,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75e1cbe45ece7dde5b186d04ea138357
-      internalID: -1438689015
+      spriteID: 9fe4346c2f145558ca5c49b6a3e6087b
+      internalID: -938552927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_12
+      name: Mossy - Hazrd-Grayscale_12
       rect:
         serializedVersion: 2
         x: 1577
-        y: 1192
-        width: 67
-        height: 171
+        y: 1191
+        width: 70
+        height: 172
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -370,20 +382,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f7d8dbd2a8ba39899d531d7496a219c
-      internalID: -2035505029
+      spriteID: 5bac86b6bfc4d1441b8596988d60c2d3
+      internalID: -246489969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_13
+      name: Mossy - Hazrd-Grayscale_13
       rect:
         serializedVersion: 2
-        x: 1645
-        y: 1192
-        width: 69
-        height: 130
+        x: 1641
+        y: 1191
+        width: 72
+        height: 132
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -391,20 +403,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95fc864ded28bc88b8bf1df63e6dba33
-      internalID: 1205599975
+      spriteID: aae5c3012c2b8eebebfd18d701c06c02
+      internalID: -1121647146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_14
+      name: Mossy - Hazrd-Grayscale_14
       rect:
         serializedVersion: 2
-        x: 1726
-        y: 1181
-        width: 74
-        height: 148
+        x: 1727
+        y: 1179
+        width: 78
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,20 +424,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c5cb21a14e72257d8edfc5995e1eb8f
-      internalID: 1700455201
+      spriteID: cafcdf2d39908792daf577a5ffe71ca4
+      internalID: -810958583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_15
+      name: Mossy - Hazrd-Grayscale_15
       rect:
         serializedVersion: 2
-        x: 1801
-        y: 1190
-        width: 64
-        height: 166
+        x: 1797
+        y: 1189
+        width: 68
+        height: 168
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,14 +445,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30184470cd722f16994a02a825f24628
-      internalID: 861216188
+      spriteID: 4a85d767963f0af97895ecf7706e9be3
+      internalID: 752409217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_16
+      name: Mossy - Hazrd-Grayscale_16
       rect:
         serializedVersion: 2
         x: 1875
@@ -454,14 +466,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48aeb01aeb5f7315da79cbed75d210d7
-      internalID: 1474298036
+      spriteID: c012d92ad85be3a3ca1d13733108946c
+      internalID: 1396039342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_17
+      name: Mossy - Hazrd-Grayscale_17
       rect:
         serializedVersion: 2
         x: 1945
@@ -475,14 +487,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b7b0a3867834dd6e9dc9e7516936f32
-      internalID: -2145078604
+      spriteID: 79c479d85721ac241b31bcbf3cd58017
+      internalID: 1565268808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_18
+      name: Mossy - Hazrd-Grayscale_18
       rect:
         serializedVersion: 2
         x: 2111
@@ -496,14 +508,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9df5d65aa84d6b96f976c207a856382e
-      internalID: -2063420506
+      spriteID: 1845cc6479fb7845da87277f545c7a4c
+      internalID: 1693636790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_19
+      name: Mossy - Hazrd-Grayscale_19
       rect:
         serializedVersion: 2
         x: 2605
@@ -517,14 +529,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49d7fdd212ee212f3ad7311eebbf5481
-      internalID: 1724238820
+      spriteID: c09ebe0e18989f9838b3e2dee8649571
+      internalID: 99951804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_20
+      name: Mossy - Hazrd-Grayscale_20
       rect:
         serializedVersion: 2
         x: 3107
@@ -538,14 +550,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff610aeccea86abae900621df498986e
-      internalID: 307045478
+      spriteID: 0ee6548a8ef45bdeeb38bd17d76db6ca
+      internalID: 784011811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_21
+      name: Mossy - Hazrd-Grayscale_21
       rect:
         serializedVersion: 2
         x: 3719
@@ -559,14 +571,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8c605823827e37ba84bff65b2c869cf
-      internalID: 328084329
+      spriteID: e7f9adf226f575865a5ee35c10b14173
+      internalID: -290685476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_22
+      name: Mossy - Hazrd-Grayscale_22
       rect:
         serializedVersion: 2
         x: 70
@@ -580,14 +592,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 223b9075a2977e318b2c118b506fea0f
-      internalID: 1120854221
+      spriteID: 2f35eccc649a0be18b6739c283ca8cbb
+      internalID: 1606728428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_23
+      name: Mossy - Hazrd-Grayscale_23
       rect:
         serializedVersion: 2
         x: 1167
@@ -601,14 +613,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19bd42ae6d1c222c8add214f1330b837
-      internalID: -40081462
+      spriteID: 07927250b0a464e9d89c7d923a90087d
+      internalID: -681510551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_24
+      name: Mossy - Hazrd-Grayscale_24
       rect:
         serializedVersion: 2
         x: 1425
@@ -622,14 +634,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 286afbfb2dce74b6f858cd90ecd95622
-      internalID: -1277929803
+      spriteID: a86d0dbe9efca6748aff460d6d93e770
+      internalID: -2006597299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_25
+      name: Mossy - Hazrd-Grayscale_25
       rect:
         serializedVersion: 2
         x: 1598
@@ -643,14 +655,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b4aca06d05f9d434a8f2c9df358747d
-      internalID: -1614154072
+      spriteID: 53bd77a6514437b7cab6b1c80734d5a7
+      internalID: 1352704616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_26
+      name: Mossy - Hazrd-Grayscale_26
       rect:
         serializedVersion: 2
         x: 617
@@ -664,14 +676,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5720bc2dcb4f14928aa2c87ebd5290c0
-      internalID: 1890920214
+      spriteID: d71972ea04b359f459f748816b9f2588
+      internalID: -1857927642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_27
+      name: Mossy - Hazrd-Grayscale_27
       rect:
         serializedVersion: 2
         x: 219
@@ -685,20 +697,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5865b5686e6b990a7b710c62909c2a36
-      internalID: -1391520299
+      spriteID: 8bd3c6a1e8a45ccf49ef287cbd03208d
+      internalID: 1082652441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_28
+      name: Mossy - Hazrd-Grayscale_28
       rect:
         serializedVersion: 2
         x: 573
         y: 47
-        width: 418
-        height: 484
+        width: 258
+        height: 478
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -706,14 +718,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 684511f340bf25256912b047f1444910
-      internalID: -404837157
+      spriteID: e9758f3a558efb578accb15a8f4b65c6
+      internalID: -1781157653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_30
+      name: Mossy - Hazrd-Grayscale_29
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 53
+        width: 65
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a537d00f6e40784b2070cf8f89f252
+      internalID: -1509340253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mossy - Hazrd-Grayscale_30
       rect:
         serializedVersion: 2
         x: 1257
@@ -727,20 +760,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd588cfe465182041a72a56bc7eed3b5
-      internalID: -1848279484
+      spriteID: 41f3912b1cc7a82168cce56dda66fef8
+      internalID: 329564022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_32
+      name: Mossy - Hazrd-Grayscale_31
       rect:
         serializedVersion: 2
-        x: 1573
-        y: 63
-        width: 411
-        height: 419
+        x: 1597
+        y: 77
+        width: 144
+        height: 288
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -748,8 +781,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 457fd7059cf57de358a8ca528100fd85
-      internalID: 808057380
+      spriteID: bd90574f0ef0855b1bdd0459a7b1e616
+      internalID: 564108064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mossy - Hazrd-Grayscale_32
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 77
+        width: 228
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5df90d3312db584cb5236bd1e047cac
+      internalID: 1212241639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mossy - Hazrd-Grayscale_33
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 77
+        width: 134
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ffa658b2a93b0e2a93b38ce3a623bc1
+      internalID: -212562730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mossy - Hazrd-Grayscale_34
+      rect:
+        serializedVersion: 2
+        x: 1877
+        y: 79
+        width: 90
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb27911a56c62667a6b8c7930c1bc21
+      internalID: 2073153541
       vertices: []
       indices: 
       edges: []
@@ -767,41 +863,41 @@ TextureImporter:
     - texture: {fileID: 2800000, guid: 0fdc9721acdb40c669919cedc41f3c53, type: 3}
       name: _Emission
     nameFileIdTable:
-      Mossy - Decorations&Hazards_4: 1437571976
-      Mossy - Decorations&Hazards_3: 1896329362
-      Mossy - Decorations&Hazards_20: 307045478
-      Mossy - Decorations&Hazards_0: 474320931
-      Mossy - Decorations&Hazards_25: -1614154072
-      Mossy - Decorations&Hazards_23: -40081462
-      Mossy - Decorations&Hazards_5: -625840661
-      Mossy - Decorations&Hazards_29: 86453908
-      Mossy - Decorations&Hazards_1: -1691158995
-      Mossy - Decorations&Hazards_11: -1438689015
-      Mossy - Decorations&Hazards_12: -2035505029
-      Mossy - Decorations&Hazards_31: -1732747817
-      Mossy - Decorations&Hazards_7: 798374957
-      Mossy - Decorations&Hazards_26: 1890920214
-      Mossy - Decorations&Hazards_14: 1700455201
-      Mossy - Decorations&Hazards_16: 1474298036
-      Mossy - Decorations&Hazards_8: 1430912613
-      Mossy - Decorations&Hazards_13: 1205599975
-      Mossy - Decorations&Hazards_32: 808057380
-      Mossy - Decorations&Hazards_15: 861216188
-      Mossy - Decorations&Hazards_28: -404837157
-      Mossy - Decorations&Hazards_19: 1724238820
-      Mossy - Decorations&Hazards_17: -2145078604
-      Mossy - Decorations&Hazards_18: -2063420506
-      Mossy - Decorations&Hazards_34: -1512925203
-      Mossy - Decorations&Hazards_33: -1917441836
-      Mossy - Decorations&Hazards_30: -1848279484
-      Mossy - Decorations&Hazards_21: 328084329
-      Mossy - Decorations&Hazards_24: -1277929803
-      Mossy - Decorations&Hazards_10: -1314327648
-      Mossy - Decorations&Hazards_22: 1120854221
-      Mossy - Decorations&Hazards_2: 1807009837
-      Mossy - Decorations&Hazards_6: 705583443
-      Mossy - Decorations&Hazards_9: -1230226512
-      Mossy - Decorations&Hazards_27: -1391520299
+      Mossy - Hazrd-Grayscale_21: -290685476
+      Mossy - Hazrd-Grayscale_19: 99951804
+      Mossy - Hazrd-Grayscale_11: -938552927
+      Mossy - Hazrd-Grayscale_3: -111553812
+      Mossy - Hazrd-Grayscale_8: 611429424
+      Mossy - Hazrd-Grayscale_4: -462207208
+      Mossy - Hazrd-Grayscale_15: 752409217
+      Mossy - Hazrd-Grayscale_32: 1212241639
+      Mossy - Hazrd-Grayscale_30: 329564022
+      Mossy - Hazrd-Grayscale_26: -1857927642
+      Mossy - Hazrd-Grayscale_18: 1693636790
+      Mossy - Hazrd-Grayscale_25: 1352704616
+      Mossy - Hazrd-Grayscale_28: -1781157653
+      Mossy - Hazrd-Grayscale_17: 1565268808
+      Mossy - Hazrd-Grayscale_7: -55255396
+      Mossy - Hazrd-Grayscale_29: -1509340253
+      Mossy - Hazrd-Grayscale_2: -1045760992
+      Mossy - Hazrd-Grayscale_14: -810958583
+      Mossy - Hazrd-Grayscale_13: -1121647146
+      Mossy - Hazrd-Grayscale_27: 1082652441
+      Mossy - Hazrd-Grayscale_0: -809327676
+      Mossy - Hazrd-Grayscale_23: -681510551
+      Mossy - Hazrd-Grayscale_5: -1516457634
+      Mossy - Hazrd-Grayscale_6: 291870723
+      Mossy - Hazrd-Grayscale_31: 564108064
+      Mossy - Hazrd-Grayscale_22: 1606728428
+      Mossy - Hazrd-Grayscale_34: 2073153541
+      Mossy - Hazrd-Grayscale_9: 1760875453
+      Mossy - Hazrd-Grayscale_10: 1357015827
+      Mossy - Hazrd-Grayscale_24: -2006597299
+      Mossy - Hazrd-Grayscale_33: -212562730
+      Mossy - Hazrd-Grayscale_16: 1396039342
+      Mossy - Hazrd-Grayscale_12: -246489969
+      Mossy - Hazrd-Grayscale_1: 1126451028
+      Mossy - Hazrd-Grayscale_20: 784011811
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
