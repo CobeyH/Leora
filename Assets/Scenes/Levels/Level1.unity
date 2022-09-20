@@ -7376,6 +7376,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MothFlock
       objectReference: {fileID: 0}
+    - target: {fileID: 8770528019953004964, guid: edc6ffd852ceaaa7e97fa11ae5e327c3, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edc6ffd852ceaaa7e97fa11ae5e327c3, type: 3}
 --- !u!4 &1198309758 stripped
