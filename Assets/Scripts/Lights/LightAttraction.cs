@@ -6,8 +6,6 @@ public class LightAttraction : MonoBehaviour
 {
     public float mothSpeed = 2f;
 
-    public AnimationCurve plot = new AnimationCurve();
-
     ParticleSystemForceField field;
 
     Rigidbody2D rigidBody;
