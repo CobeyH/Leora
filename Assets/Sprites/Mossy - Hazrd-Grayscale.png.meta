@@ -860,7 +860,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures:
-    - texture: {fileID: 2800000, guid: 0fdc9721acdb40c669919cedc41f3c53, type: 3}
+    - texture: {fileID: 2800000, guid: f9bf72d3f152a370a985d9f513501694, type: 3}
       name: _Emission
     nameFileIdTable:
       Mossy - Hazrd-Grayscale_21: -290685476
