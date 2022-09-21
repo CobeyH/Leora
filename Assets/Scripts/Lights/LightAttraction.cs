@@ -91,7 +91,7 @@ public class LightAttraction : MonoBehaviour
             // Moths are more attracted to stronger lights.
             // Moths are less attracted to far away lights.
             return vecToLight.normalized *
-            (light.intensity / (Mathf.Pow(vecToLight.magnitude, 2) + 1));
+            (light.intensity / (vecToLight.magnitude + 1));
         }
         return Vector2.zero;
     }
