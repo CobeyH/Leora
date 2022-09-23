@@ -28,7 +28,7 @@ public class LevelProgressTracker : MonoBehaviour
         GameObject[] mothFlocks = GameObject.FindGameObjectsWithTag("Moths");
         foreach (GameObject flock in mothFlocks)
         {
-            totalMoths += flock.GetComponent<MothSpawner>().getFlockSize();
+            totalMoths += flock.GetComponent<MothLifetime>().getFlockSize();
             goals.Add(flock.GetComponent<Goal>());
             flocks.Add(flock.GetComponent<ParticleSystem>());
         }
