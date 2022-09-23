@@ -26,9 +26,6 @@ public class FrogTongue : MonoBehaviour
 
     private bool targetSelf;
 
-    private ParticleSystem.Particle[]
-        mothBuffer = new ParticleSystem.Particle[100];
-
     private float hunger = 0;
     private float timeElapsed = 0;
 
@@ -86,20 +83,21 @@ public class FrogTongue : MonoBehaviour
         }
         foreach (GameObject flock in mothGroups)
         {
-            if (ObjectInRange(flock.transform.position))
+            if (!ObjectInRange(flock.transform.position))
             {
-                Vector3 targetPos = flock.transform.position;
-                target =
-                    new Vector3(targetPos.x + Random.Range(-1, 1),
-                        targetPos.y + Random.Range(-1, 1),
-                        0);
-                if (audioManager != null)
-                {
-                    audioManager.Play("Frog");
-                }
-                hunger = 0;
-                return;
+                continue;
             }
+            Vector3 targetPos = flock.transform.position;
+            target =
+                new Vector3(targetPos.x + Random.Range(-1, 1),
+                    targetPos.y + Random.Range(-1, 1),
+                    0);
+            if (audioManager != null)
+            {
+                audioManager.Play("Frog");
+            }
+            hunger = 0;
+            return;
         }
         target = null;
     }
