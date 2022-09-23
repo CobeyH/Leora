@@ -22,7 +22,6 @@ public class FrogTongue : MonoBehaviour
     private GameObject[] mothGroups;
 
     private Vector3? target;
-
     private bool targetSelf;
 
     private float hunger = 0;
@@ -47,11 +46,14 @@ public class FrogTongue : MonoBehaviour
     {
         hunger += Time.deltaTime;
         timeElapsed += Time.deltaTime;
+        // Return tongue to self when target goes out of range.
         if (target.HasValue && !ObjectInRange(target.Value))
         {
             targetSelf = true;
             FindNewTarget();
+
         }
+        // Find a new target if there isn't one.
         else if (!target.HasValue)
         {
             if (!targetSelf && hunger < eatingPeriod)
@@ -60,6 +62,7 @@ public class FrogTongue : MonoBehaviour
             }
             FindNewTarget();
         }
+        // Move towards target.
         if (target.HasValue)
         {
             float distanceToTarget = MoveTowardsObject(target.Value);
