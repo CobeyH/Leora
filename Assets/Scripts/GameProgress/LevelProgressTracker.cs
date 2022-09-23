@@ -114,7 +114,10 @@ public class LevelProgressTracker : MonoBehaviour
 
         foreach (ParticleSystem flock in flocks)
         {
-            mothsAlive += flock.particleCount;
+            if (flock != null)
+            {
+                mothsAlive += flock.particleCount;
+            }
         }
 
         return (totalMothsInGoal + mothsAlive) / (float)totalMoths >=

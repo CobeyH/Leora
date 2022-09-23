@@ -15,6 +15,9 @@ public class FrogTongue : MonoBehaviour
     [Range(10, 90)]
     public int fieldOfView = 30;
 
+    [Range(1f, 0f)]
+    public float accuracy = 0.5f;
+
     public GameObject tongue;
 
     private AudioManager audioManager;
@@ -62,6 +65,10 @@ public class FrogTongue : MonoBehaviour
             }
             FindNewTarget();
         }
+    }
+
+    void FixedUpdate()
+    {
         // Move towards target.
         if (target.HasValue)
         {
@@ -91,8 +98,8 @@ public class FrogTongue : MonoBehaviour
             }
             Vector3 targetPos = flock.transform.position;
             target =
-                new Vector3(targetPos.x + Random.Range(-1, 1),
-                    targetPos.y + Random.Range(-1, 1),
+                new Vector3(targetPos.x + Random.Range(-accuracy, accuracy),
+                    targetPos.y + Random.Range(-accuracy, accuracy),
                     0);
             if (audioManager != null)
             {

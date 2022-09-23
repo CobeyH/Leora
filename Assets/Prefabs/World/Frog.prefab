@@ -185,8 +185,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   eatingPeriod: 1
-  speed: 3
+  speed: 8
   fieldOfView: 30
+  accuracy: 0.5
   tongue: {fileID: 270759807914975336}
 --- !u!120 &3200697175394705766
 LineRenderer:
@@ -304,7 +305,7 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
