@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +15,9 @@ public class FrogTongue : MonoBehaviour
     [Range(10, 90)]
     public int fieldOfView = 30;
 
+    [Range(1f, 0f)]
+    public float accuracy = 0.5f;
+
     public GameObject tongue;
 
     private AudioManager audioManager;
@@ -23,11 +25,7 @@ public class FrogTongue : MonoBehaviour
     private GameObject[] mothGroups;
 
     private Vector3? target;
-
     private bool targetSelf;
-
-    private ParticleSystem.Particle[]
-        mothBuffer = new ParticleSystem.Particle[100];
 
     private float hunger = 0;
     private float timeElapsed = 0;
@@ -51,11 +49,14 @@ public class FrogTongue : MonoBehaviour
     {
         hunger += Time.deltaTime;
         timeElapsed += Time.deltaTime;
+        // Return tongue to self when target goes out of range.
         if (target.HasValue && !ObjectInRange(target.Value))
         {
             targetSelf = true;
             FindNewTarget();
+
         }
+        // Find a new target if there isn't one.
         else if (!target.HasValue)
         {
             if (!targetSelf && hunger < eatingPeriod)
@@ -64,6 +65,11 @@ public class FrogTongue : MonoBehaviour
             }
             FindNewTarget();
         }
+    }
+
+    void FixedUpdate()
+    {
+        // Move towards target.
         if (target.HasValue)
         {
             float distanceToTarget = MoveTowardsObject(target.Value);
@@ -86,20 +92,21 @@ public class FrogTongue : MonoBehaviour
         }
         foreach (GameObject flock in mothGroups)
         {
-            if (ObjectInRange(flock.transform.position))
+            if (!ObjectInRange(flock.transform.position))
             {
-                Vector3 targetPos = flock.transform.position;
-                target =
-                    new Vector3(targetPos.x + Random.Range(-1, 1),
-                        targetPos.y + Random.Range(-1, 1),
-                        0);
-                if (audioManager != null)
-                {
-                    audioManager.Play("Frog");
-                }
-                hunger = 0;
-                return;
+                continue;
             }
+            Vector3 targetPos = flock.transform.position;
+            target =
+                new Vector3(targetPos.x + Random.Range(-accuracy, accuracy),
+                    targetPos.y + Random.Range(-accuracy, accuracy),
+                    0);
+            if (audioManager != null)
+            {
+                audioManager.Play("Frog");
+            }
+            hunger = 0;
+            return;
         }
         target = null;
     }
