@@ -6,6 +6,7 @@ public class FrogTongue : MonoBehaviour
     public LineRenderer lineRenderer;
 
     public EdgeCollider2D edgeCollider;
+
     public AnimationCurve accelerationCurve;
 
     public int eatingPeriod = 1;
@@ -27,9 +28,11 @@ public class FrogTongue : MonoBehaviour
     private GameObject[] mothGroups;
 
     private Vector3? target;
+
     public bool targetSelf;
 
     private float hunger = 0;
+
     private float timeElapsed = 0;
 
     // Start is called before the first frame update
@@ -51,15 +54,13 @@ public class FrogTongue : MonoBehaviour
     {
         hunger += Time.deltaTime;
         timeElapsed += Time.deltaTime;
+
         // Return tongue to self when target goes out of range.
         if (target.HasValue && !TargetIsValid(target.Value))
         {
             targetSelf = true;
-            Debug.Log("Case 1");
             FindNewTarget();
-
-        }
-        // Find a new target if there isn't one.
+        } // Find a new target if there isn't one.
         else if (!target.HasValue)
         {
             if (!targetSelf && hunger < eatingPeriod)
@@ -109,7 +110,6 @@ public class FrogTongue : MonoBehaviour
                 audioManager.Play("Frog");
             }
             hunger = 0;
-            Debug.Log("New Target");
             return;
         }
         target = null;
@@ -123,7 +123,8 @@ public class FrogTongue : MonoBehaviour
     bool ObjectInRange(Vector3 target)
     {
         bool isInRange =
-            Vector3.Distance(tongue.transform.position, target) < maxTargetDistance;
+            Vector3.Distance(tongue.transform.position, target) <
+            maxTargetDistance;
         Vector3 dirToTarget = target - tongue.transform.position;
         bool isInFOV =
             Vector3.Angle(dirToTarget, tongue.transform.up) < fieldOfView / 2f;
@@ -133,12 +134,10 @@ public class FrogTongue : MonoBehaviour
     bool LineOfSight(Vector3 target)
     {
         int layer_mask = LayerMask.GetMask("Terrain");
+
         // Linecast from the tongue origin to the target. If it doesn't hit anything then a clear path exists.
-        bool test = !Physics2D
-                .Linecast(tongue.transform.position,
-                target,
-                layer_mask);
-        Debug.Log(test ? "Can see target" : "No line of light");
+        bool test =
+            !Physics2D.Linecast(tongue.transform.position, target, layer_mask);
         return test;
     }
 
@@ -148,7 +147,8 @@ public class FrogTongue : MonoBehaviour
         Vector3 oldPosition = lineRenderer.GetPosition(1);
         Vector3 vecToTarget = target - oldPosition;
         Vector3 dirToTarget = vecToTarget.normalized;
-        float distanceToMove = speed * Time.deltaTime * accelerationCurve.Evaluate(timeElapsed);
+        float distanceToMove =
+            speed * Time.deltaTime * accelerationCurve.Evaluate(timeElapsed);
 
         // Update tongue end position
         Vector3 newPosition = oldPosition + dirToTarget * distanceToMove;
@@ -168,28 +168,31 @@ public class FrogTongue : MonoBehaviour
             edges.Add(new Vector2(linePoint.x, linePoint.y));
         }
 
-        edgeCollider.SetPoints(edges);
+        edgeCollider.SetPoints (edges);
     }
 
     void OnDrawGizmosSelected()
     {
         Vector3 position = tongue.transform.position;
-        Gizmos.DrawWireSphere(position, maxTargetDistance);
+        Gizmos.DrawWireSphere (position, maxTargetDistance);
         float angle = fieldOfView;
         float halfFOV = angle / 2.0f;
+
         // Get length of hypotenuse
-        float rayRange = maxTargetDistance / Mathf.Cos(halfFOV * Mathf.PI / 180f);
+        float rayRange =
+            maxTargetDistance / Mathf.Cos(halfFOV * Mathf.PI / 180f);
         float coneDirection = 180;
 
-        Quaternion upRayRotation = Quaternion.AngleAxis(-halfFOV + coneDirection, Vector3.forward);
-        Quaternion downRayRotation = Quaternion.AngleAxis(halfFOV + coneDirection, Vector3.forward);
+        Quaternion upRayRotation =
+            Quaternion.AngleAxis(-halfFOV + coneDirection, Vector3.forward);
+        Quaternion downRayRotation =
+            Quaternion.AngleAxis(halfFOV + coneDirection, Vector3.forward);
 
         Vector3 upRayDirection = upRayRotation * transform.right * rayRange;
         Vector3 downRayDirection = downRayRotation * transform.right * rayRange;
 
-        Gizmos.DrawRay(position, upRayDirection);
-        Gizmos.DrawRay(position, downRayDirection);
+        Gizmos.DrawRay (position, upRayDirection);
+        Gizmos.DrawRay (position, downRayDirection);
         Gizmos.DrawLine(position + downRayDirection, position + upRayDirection);
-
     }
 }
