@@ -28,8 +28,10 @@ public class LevelProgressTracker : MonoBehaviour
         GameObject[] mothFlocks = GameObject.FindGameObjectsWithTag("Moths");
         foreach (GameObject flock in mothFlocks)
         {
+            Goal nextGoal = flock.GetComponent<Goal>();
+            if (nextGoal.IsDecoy) continue;
+            goals.Add (nextGoal);
             totalMoths += flock.GetComponent<MothLifetime>().getFlockSize();
-            goals.Add(flock.GetComponent<Goal>());
             flocks.Add(flock.GetComponent<ParticleSystem>());
         }
     }
@@ -46,7 +48,7 @@ public class LevelProgressTracker : MonoBehaviour
         float currentProgress = GetLevelProgress();
         if (currentProgress > previousProgress)
         {
-            UpdateCompletedCheckpoints(currentProgress);
+            UpdateCompletedCheckpoints (currentProgress);
         }
         previousProgress = currentProgress;
     }
@@ -70,7 +72,7 @@ public class LevelProgressTracker : MonoBehaviour
 
     public float GetLevelProgress()
     {
-        return totalMothsInGoal / (float)totalMoths;
+        return totalMothsInGoal / (float) totalMoths;
     }
 
     public float[] GetCheckPointRequirements()
@@ -87,11 +89,12 @@ public class LevelProgressTracker : MonoBehaviour
     {
         // If all the checkpoints are complete then the level is done.
         if (checkpointsCompleted == checkpointRequirements.Length) return true;
+
         // If the first checkpoint is complete the level cannot be complete.
         if (checkpointsCompleted < 1) return false;
+
         // If at least one checkpoint has been passed but it's impossible to get more, then terminate early.
         return !IsNextCheckpointReachable();
-
     }
 
     public bool IsLevelSkippable()
@@ -106,7 +109,8 @@ public class LevelProgressTracker : MonoBehaviour
 
     public bool IsCheckpointReachable(int checkpointIndex)
     {
-        if (checkpointRequirements == null || checkpointRequirements.Length == 0) return true;
+        if (checkpointRequirements == null || checkpointRequirements.Length == 0
+        ) return true;
 
         // It's impossible to reach a checkpoint that doesn't exist.
         if (checkpointIndex >= checkpointRequirements.Length) return false;
@@ -120,7 +124,7 @@ public class LevelProgressTracker : MonoBehaviour
             }
         }
 
-        return (totalMothsInGoal + mothsAlive) / (float)totalMoths >=
+        return (totalMothsInGoal + mothsAlive) / (float) totalMoths >=
         checkpointRequirements[checkpointIndex];
     }
 

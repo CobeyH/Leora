@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+    public bool IsDecoy = false;
+
     ParticleSystem partSys;
 
     List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
@@ -50,8 +52,8 @@ public class Goal : MonoBehaviour
             ParticleSystem.Particle p = enter[i];
 
             if (
-                LightLimit.IsOverVoltage ||
-                enteredData.GetCollider(i, 0).gameObject.tag != "TrapLight"
+                enteredData.GetCollider(i, 0).gameObject.tag != "TrapLight" &&
+                !IsDecoy
             )
             {
                 mothsInGoal++;
