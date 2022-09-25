@@ -16623,11 +16623,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902353, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: fieldOfView
-      value: 56
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902353, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: maxTargetDistance
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902356, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_Name
@@ -16643,11 +16643,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902358, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.26
+      value: -1.03
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902358, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.58
+      value: -1.55
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902358, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_LocalPosition.z
