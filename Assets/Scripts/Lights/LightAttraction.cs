@@ -27,14 +27,14 @@ public class LightAttraction : MonoBehaviour
         {
             if (light.lightType == Light2D.LightType.Global)
             {
-                globalLights.Add (light);
+                globalLights.Add(light);
             }
         }
 
         // Delete the global light from the list
         foreach (Light2D globalLight in globalLights)
         {
-            lightsInScene.Remove (globalLight);
+            lightsInScene.Remove(globalLight);
         }
     }
 
@@ -48,7 +48,7 @@ public class LightAttraction : MonoBehaviour
 
         // Calculate the net force applied to the moths by all lights
         netForce = Vector2.zero;
-        int layer_mask = LayerMask.GetMask("Default");
+        int layer_mask = LayerMask.GetMask("Terrain");
         foreach (Light2D light in lightsInScene)
         {
             netForce += AddForceFromLight(light, layer_mask);
