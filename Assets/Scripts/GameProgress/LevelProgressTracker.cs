@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelProgressTracker : MonoBehaviour
 {
@@ -65,9 +66,32 @@ public class LevelProgressTracker : MonoBehaviour
             }
             LevelSkippable = true;
             completedCheckpoints++;
+            updateScore();
         }
 
         checkpointsCompleted = completedCheckpoints;
+    }
+    void updateScore()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        int level = int.Parse(scene.name.Substring(5));
+        int currentScore = GetCheckpointsCompleted();
+        string scoreString = "Level" + level + "score";
+
+        if (PlayerPrefs.HasKey(scoreString))
+        {
+            int prevScore = PlayerPrefs.GetInt(scoreString);
+
+            // if player got higher score this round, overwrite that value
+            if (GetCheckpointsCompleted() > prevScore)
+            {
+                PlayerPrefs.SetInt(scoreString, currentScore);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt(scoreString, currentScore);
+        }
     }
 
     public float GetLevelProgress()
