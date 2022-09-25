@@ -66,10 +66,9 @@ public class LevelProgressTracker : MonoBehaviour
             }
             LevelSkippable = true;
             completedCheckpoints++;
-            updateScore();
         }
-
         checkpointsCompleted = completedCheckpoints;
+        updateScore();
     }
     void updateScore()
     {

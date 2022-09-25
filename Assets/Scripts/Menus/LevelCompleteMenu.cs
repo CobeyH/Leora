@@ -42,7 +42,7 @@ public class LevelCompleteMenu : MonoBehaviour
     {
         if (tracker.IsLevelComplete() && CompletionMenuUI.activeSelf == false)
         {
-            updateScore();
+            //updateScore();
             timeSpentDisplay.SetText(ConvertTime(Time.timeSinceLevelLoad));
             CreateCheckpointMarkers();
             audioManager.Play("Complete");
