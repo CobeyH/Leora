@@ -18,10 +18,12 @@ public class MothColour : MonoBehaviour
         if (isDecoy)
         {
             mat.color = Color.white;
+            mat.SetColor("_EmissionColor", Color.gray);
         }
         else
         {
             mat.color = baseColor;
+            mat.SetColor("_EmissionColor", baseColor);
         }
     }
 }

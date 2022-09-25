@@ -16537,6 +16537,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922315959}
     m_Modifications:
+    - target: {fileID: 2604470965707075296, guid: eb3349d79b0531d42a6adc1283e24fad, type: 3}
+      propertyPath: baseColor.g
+      value: 0.645576
+      objectReference: {fileID: 0}
     - target: {fileID: 3854380181968057028, guid: eb3349d79b0531d42a6adc1283e24fad, type: 3}
       propertyPath: mothSpeed
       value: 1
@@ -16628,6 +16632,10 @@ PrefabInstance:
     - target: {fileID: 1517213622579902356, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_Name
       value: Frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517213622579902356, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902358, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_RootOrder
