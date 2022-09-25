@@ -65,11 +65,11 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 4.8350515
+  orthographic size: 6.189831
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 215
+    m_Bits: 471
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 3
+    m_Bits: 259
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1

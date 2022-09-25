@@ -27,7 +27,7 @@ public class FrogTongue : MonoBehaviour
     private GameObject[] mothGroups;
 
     private Vector3? target;
-    private bool targetSelf;
+    public bool targetSelf;
 
     private float hunger = 0;
     private float timeElapsed = 0;
@@ -52,9 +52,10 @@ public class FrogTongue : MonoBehaviour
         hunger += Time.deltaTime;
         timeElapsed += Time.deltaTime;
         // Return tongue to self when target goes out of range.
-        if (target.HasValue && !ObjectInRange(target.Value))
+        if (target.HasValue && !TargetIsValid(target.Value))
         {
             targetSelf = true;
+            Debug.Log("Case 1");
             FindNewTarget();
 
         }
@@ -94,7 +95,7 @@ public class FrogTongue : MonoBehaviour
         }
         foreach (GameObject flock in mothGroups)
         {
-            if (!ObjectInRange(flock.transform.position))
+            if (!TargetIsValid(flock.transform.position))
             {
                 continue;
             }
@@ -108,9 +109,15 @@ public class FrogTongue : MonoBehaviour
                 audioManager.Play("Frog");
             }
             hunger = 0;
+            Debug.Log("New Target");
             return;
         }
         target = null;
+    }
+
+    bool TargetIsValid(Vector3 target)
+    {
+        return ObjectInRange(target) && LineOfSight(target);
     }
 
     bool ObjectInRange(Vector3 target)
@@ -120,14 +127,19 @@ public class FrogTongue : MonoBehaviour
         Vector3 dirToTarget = target - tongue.transform.position;
         bool isInFOV =
             Vector3.Angle(dirToTarget, tongue.transform.up) < fieldOfView / 2f;
-        if (isInRange && isInFOV)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return isInRange && isInFOV;
+    }
+
+    bool LineOfSight(Vector3 target)
+    {
+        int layer_mask = LayerMask.GetMask("Terrain");
+        // Linecast from the tongue origin to the target. If it doesn't hit anything then a clear path exists.
+        bool test = !Physics2D
+                .Linecast(tongue.transform.position,
+                target,
+                layer_mask);
+        Debug.Log(test ? "Can see target" : "No line of light");
+        return test;
     }
 
     float MoveTowardsObject(Vector3 target)
