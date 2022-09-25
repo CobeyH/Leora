@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6152301163840027542}
   - component: {fileID: 6152301163840027547}
   - component: {fileID: 6152301163840027546}
+  - component: {fileID: 644719536599819474}
   m_Layer: 2
   m_Name: Moth Particles
   m_TagString: Moths
@@ -3548,7 +3549,7 @@ ParticleSystem:
     separateAxes: 0
     range: {x: 0, y: 1}
   ColorBySpeedModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -3787,7 +3788,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 129
+      m_Bits: 385
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4764,7 +4765,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ffa34066470240d448809f3e245e0a1e, type: 2}
+  - {fileID: 2100000, guid: bd7b3e14dc1300f228fd35cd122c1016, type: 2}
   - {fileID: 2100000, guid: 5424a7e8eab4acd4ebee32a036b335ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4828,6 +4829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c0856a49815631792f6e3e7d29d489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDecoy: 0
 --- !u!114 &6152301163840027546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4841,3 +4843,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flockSize: 30
+--- !u!114 &644719536599819474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6152301163840027543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915a454b83c23415f99babd1efa80ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0, g: 1, b: 0.8998494, a: 1}
