@@ -18,6 +18,8 @@ public class FrogTongue : MonoBehaviour
     [Range(1f, 0f)]
     public float accuracy = 0.5f;
 
+    public float maxTargetDistance = 5f;
+
     public GameObject tongue;
 
     private AudioManager audioManager;
@@ -114,7 +116,7 @@ public class FrogTongue : MonoBehaviour
     bool ObjectInRange(Vector3 target)
     {
         bool isInRange =
-            Vector3.Distance(tongue.transform.position, target) < 5;
+            Vector3.Distance(tongue.transform.position, target) < maxTargetDistance;
         Vector3 dirToTarget = target - tongue.transform.position;
         bool isInFOV =
             Vector3.Angle(dirToTarget, tongue.transform.up) < fieldOfView / 2f;
@@ -155,5 +157,27 @@ public class FrogTongue : MonoBehaviour
         }
 
         edgeCollider.SetPoints(edges);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Vector3 position = tongue.transform.position;
+        Gizmos.DrawWireSphere(position, maxTargetDistance);
+        float angle = fieldOfView;
+        float halfFOV = angle / 2.0f;
+        // Get length of hypotenuse
+        float rayRange = maxTargetDistance / Mathf.Cos(halfFOV * Mathf.PI / 180f);
+        float coneDirection = 180;
+
+        Quaternion upRayRotation = Quaternion.AngleAxis(-halfFOV + coneDirection, Vector3.forward);
+        Quaternion downRayRotation = Quaternion.AngleAxis(halfFOV + coneDirection, Vector3.forward);
+
+        Vector3 upRayDirection = upRayRotation * transform.right * rayRange;
+        Vector3 downRayDirection = downRayRotation * transform.right * rayRange;
+
+        Gizmos.DrawRay(position, upRayDirection);
+        Gizmos.DrawRay(position, downRayDirection);
+        Gizmos.DrawLine(position + downRayDirection, position + upRayDirection);
+
     }
 }

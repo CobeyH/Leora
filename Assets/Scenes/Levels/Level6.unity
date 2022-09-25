@@ -223,6 +223,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922315959}
     m_Modifications:
+    - target: {fileID: 3854380181968057028, guid: feeb1eca65b4364ee9a89f637525321a, type: 3}
+      propertyPath: mothSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3854380181968057030, guid: feeb1eca65b4364ee9a89f637525321a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -16492,7 +16496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5889620949529498332, guid: fd8c942e2f74c5040975c4d91d3a1379, type: 3}
       propertyPath: orthographic size
-      value: 5.205268
+      value: 6.189831
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd8c942e2f74c5040975c4d91d3a1379, type: 3}
@@ -16591,6 +16595,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1922315959}
     m_Modifications:
+    - target: {fileID: 3854380181968057028, guid: eb3349d79b0531d42a6adc1283e24fad, type: 3}
+      propertyPath: mothSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3854380181968057030, guid: eb3349d79b0531d42a6adc1283e24fad, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -16663,6 +16671,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 700833242}
     m_Modifications:
+    - target: {fileID: 1517213622579902353, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
+      propertyPath: accuracy
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517213622579902353, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
+      propertyPath: fieldOfView
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517213622579902353, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
+      propertyPath: maxTargetDistance
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902356, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_Name
       value: Frog
@@ -16673,7 +16693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902358, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.29
+      value: -2.26
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902358, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16710,6 +16730,10 @@ PrefabInstance:
     - target: {fileID: 1517213622579902358, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093677684694715573, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
