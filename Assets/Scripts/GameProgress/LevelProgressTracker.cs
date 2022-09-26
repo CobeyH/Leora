@@ -77,6 +77,15 @@ public class LevelProgressTracker : MonoBehaviour
         int currentScore = GetCheckpointsCompleted();
         string scoreString = "Level" + level + "score";
 
+        if (currentScore != 0)
+        {
+            int nextSceneIndex = scene.buildIndex + 1;
+            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+            {
+                UnlockLevel(nextSceneIndex);
+            }
+        }
+
         if (PlayerPrefs.HasKey(scoreString))
         {
             int prevScore = PlayerPrefs.GetInt(scoreString);
@@ -90,6 +99,25 @@ public class LevelProgressTracker : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt(scoreString, currentScore);
+        }
+    }
+
+    void unlockNextLevel(int currentLevel)
+    {
+        int numUnlocked = PlayerPrefs.GetInt("furthestUnlock", 0);
+        Debug.Log("numUnlocked" + numUnlocked);
+        Debug.Log("currentlevel" + currentLevel);
+
+        if (numUnlocked >= currentLevel)
+        {
+            PlayerPrefs.SetInt("furthestUnlock", currentLevel + 1);
+        }
+    }
+    public static void UnlockLevel(int sceneIndex)
+    {
+        if (sceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
+        {
+            PlayerPrefs.SetInt("furthestUnlock", sceneIndex);
         }
     }
 
