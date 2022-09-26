@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelProgressTracker : MonoBehaviour
 {
@@ -66,8 +67,58 @@ public class LevelProgressTracker : MonoBehaviour
             LevelSkippable = true;
             completedCheckpoints++;
         }
-
         checkpointsCompleted = completedCheckpoints;
+        updateScore();
+    }
+    void updateScore()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        int level = int.Parse(scene.name.Substring(5));
+        int currentScore = GetCheckpointsCompleted();
+        string scoreString = "Level" + level + "score";
+
+        if (currentScore != 0)
+        {
+            int nextSceneIndex = scene.buildIndex + 1;
+            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+            {
+                UnlockLevel(nextSceneIndex);
+            }
+        }
+
+        if (PlayerPrefs.HasKey(scoreString))
+        {
+            int prevScore = PlayerPrefs.GetInt(scoreString);
+
+            // if player got higher score this round, overwrite that value
+            if (GetCheckpointsCompleted() > prevScore)
+            {
+                PlayerPrefs.SetInt(scoreString, currentScore);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt(scoreString, currentScore);
+        }
+    }
+
+    void unlockNextLevel(int currentLevel)
+    {
+        int numUnlocked = PlayerPrefs.GetInt("furthestUnlock", 0);
+        Debug.Log("numUnlocked" + numUnlocked);
+        Debug.Log("currentlevel" + currentLevel);
+
+        if (numUnlocked >= currentLevel)
+        {
+            PlayerPrefs.SetInt("furthestUnlock", currentLevel + 1);
+        }
+    }
+    public static void UnlockLevel(int sceneIndex)
+    {
+        if (sceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
+        {
+            PlayerPrefs.SetInt("furthestUnlock", sceneIndex);
+        }
     }
 
     public float GetLevelProgress()
