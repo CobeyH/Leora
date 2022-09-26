@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject gameLostMenu;
+    public GameObject
 
-    public GameObject gameWonMenu;
+            gameLostMenu,
+            gameWonMenu,
+            pauseMenu;
 
-    public GameObject pauseMenu;
+    private MenuController
+
+            lostMenuController,
+            wonMenuController,
+            pauseMenuController,
+            settingMenuController;
 
     public GameObject dofVolume;
 
@@ -22,6 +29,11 @@ public class GameController : MonoBehaviour
             GameObject
                 .FindGameObjectWithTag("ProgressManager")
                 .GetComponent<LevelProgressTracker>();
+        pauseMenuController = pauseMenu.GetComponent<MenuController>();
+        wonMenuController = gameWonMenu.GetComponent<MenuController>();
+        settingMenuController =
+            GameObject.Find("SettingsMenu").GetComponent<MenuController>();
+        lostMenuController = gameLostMenu.GetComponent<MenuController>();
     }
 
     void Start()
@@ -73,19 +85,28 @@ public class GameController : MonoBehaviour
 
     public void TogglePauseMenu()
     {
-        MenuController menuController =
-            pauseMenu.GetComponent<MenuController>();
-        bool isGamePaused = menuController.gameObject.activeSelf;
-        if (isGamePaused)
+        bool isGamePaused = pauseMenuController.gameObject.activeSelf;
+        bool isSettingsOpen = settingMenuController.gameObject.activeSelf;
+        if (isSettingsOpen)
         {
-            menuController.HideMenu();
+            HideSettings();
+        }
+        else if (isGamePaused)
+        {
+            pauseMenuController.HideMenu();
             ResumeGame();
         }
         else
         {
-            menuController.ShowMenu();
+            pauseMenuController.ShowMenu();
             PauseGame();
         }
+    }
+
+    void HideSettings()
+    {
+        settingMenuController.HideMenu();
+        pauseMenuController.ShowMenu();
     }
 
     public void PauseGame()
