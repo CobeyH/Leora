@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class LevelButtons : MonoBehaviour
 {
     [SerializeField]
@@ -17,16 +17,13 @@ public class LevelButtons : MonoBehaviour
         for (int levelIndex = 1; levelIndex < levelCount; levelIndex++)
         {
             // Debug.Log("score for scene " + levelIndex.ToString() + ": " + PlayerPrefs.GetInt("Level" + levelIndex.ToString() + "score"));
-            GameObject buttonObject = Instantiate(buttonPrefab, gameObject.transform);
+            GameObject buttonObject =
+                Instantiate(buttonPrefab, gameObject.transform);
             buttonObject.GetComponent<LevelChanger>().level = levelIndex;
-            if (levelIndex == 1 || levelIndex < furthestLevel)
-            {
-                buttonObject.GetComponent<MothLightLevelSelection>().button.interactable = true;
-            } else
-            {
-                buttonObject.GetComponent<MothLightLevelSelection>().button.interactable = false;
-            }
-
+            Button button =
+                buttonObject.GetComponent<MothLightLevelSelection>().button;
+            button.interactable =
+                (levelIndex == 1 || levelIndex < furthestLevel);
         }
     }
 }
