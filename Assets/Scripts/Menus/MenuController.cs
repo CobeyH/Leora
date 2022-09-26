@@ -4,9 +4,15 @@ public class MenuController : MonoBehaviour
 {
     GameController gameController;
 
+    public GameObject coupledMenu;
+
+    private MenuController coupledMenuController;
+
     void Awake()
     {
         gameController = FindObjectOfType<GameController>();
+        if (coupledMenu != null)
+            coupledMenuController = coupledMenu.GetComponent<MenuController>();
     }
 
     void Start()
@@ -17,6 +23,10 @@ public class MenuController : MonoBehaviour
 
     public void ShowMenu()
     {
+        if (coupledMenuController)
+        {
+            coupledMenuController.HideMenu();
+        }
         gameObject.SetActive(true);
         gameController.PauseGame();
     }
@@ -25,6 +35,12 @@ public class MenuController : MonoBehaviour
     {
         gameObject.SetActive(false);
         gameController.ResumeGame();
+    }
+
+    public void ShowCoupledMenu()
+    {
+        HideMenu();
+        coupledMenuController.ShowMenu();
     }
 
     public void RestartLevel()
