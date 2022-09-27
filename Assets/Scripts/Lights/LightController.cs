@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using System.Collections;
 
 public class LightController : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class LightController : MonoBehaviour
 
     [HideInInspector]
     public bool isOn;
+
+    [SerializeField]
+    GameObject ProjectilePrefab;
 
     private AudioManager audioManager;
 
@@ -53,5 +57,14 @@ public class LightController : MonoBehaviour
         isOn = !isOn;
         myLight.enabled = isOn;
         lightBeams.enabled = isOn;
+    }
+
+    IEnumerator ProjectileTravel()
+    {
+        // TODO:
+        // Create projectile
+        // Move projectile towards target
+        // Cause effect when close enough to target
+        yield return null;
     }
 }
