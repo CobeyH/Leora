@@ -345,7 +345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5889620949529498332, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: orthographic size
-      value: 6.1815557
+      value: 6.189831
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
