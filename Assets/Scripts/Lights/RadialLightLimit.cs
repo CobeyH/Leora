@@ -24,6 +24,7 @@ public class RadialLightLimit : MonoBehaviour
         availableLux = totalLux;
         luxOrbs = new GameObject[totalLux];
         GenerateLuxOrbs();
+        UpdateTextDisplay();
     }
 
     void GenerateLuxOrbs()
@@ -45,6 +46,12 @@ public class RadialLightLimit : MonoBehaviour
             luxOrbs[i].SetActive(addition > 0);
         }
         availableLux += addition;
+        UpdateTextDisplay();
+    }
+
+    void UpdateTextDisplay()
+    {
+        textDisplay.text = availableLux.ToString();
     }
 
     int GetAvailableLux()
