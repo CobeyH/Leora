@@ -38,20 +38,6 @@ public class LightController : MonoBehaviour
         lightLimit = GameObject.Find("RadialLightLimit").GetComponent<RadialLightLimit>();
     }
 
-    void Update()
-    {
-        if (LightLimit.IsOverVoltage)
-        {
-            myLight.enabled = false;
-            lightBeams.enabled = false;
-        }
-        else
-        {
-            myLight.enabled = isOn;
-            lightBeams.enabled = isOn;
-        }
-    }
-
     void OnMouseDown()
     {
         toggleLight();
@@ -70,8 +56,7 @@ public class LightController : MonoBehaviour
         audioManager.Play("LightOff");
         Vector3 startPos = new Vector3(-10, 6, 0);
         Vector3 endPos = transform.position;
-        isOn = !isOn;
-        if (isOn)
+        if (!isOn)
         {
             StartCoroutine(EnableLight(startPos, endPos));
         }
@@ -83,18 +68,35 @@ public class LightController : MonoBehaviour
 
     IEnumerator EnableLight(Vector3 startPos, Vector3 endPos)
     {
+        // If the light is being turned on, it must request light immediately.
+        if (!isOn)
+        {
+            if (lightLimit.LightAvailable((int)myLight.intensity))
+            {
+                lightLimit.ChangeAvailableLux((int)-myLight.intensity);
+            }
+            else
+            {
+                // If there isn't enough lux, the light cannot turn on.
+                yield return null;
+            }
+        }
         GameObject luxProjectile = Instantiate(ProjectilePrefab);
         luxProjectile.transform.position = startPos;
         // Set start point for projectile in canvas coordinates
         Vector3 dir = endPos - startPos;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 100; i++)
         {
-            // Translate back to screen coordinates
-            luxProjectile.transform.position += dir / 10;
             yield return new WaitForFixedUpdate();
+            luxProjectile.transform.position += dir / 100;
         }
         Destroy(luxProjectile);
+        if (isOn)
+        {
+            lightLimit.ChangeAvailableLux((int)myLight.intensity);
+        }
+        isOn = !isOn;
         myLight.enabled = isOn;
         lightBeams.enabled = isOn;
         routineRunning = false;

@@ -38,14 +38,23 @@ public class RadialLightLimit : MonoBehaviour
         }
     }
 
+    public bool LightAvailable(int request)
+    {
+        return availableLux >= request;
+    }
+
     public void ChangeAvailableLux(int addition)
     {
-        for (int i = availableLux; i < availableLux + addition; i++)
+        int additionSign = (int)Mathf.Sign(addition);
+        int startIndex = addition > 0 ? availableLux : availableLux - 1;
+        for (int i = startIndex; i != startIndex + addition; i += additionSign)
         {
+            Debug.Log(i);
+
             // If it's a positive addition then we are enabling, otherwise we are disabling.
             luxOrbs[i].SetActive(addition > 0);
+            availableLux += additionSign;
         }
-        availableLux += addition;
         UpdateTextDisplay();
     }
 
