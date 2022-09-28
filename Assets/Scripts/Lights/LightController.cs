@@ -22,6 +22,7 @@ public class LightController : MonoBehaviour
     private RadialLightLimit lightLimit;
 
     private AudioManager audioManager;
+    private bool routineRunning = false;
 
     void Start()
     {
@@ -59,30 +60,44 @@ public class LightController : MonoBehaviour
 
     void toggleLight()
     {
-        audioManager.Play("LightOff");
-        isOn = !isOn;
-        myLight.enabled = isOn;
-        lightBeams.enabled = isOn;
-        StartCoroutine(EnableLight());
-    }
+        // Light cannot be interacted with if the routine is running.
+        if (routineRunning)
+        {
+            return;
+        }
+        routineRunning = true;
 
-    IEnumerator EnableLight()
-    {
+        audioManager.Play("LightOff");
         Vector3 startPos = new Vector3(-10, 6, 0);
         Vector3 endPos = transform.position;
+        isOn = !isOn;
+        if (isOn)
+        {
+            StartCoroutine(EnableLight(startPos, endPos));
+        }
+        else
+        {
+            StartCoroutine(EnableLight(endPos, startPos));
+        }
+    }
+
+    IEnumerator EnableLight(Vector3 startPos, Vector3 endPos)
+    {
         GameObject luxProjectile = Instantiate(ProjectilePrefab);
         luxProjectile.transform.position = startPos;
         // Set start point for projectile in canvas coordinates
         Vector3 dir = endPos - startPos;
 
-        for (int i = 0; i < 250; i++)
+        for (int i = 0; i < 10; i++)
         {
             // Translate back to screen coordinates
-            luxProjectile.transform.position += dir / 250;
+            luxProjectile.transform.position += dir / 10;
             yield return new WaitForFixedUpdate();
         }
         Destroy(luxProjectile);
-
+        myLight.enabled = isOn;
+        lightBeams.enabled = isOn;
+        routineRunning = false;
         yield return null;
     }
 }
