@@ -51,7 +51,6 @@ public class LightController : MonoBehaviour
         {
             return;
         }
-        routineRunning = true;
 
         audioManager.Play("LightOff");
         Vector3 startPos = new Vector3(-10, 6, 0);
@@ -68,18 +67,17 @@ public class LightController : MonoBehaviour
 
     IEnumerator EnableLight(Vector3 startPos, Vector3 endPos)
     {
+        routineRunning = true;
         // If the light is being turned on, it must request light immediately.
         if (!isOn)
         {
-            if (lightLimit.LightAvailable((int)myLight.intensity))
-            {
-                lightLimit.ChangeAvailableLux((int)-myLight.intensity);
-            }
-            else
+            if (!lightLimit.LuxAvailable((int)myLight.intensity))
             {
                 // If there isn't enough lux, the light cannot turn on.
-                yield return null;
+                routineRunning = false;
+                yield break;
             }
+            lightLimit.ChangeAvailableLux((int)-myLight.intensity);
         }
         GameObject luxProjectile = Instantiate(ProjectilePrefab);
         luxProjectile.transform.position = startPos;
