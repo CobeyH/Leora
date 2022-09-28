@@ -68,21 +68,17 @@ public class LightController : MonoBehaviour
 
     IEnumerator EnableLight()
     {
-        Vector2 endPos = transform.position;
+        Vector3 startPos = new Vector3(-10, 6, 0);
+        Vector3 endPos = transform.position;
         GameObject luxProjectile = Instantiate(ProjectilePrefab);
-        luxProjectile.transform.position = lightLimit.transform.position;
-        Vector2 startPos = Camera.main.ScreenToWorldPoint(luxProjectile.transform.position);
-        Vector3 dir = endPos - new Vector2(startPos.x, -startPos.y - 0.5f);
-        float travelDistance = dir.magnitude;
-        while (true)
+        luxProjectile.transform.position = startPos;
+        // Set start point for projectile in canvas coordinates
+        Vector3 dir = endPos - startPos;
+
+        for (int i = 0; i < 250; i++)
         {
-            Vector3 vectorOffset = dir * Time.deltaTime;
-            luxProjectile.transform.position += vectorOffset;
-            travelDistance -= vectorOffset.magnitude;
-            if (travelDistance < 0.001f)
-            {
-                break;
-            }
+            // Translate back to screen coordinates
+            luxProjectile.transform.position += dir / 250;
             yield return new WaitForFixedUpdate();
         }
         Destroy(luxProjectile);
@@ -90,3 +86,4 @@ public class LightController : MonoBehaviour
         yield return null;
     }
 }
+
