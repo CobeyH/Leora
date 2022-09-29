@@ -16,6 +16,9 @@ public class RadialLightLimit : MonoBehaviour
 
     [SerializeField]
     AnimationCurve ringDistribution;
+
+    [SerializeField]
+    Gradient ringColors;
     GameObject[] luxOrbs;
     int availableLux;
 
@@ -33,6 +36,7 @@ public class RadialLightLimit : MonoBehaviour
         {
             GameObject newOrb = Instantiate(orbPrefab, transform);
             float t = (i + 1) / (float)totalLux;
+            newOrb.GetComponent<SpriteRenderer>().color = ringColors.Evaluate(t);
             newOrb.transform.localScale *= ringDistribution.Evaluate(t);
             luxOrbs[i] = newOrb;
         }

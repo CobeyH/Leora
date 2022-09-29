@@ -69,6 +69,10 @@ public class LightController : MonoBehaviour
     {
         routineRunning = true;
         bool lightWasOn = isOn;
+        if (lightWasOn)
+        {
+            HandleOnLight();
+        }
         // If the light is being turned on, it must request light immediately.
         if (!lightWasOn)
         {
@@ -86,11 +90,11 @@ public class LightController : MonoBehaviour
             luxProjectile.transform.position += dir / 15;
         }
         Destroy(luxProjectile);
-        // On lights must be handled at the end 
-        if (lightWasOn)
+        if (!lightWasOn)
         {
-            HandleOnLight();
+            SwitchLightState();
         }
+        // On lights must be handled at the end 
         routineRunning = false;
         yield return null;
     }
@@ -104,7 +108,6 @@ public class LightController : MonoBehaviour
             return false;
         }
         lightLimit.ChangeAvailableLux((int)-myLight.intensity);
-        SwitchLightState();
         return true;
     }
 
