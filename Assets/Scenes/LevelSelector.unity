@@ -2426,7 +2426,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.1815557
+  orthographic size: 6.188188
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7555,9 +7555,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ProgressManager, Assembly-CSharp
-        m_MethodName: ResetProgress
+      - m_Target: {fileID: 991866335}
+        m_TargetAssemblyTypeName: LevelButtons, Assembly-CSharp
+        m_MethodName: ResetLevelProgress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
