@@ -162,10 +162,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 946901785}
     m_Modifications:
-    - target: {fileID: 6623328211781056329, guid: c6ac6b64ad4118735ba6be95674e5bf4, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 2043337750}
     - target: {fileID: 6623328212600153096, guid: c6ac6b64ad4118735ba6be95674e5bf4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -345,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5889620949529498332, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: orthographic size
-      value: 6.190075
+      value: 6.189831
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
@@ -6872,10 +6868,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4712296088704668852, guid: 758a462d28163b5569f158cc1a978222, type: 3}
-      propertyPath: UICamera
-      value: 
-      objectReference: {fileID: 2043337750}
     - target: {fileID: 5490333105552584142, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7384,10 +7376,6 @@ PrefabInstance:
     - target: {fileID: 1088667703845410841, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1535230972727393335, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
-      propertyPath: totalLux
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2248014075963323413, guid: 7fcdb71b43135308f80e5219d1db1622, type: 3}
       propertyPath: m_AnchorMax.y
