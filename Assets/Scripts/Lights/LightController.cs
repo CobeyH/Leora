@@ -68,16 +68,12 @@ public class LightController : MonoBehaviour
     IEnumerator EnableLight(Vector3 startPos, Vector3 endPos)
     {
         routineRunning = true;
+        bool lightWasOn = isOn;
         // If the light is being turned on, it must request light immediately.
-        if (!isOn)
+        if (!lightWasOn)
         {
-            if (!lightLimit.LuxAvailable((int)myLight.intensity))
-            {
-                // If there isn't enough lux, the light cannot turn on.
-                routineRunning = false;
+            if (!HandleOffLight())
                 yield break;
-            }
-            lightLimit.ChangeAvailableLux((int)-myLight.intensity);
         }
         GameObject luxProjectile = Instantiate(ProjectilePrefab);
         luxProjectile.transform.position = startPos;
@@ -90,15 +86,39 @@ public class LightController : MonoBehaviour
             luxProjectile.transform.position += dir / 15;
         }
         Destroy(luxProjectile);
-        if (isOn)
+        // On lights must be handled at the end 
+        if (lightWasOn)
         {
-            lightLimit.ChangeAvailableLux((int)myLight.intensity);
+            HandleOnLight();
         }
+        routineRunning = false;
+        yield return null;
+    }
+
+    bool HandleOffLight()
+    {
+        if (!lightLimit.LuxAvailable((int)myLight.intensity))
+        {
+            // If there isn't enough lux, the light cannot turn on.
+            routineRunning = false;
+            return false;
+        }
+        lightLimit.ChangeAvailableLux((int)-myLight.intensity);
+        SwitchLightState();
+        return true;
+    }
+
+    void HandleOnLight()
+    {
+        lightLimit.ChangeAvailableLux((int)myLight.intensity);
+        SwitchLightState();
+    }
+
+    void SwitchLightState()
+    {
         isOn = !isOn;
         myLight.enabled = isOn;
         lightBeams.enabled = isOn;
-        routineRunning = false;
-        yield return null;
     }
 }
 
