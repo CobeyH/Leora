@@ -40,7 +40,6 @@ public class RadialLightLimit : MonoBehaviour
 
     public bool LuxAvailable(int request)
     {
-        Debug.Log(availableLux + " Request: " + request);
         return availableLux >= request;
     }
 

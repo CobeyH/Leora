@@ -84,10 +84,10 @@ public class LightController : MonoBehaviour
         // Set start point for projectile in canvas coordinates
         Vector3 dir = endPos - startPos;
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 15; i++)
         {
             yield return new WaitForFixedUpdate();
-            luxProjectile.transform.position += dir / 100;
+            luxProjectile.transform.position += dir / 15;
         }
         Destroy(luxProjectile);
         if (isOn)

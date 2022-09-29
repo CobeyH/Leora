@@ -267,6 +267,7 @@ MonoBehaviour:
   startOn: 0
   isOn: 0
   ProjectilePrefab: {fileID: 1949821205865294940, guid: ccf18fa9d20d5f909befe02c7fae4727, type: 3}
+  UICamera: {fileID: 0}
 --- !u!58 &518453145197026385
 CircleCollider2D:
   m_ObjectHideFlags: 0
