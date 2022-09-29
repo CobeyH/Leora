@@ -55,6 +55,11 @@ public class LightController : MonoBehaviour
         audioManager.Play("LightOff");
         Vector3 startPos = new Vector3(-10, 6, 0);
         Vector3 endPos = transform.position;
+        if (!lightLimit)
+        {
+            SwitchLightState();
+            return;
+        }
         if (!isOn)
         {
             StartCoroutine(EnableLight(startPos, endPos));
