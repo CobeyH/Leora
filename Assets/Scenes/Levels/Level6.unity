@@ -16440,7 +16440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5889620949529498332, guid: fd8c942e2f74c5040975c4d91d3a1379, type: 3}
       propertyPath: orthographic size
-      value: 6.189831
+      value: 6.1815557
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd8c942e2f74c5040975c4d91d3a1379, type: 3}
@@ -16545,7 +16545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3854380181968057028, guid: eb3349d79b0531d42a6adc1283e24fad, type: 3}
       propertyPath: mothSpeed
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3854380181968057030, guid: eb3349d79b0531d42a6adc1283e24fad, type: 3}
       propertyPath: m_RootOrder
@@ -16621,6 +16621,10 @@ PrefabInstance:
     - target: {fileID: 1517213622579902353, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: fieldOfView
       value: 59
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517213622579902353, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
+      propertyPath: eatingPeriod
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1517213622579902353, guid: b68a007fb012149ed80b36a0f0a7e938, type: 3}
       propertyPath: maxTargetDistance

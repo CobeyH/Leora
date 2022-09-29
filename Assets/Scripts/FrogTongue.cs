@@ -27,7 +27,7 @@ public class FrogTongue : MonoBehaviour
 
     private GameObject[] mothGroups;
 
-    private Vector3? target;
+    private Transform target;
 
     public bool targetSelf;
 
@@ -54,19 +54,18 @@ public class FrogTongue : MonoBehaviour
     {
         hunger += Time.deltaTime;
         timeElapsed += Time.deltaTime;
+        if (targetSelf)
+        {
+            return;
+        }
 
-        // Return tongue to self when target goes out of range.
-        if (target.HasValue && !TargetIsValid(target.Value))
+        // If you have a target but it's become invalid then return to self.
+        if (target != null && !TargetIsValid(target))
         {
             targetSelf = true;
-            FindNewTarget();
         } // Find a new target if there isn't one.
-        else if (!target.HasValue)
+        else if (target == null)
         {
-            if (!targetSelf && hunger < eatingPeriod)
-            {
-                return;
-            }
             FindNewTarget();
         }
     }
@@ -74,37 +73,49 @@ public class FrogTongue : MonoBehaviour
     void FixedUpdate()
     {
         // Move towards target.
-        if (target.HasValue)
+        float distanceToTarget;
+        if (targetSelf)
         {
-            float distanceToTarget = MoveTowardsObject(target.Value);
-            SetEdgeCollider();
-            if (distanceToTarget < 0.1)
+            distanceToTarget = MoveTowardsObject(tongue.transform);
+        }
+        else if (target != null && hunger > eatingPeriod)
+        {
+            distanceToTarget = MoveTowardsObject(target);
+        }
+        else
+        {
+            return;
+        }
+        SetEdgeCollider();
+        CheckTargetStatus (distanceToTarget);
+    }
+
+    void CheckTargetStatus(float distanceToTarget)
+    {
+        if (distanceToTarget < 0.1)
+        {
+            if (!targetSelf)
             {
-                targetSelf = !targetSelf;
-                target = null;
+                hunger = 0;
             }
+            targetSelf = !targetSelf;
         }
     }
 
     void FindNewTarget()
     {
         timeElapsed = 0;
-        if (targetSelf)
-        {
-            target = tongue.transform.position;
-            return;
-        }
         foreach (GameObject flock in mothGroups)
         {
-            if (!TargetIsValid(flock.transform.position))
+            if (flock == null)
+            {
+                return;
+            }
+            if (!TargetIsValid(flock.transform))
             {
                 continue;
             }
-            Vector3 targetPos = flock.transform.position;
-            target =
-                new Vector3(targetPos.x + Random.Range(-accuracy, accuracy),
-                    targetPos.y + Random.Range(-accuracy, accuracy),
-                    0);
+            target = flock.transform;
             if (audioManager != null)
             {
                 audioManager.Play("Frog");
@@ -115,37 +126,40 @@ public class FrogTongue : MonoBehaviour
         target = null;
     }
 
-    bool TargetIsValid(Vector3 target)
+    bool TargetIsValid(Transform target)
     {
         return ObjectInRange(target) && LineOfSight(target);
     }
 
-    bool ObjectInRange(Vector3 target)
+    bool ObjectInRange(Transform target)
     {
         bool isInRange =
-            Vector3.Distance(tongue.transform.position, target) <
+            Vector3.Distance(tongue.transform.position, target.position) <
             maxTargetDistance;
-        Vector3 dirToTarget = target - tongue.transform.position;
+        Vector3 dirToTarget = target.position - tongue.transform.position;
         bool isInFOV =
             Vector3.Angle(dirToTarget, tongue.transform.up) < fieldOfView / 2f;
         return isInRange && isInFOV;
     }
 
-    bool LineOfSight(Vector3 target)
+    bool LineOfSight(Transform target)
     {
         int layer_mask = LayerMask.GetMask("Terrain");
 
         // Linecast from the tongue origin to the target. If it doesn't hit anything then a clear path exists.
         bool test =
-            !Physics2D.Linecast(tongue.transform.position, target, layer_mask);
+            !Physics2D
+                .Linecast(tongue.transform.position,
+                target.position,
+                layer_mask);
         return test;
     }
 
-    float MoveTowardsObject(Vector3 target)
+    float MoveTowardsObject(Transform target)
     {
         // Calculate direction to move tongue
         Vector3 oldPosition = lineRenderer.GetPosition(1);
-        Vector3 vecToTarget = target - oldPosition;
+        Vector3 vecToTarget = target.position - oldPosition;
         Vector3 dirToTarget = vecToTarget.normalized;
         float distanceToMove =
             speed * Time.deltaTime * accelerationCurve.Evaluate(timeElapsed);
