@@ -16,11 +16,9 @@ public class LightController : MonoBehaviour
     [SerializeField]
     GameObject ProjectilePrefab;
 
-    Camera UICamera;
-    Camera mainCam;
-
+    private Camera UICamera;
+    private Camera mainCam;
     private RadialLightLimit lightLimit;
-
     private AudioManager audioManager;
     private bool routineRunning = false;
 
@@ -59,11 +57,10 @@ public class LightController : MonoBehaviour
         }
 
         audioManager.Play("LightOff");
-        // Vector3 startPos = new Vector3(-10, 6, 0);
         Vector3 uiElementPosition = UICamera.WorldToScreenPoint(lightLimit.transform.position);
         Vector3 startPos = mainCam.ScreenToWorldPoint(uiElementPosition);
-        //Vector3 startPos = Camera.main.ScreenToViewportPoint(lightLimit.transform.position);
         Vector3 endPos = transform.position;
+        // Start a co-routine that will turn on/off the light. This involves the light limit to send a light projectile.
         if (!lightLimit)
         {
             SwitchLightState();
