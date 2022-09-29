@@ -49,7 +49,7 @@ public class LevelCompleteMenu : MonoBehaviour
             CompletionMenuUI.SetActive(true);
 
             // Unlock the next level
-            Debug.Log("This is deprecated. Use the level progress tracker");
+            Debug.LogWarning("This is deprecated. Use the level progress tracker");
 
         }
         else if (tracker.IsLevelSkippable())

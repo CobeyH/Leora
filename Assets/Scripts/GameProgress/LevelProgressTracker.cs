@@ -77,7 +77,6 @@ public class LevelProgressTracker : MonoBehaviour
         int level = int.Parse(scene.name.Substring(5));
         int currentScore = GetCheckpointsCompleted();
         string scoreString = "Level" + level + "score";
-        Debug.Log("Next level unlocked");
 
         if (currentScore != 0)
         {
