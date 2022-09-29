@@ -49,7 +49,8 @@ public class LevelCompleteMenu : MonoBehaviour
             CompletionMenuUI.SetActive(true);
 
             // Unlock the next level
-            UnlockNextLevel();
+            Debug.Log("This is deprecated. Use the level progress tracker");
+
         }
         else if (tracker.IsLevelSkippable())
         {
@@ -119,15 +120,6 @@ public class LevelCompleteMenu : MonoBehaviour
             cp.transform.SetParent(butterflyCountDisplay.transform, false);
             butterflies.Add(cp);
             cp.transform.GetChild(0).gameObject.SetActive(true);
-        }
-    }
-
-    private void UnlockNextLevel()
-    {
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex - 1;
-        if (nextSceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
-        {
-            PlayerPrefs.SetInt("furthestUnlock", nextSceneIndex);
         }
     }
 }

@@ -31,7 +31,7 @@ public class LevelProgressTracker : MonoBehaviour
         {
             Goal nextGoal = flock.GetComponent<Goal>();
             if (nextGoal.IsDecoy) continue;
-            goals.Add (nextGoal);
+            goals.Add(nextGoal);
             totalMoths += flock.GetComponent<MothLifetime>().getFlockSize();
             flocks.Add(flock.GetComponent<ParticleSystem>());
         }
@@ -49,7 +49,7 @@ public class LevelProgressTracker : MonoBehaviour
         float currentProgress = GetLevelProgress();
         if (currentProgress > previousProgress)
         {
-            UpdateCompletedCheckpoints (currentProgress);
+            UpdateCompletedCheckpoints(currentProgress);
         }
         previousProgress = currentProgress;
     }
@@ -62,28 +62,26 @@ public class LevelProgressTracker : MonoBehaviour
             if (req > progress)
             {
                 checkpointsCompleted = completedCheckpoints;
-                return;
+                break;
             }
             LevelSkippable = true;
             completedCheckpoints++;
         }
         checkpointsCompleted = completedCheckpoints;
-        updateScore();
+        UpdatePlayerPrefScore();
     }
-    void updateScore()
+    void UpdatePlayerPrefScore()
     {
         Scene scene = SceneManager.GetActiveScene();
+        // TODO: This is hacky. There must be a better way to do this that doesn't require substring
         int level = int.Parse(scene.name.Substring(5));
         int currentScore = GetCheckpointsCompleted();
         string scoreString = "Level" + level + "score";
+        Debug.Log("Next level unlocked");
 
         if (currentScore != 0)
         {
-            int nextSceneIndex = scene.buildIndex + 1;
-            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-            {
-                UnlockLevel(nextSceneIndex);
-            }
+            UnlockNextLevel();
         }
 
         if (PlayerPrefs.HasKey(scoreString))
@@ -102,19 +100,18 @@ public class LevelProgressTracker : MonoBehaviour
         }
     }
 
-    void unlockNextLevel(int currentLevel)
+    void UnlockNextLevel()
     {
-        int numUnlocked = PlayerPrefs.GetInt("furthestUnlock", 0);
-        Debug.Log("numUnlocked" + numUnlocked);
-        Debug.Log("currentlevel" + currentLevel);
-
-        if (numUnlocked >= currentLevel)
-        {
-            PlayerPrefs.SetInt("furthestUnlock", currentLevel + 1);
-        }
+        Scene scene = SceneManager.GetActiveScene();
+        int nextSceneIndex = scene.buildIndex + 1;
+        UnlockLevel(nextSceneIndex);
     }
     public static void UnlockLevel(int sceneIndex)
     {
+        if (sceneIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            return;
+        }
         if (sceneIndex > PlayerPrefs.GetInt("furthestUnlock"))
         {
             PlayerPrefs.SetInt("furthestUnlock", sceneIndex);
@@ -123,7 +120,7 @@ public class LevelProgressTracker : MonoBehaviour
 
     public float GetLevelProgress()
     {
-        return totalMothsInGoal / (float) totalMoths;
+        return totalMothsInGoal / (float)totalMoths;
     }
 
     public float[] GetCheckPointRequirements()
@@ -175,7 +172,7 @@ public class LevelProgressTracker : MonoBehaviour
             }
         }
 
-        return (totalMothsInGoal + mothsAlive) / (float) totalMoths >=
+        return (totalMothsInGoal + mothsAlive) / (float)totalMoths >=
         checkpointRequirements[checkpointIndex];
     }
 
