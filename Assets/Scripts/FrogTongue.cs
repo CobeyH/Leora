@@ -63,6 +63,7 @@ public class FrogTongue : MonoBehaviour
         if (target != null && !TargetIsValid(target))
         {
             targetSelf = true;
+            target = null;
         } // Find a new target if there isn't one.
         else if (target == null)
         {
@@ -87,7 +88,7 @@ public class FrogTongue : MonoBehaviour
             return;
         }
         SetEdgeCollider();
-        CheckTargetStatus (distanceToTarget);
+        CheckTargetStatus(distanceToTarget);
     }
 
     void CheckTargetStatus(float distanceToTarget)
@@ -182,13 +183,13 @@ public class FrogTongue : MonoBehaviour
             edges.Add(new Vector2(linePoint.x, linePoint.y));
         }
 
-        edgeCollider.SetPoints (edges);
+        edgeCollider.SetPoints(edges);
     }
 
     void OnDrawGizmosSelected()
     {
         Vector3 position = tongue.transform.position;
-        Gizmos.DrawWireSphere (position, maxTargetDistance);
+        Gizmos.DrawWireSphere(position, maxTargetDistance);
         float angle = fieldOfView;
         float halfFOV = angle / 2.0f;
 
@@ -205,8 +206,8 @@ public class FrogTongue : MonoBehaviour
         Vector3 upRayDirection = upRayRotation * transform.right * rayRange;
         Vector3 downRayDirection = downRayRotation * transform.right * rayRange;
 
-        Gizmos.DrawRay (position, upRayDirection);
-        Gizmos.DrawRay (position, downRayDirection);
+        Gizmos.DrawRay(position, upRayDirection);
+        Gizmos.DrawRay(position, downRayDirection);
         Gizmos.DrawLine(position + downRayDirection, position + upRayDirection);
     }
 }
