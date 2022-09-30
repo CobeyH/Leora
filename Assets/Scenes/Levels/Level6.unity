@@ -16545,7 +16545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3854380181968057028, guid: eb3349d79b0531d42a6adc1283e24fad, type: 3}
       propertyPath: mothSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3854380181968057030, guid: eb3349d79b0531d42a6adc1283e24fad, type: 3}
       propertyPath: m_RootOrder
