@@ -16,7 +16,7 @@ public class LevelButtons : MonoBehaviour
         // substracting start screen and level selctor scene
         int levelCount = SceneManager.sceneCountInBuildSettings - 2;
 
-        for (int levelIndex = 1; levelIndex < levelCount; levelIndex++)
+        for (int levelIndex = 1; levelIndex <= levelCount; levelIndex++)
         {
             GameObject buttonObject =
                 Instantiate(buttonPrefab, gameObject.transform);
@@ -32,7 +32,7 @@ public class LevelButtons : MonoBehaviour
     {
         int levelCount = SceneManager.sceneCountInBuildSettings - 2;
         int furthestLevel = PlayerPrefs.GetInt("furthestUnlock", 1);
-        for (int buttonIndex = 0; buttonIndex < levelCount - 1; buttonIndex++)
+        for (int buttonIndex = 0; buttonIndex < levelCount; buttonIndex++)
         {
             levelButtons[buttonIndex].interactable = buttonIndex < furthestLevel;
         }
