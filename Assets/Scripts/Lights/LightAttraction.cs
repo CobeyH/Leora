@@ -19,22 +19,16 @@ public class LightAttraction : MonoBehaviour
     {
         field = GetComponent<ParticleSystemForceField>();
         rigidBody = field.GetComponent<Rigidbody2D>();
-        lightsInScene = new List<Light2D>(FindObjectsOfType<Light2D>());
+        lightsInScene = new List<Light2D>();
 
         // Find all the global lights in the scene
-        List<Light2D> globalLights = new List<Light2D>();
-        foreach (Light2D light in lightsInScene)
+        List<Light2D> allLightsInScene = new List<Light2D>(FindObjectsOfType<Light2D>());
+        foreach (Light2D light in allLightsInScene)
         {
-            if (light.lightType == Light2D.LightType.Global)
+            if (light.lightType == Light2D.LightType.Point)
             {
-                globalLights.Add(light);
+                lightsInScene.Add(light);
             }
-        }
-
-        // Delete the global light from the list
-        foreach (Light2D globalLight in globalLights)
-        {
-            lightsInScene.Remove(globalLight);
         }
     }
 
@@ -96,7 +90,9 @@ public class LightAttraction : MonoBehaviour
                 !MothsInBeam(light, vecToLight)
                 ) ||
                 !LightInRange(light, vecToLight)
-            ) return false; ;
+            ) return false;
+            Debug.Log(light.lightType);
+
             return true;
         }
         return false;
