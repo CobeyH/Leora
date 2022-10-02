@@ -69,6 +69,11 @@ public class AudioManager : MonoBehaviour
         {
             mainTheme.Stop();
         }
+        // Prevent two songs from being played at once
+        if (currentSong != null && currentSong.source.isPlaying == true)
+        {
+            return;
+        }
         currentSong =
             musicTracks[UnityEngine.Random.Range(0, musicTracks.Length - 1)];
         currentSong.source.Play();
