@@ -7,9 +7,11 @@ public class LightRotation : MonoBehaviour
     public Light2D controlledLight;
     public bool canRotate = false;
     private bool rotating = false;
+    private Camera mainCam;
     // Set the initial leaf position based on the light angle
     void Start()
     {
+        mainCam = Camera.main;
         UpdateLeafPositions();
     }
 
@@ -20,9 +22,10 @@ public class LightRotation : MonoBehaviour
         {
             // Calculate the angle between the light and the mouse to determine how to angle the leaves;
             Vector3 mousePos = Input.mousePosition;
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+            Vector3 worldPosition = mainCam.ScreenToWorldPoint(mousePos);
             Vector2 dirToMouse = worldPosition - controlledLight.transform.position;
             float angleToMouse = Vector2.Angle(dirToMouse, controlledLight.transform.up);
+            angleToMouse = Mathf.Clamp(angleToMouse, 10, 60);
             controlledLight.pointLightOuterAngle = angleToMouse * 2;
             UpdateLeafPositions();
         }
