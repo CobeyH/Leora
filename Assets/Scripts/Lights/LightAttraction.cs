@@ -12,29 +12,23 @@ public class LightAttraction : MonoBehaviour
 
     List<Light2D> lightsInScene;
 
-    Vector2 netForce = Vector2.zero;
+    Vector2 centerOfLightMass = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
     {
         field = GetComponent<ParticleSystemForceField>();
         rigidBody = field.GetComponent<Rigidbody2D>();
-        lightsInScene = new List<Light2D>(FindObjectsOfType<Light2D>());
+        lightsInScene = new List<Light2D>();
 
         // Find all the global lights in the scene
-        List<Light2D> globalLights = new List<Light2D>();
-        foreach (Light2D light in lightsInScene)
+        List<Light2D> allLightsInScene = new List<Light2D>(FindObjectsOfType<Light2D>());
+        foreach (Light2D light in allLightsInScene)
         {
-            if (light.lightType == Light2D.LightType.Global)
+            if (light.lightType == Light2D.LightType.Point)
             {
-                globalLights.Add(light);
+                lightsInScene.Add(light);
             }
-        }
-
-        // Delete the global light from the list
-        foreach (Light2D globalLight in globalLights)
-        {
-            lightsInScene.Remove(globalLight);
         }
     }
 
@@ -47,25 +41,36 @@ public class LightAttraction : MonoBehaviour
         }
 
         // Calculate the net force applied to the moths by all lights
-        netForce = Vector2.zero;
         int layer_mask = LayerMask.GetMask("Terrain");
+        centerOfLightMass = Vector2.zero;
+        float totalIntensity = 0f;
         foreach (Light2D light in lightsInScene)
         {
-            netForce += AddForceFromLight(light, layer_mask);
+            if (!ShouldLightContribute(light, layer_mask))
+            {
+                continue;
+            }
+            centerOfLightMass += AddAttractionFromLight(light);
+            totalIntensity += light.intensity;
         }
+        if (totalIntensity == 0)
+        {
+            centerOfLightMass = rigidBody.transform.position;
+        }
+        else
+        {
+            centerOfLightMass /= totalIntensity;
+        }
+
     }
 
     private void FixedUpdate()
     {
-        if (netForce.magnitude == 0)
-        {
-            rigidBody.velocity = Vector2.zero;
-            return;
-        }
-        rigidBody.velocity = netForce.normalized * mothSpeed;
+        Vector2 travelDir = centerOfLightMass - (Vector2)rigidBody.transform.position;
+        rigidBody.velocity = Vector2.ClampMagnitude(travelDir, 1) * mothSpeed;
     }
 
-    Vector2 AddForceFromLight(Light2D light, int layer_mask)
+    private bool ShouldLightContribute(Light2D light, int layer_mask)
     {
         // Check if there is a clear line between the field and the light.
         // Also ignore global lights
@@ -85,15 +90,17 @@ public class LightAttraction : MonoBehaviour
                 !MothsInBeam(light, vecToLight)
                 ) ||
                 !LightInRange(light, vecToLight)
-            ) return Vector2.zero;
+            ) return false;
+            Debug.Log(light.lightType);
 
-            // Make moths attracted in the direction of the light.
-            // Moths are more attracted to stronger lights.
-            // Moths are less attracted to far away lights.
-            return vecToLight.normalized *
-            (light.intensity / (vecToLight.magnitude + 1));
+            return true;
         }
-        return Vector2.zero;
+        return false;
+    }
+
+    Vector2 AddAttractionFromLight(Light2D light)
+    {
+        return light.transform.position * light.intensity;
     }
 
     private bool LightInRange(Light2D light, Vector2 vecToLight)
