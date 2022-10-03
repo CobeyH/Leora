@@ -25,7 +25,7 @@ public class LightRotation : MonoBehaviour
             Vector3 worldPosition = mainCam.ScreenToWorldPoint(mousePos);
             Vector2 dirToMouse = worldPosition - controlledLight.transform.position;
             float angleToMouse = Vector2.Angle(dirToMouse, controlledLight.transform.up);
-            angleToMouse = Mathf.Clamp(angleToMouse, 10, 60);
+            angleToMouse = Mathf.Clamp(angleToMouse, 10, 90);
             controlledLight.pointLightOuterAngle = angleToMouse * 2;
             UpdateLeafPositions();
         }
