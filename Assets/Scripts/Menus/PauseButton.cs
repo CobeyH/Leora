@@ -6,7 +6,6 @@ public class PauseButton : MonoBehaviour
     GameController gameController;
     [SerializeField]
     private Sprite[] icons = new Sprite[2];
-    private int currentSpriteIndex = 0;
     private Image img;
     void Start()
     {
@@ -14,11 +13,21 @@ public class PauseButton : MonoBehaviour
         img = gameObject.GetComponent<Image>();
     }
 
+    void Update()
+    {
+        if (gameController.IsGamePaused())
+        {
+            img.sprite = icons[1];
+        }
+        else
+        {
+            img.sprite = icons[0];
+        }
+    }
+
     public void HandlePauseButton()
     {
         gameController.TogglePauseMenu();
-        currentSpriteIndex = (currentSpriteIndex + 1) % 2;
-        img.sprite = icons[currentSpriteIndex];
     }
 
 }

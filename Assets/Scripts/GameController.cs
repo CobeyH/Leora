@@ -85,13 +85,12 @@ public class GameController : MonoBehaviour
 
     public void TogglePauseMenu()
     {
-        bool isGamePaused = pauseMenuController.gameObject.activeSelf;
         bool isSettingsOpen = settingMenuController.gameObject.activeSelf;
         if (isSettingsOpen)
         {
             HideSettings();
         }
-        else if (isGamePaused)
+        else if (IsGamePaused())
         {
             pauseMenuController.HideMenu();
             ResumeGame();
@@ -101,6 +100,11 @@ public class GameController : MonoBehaviour
             pauseMenuController.ShowMenu();
             PauseGame();
         }
+    }
+
+    public bool IsGamePaused()
+    {
+        return pauseMenuController.gameObject.activeSelf;
     }
 
     void HideSettings()
