@@ -10,6 +10,7 @@ public class LuxRings : MonoBehaviour
     Light2D controlledLight;
 
     SpriteRenderer[] luxRings;
+    private float innerRingScale = 1.3f, ringSpacing = 0.3f, globalRingScale = 0.1f;
 
     void Awake()
     {
@@ -18,7 +19,7 @@ public class LuxRings : MonoBehaviour
         for (int i = 0; i < intensity; i++)
         {
             GameObject newRing = Instantiate(ringPrefab, transform);
-            float scale = (i * 0.3f + 0.8f) * 0.1f;
+            float scale = (i * ringSpacing + innerRingScale) * globalRingScale;
             newRing.transform.localScale = new Vector3(scale, scale, 1);
             luxRings[i] = newRing.GetComponent<SpriteRenderer>();
         }
