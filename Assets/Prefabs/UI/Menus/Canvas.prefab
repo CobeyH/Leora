@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1522670301458337153}
   - component: {fileID: 6922282751425182783}
   - component: {fileID: 638991704684771598}
+  - component: {fileID: 3111238933293443986}
   m_Layer: 5
-  m_Name: MenuButton
+  m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +121,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6922282751425182783}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3111238933293443986}
+        m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+        m_MethodName: HandlePauseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3111238933293443986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742942208971460010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5634079558b7d8f3a2859c2b7f7bb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 21300000, guid: a1bda28f797f71c4db09f6a0d4af4759, type: 3}
+  - {fileID: 21300000, guid: d42cfe7bed8439c439378d1a7e76f4e3, type: 3}
 --- !u!1 &4936037143947638674
 GameObject:
   m_ObjectHideFlags: 0
