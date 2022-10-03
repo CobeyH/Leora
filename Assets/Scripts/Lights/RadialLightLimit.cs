@@ -20,7 +20,13 @@ public class RadialLightLimit : MonoBehaviour
     [SerializeField]
     Gradient ringColors;
     GameObject[] luxOrbs;
+    LuxRings[] rings;
     int availableLux;
+
+    void Awake()
+    {
+        rings = GameObject.FindObjectsOfType<LuxRings>();
+    }
 
     void Start()
     {
@@ -28,6 +34,7 @@ public class RadialLightLimit : MonoBehaviour
         luxOrbs = new GameObject[totalLux];
         GenerateLuxOrbs();
         UpdateTextDisplay();
+        ChangeAvailableLux(0);
     }
 
     void GenerateLuxOrbs()
@@ -58,6 +65,10 @@ public class RadialLightLimit : MonoBehaviour
             availableLux += additionSign;
         }
         UpdateTextDisplay();
+        foreach (LuxRings ring in rings)
+        {
+            ring.UpdateRingsColour(availableLux);
+        }
     }
 
     void UpdateTextDisplay()

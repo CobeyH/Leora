@@ -16,6 +16,9 @@ public class LightController : MonoBehaviour
     [SerializeField]
     GameObject ProjectilePrefab;
 
+    [SerializeField]
+    private GameObject luxRings;
+
     private Camera UICamera;
     private Camera mainCam;
     private RadialLightLimit lightLimit;
@@ -133,6 +136,7 @@ public class LightController : MonoBehaviour
         isOn = !isOn;
         myLight.enabled = isOn;
         lightBeams.enabled = isOn;
+        luxRings.SetActive(!isOn);
     }
 }
 

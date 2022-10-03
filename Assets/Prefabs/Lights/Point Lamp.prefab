@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1008839323339783835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3793202636858541707}
+  - component: {fileID: 3280497425328992403}
+  m_Layer: 6
+  m_Name: LuxRings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3793202636858541707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008839323339783835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5490333106156900495}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3280497425328992403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008839323339783835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b579ec440466aa4e4837d31ed61093d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ringPrefab: {fileID: 1930016776385410838, guid: 381beedd40d9dc9d1998fa648421a496, type: 3}
+  controlledLight: {fileID: 5490333106156900489}
 --- !u!1 &5490333105552584178
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +215,7 @@ Transform:
   m_Children:
   - {fileID: 7045732805243488081}
   - {fileID: 784975542209855363}
+  - {fileID: 3793202636858541707}
   m_Father: {fileID: 5490333105552584142}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,6 +314,7 @@ MonoBehaviour:
   startOn: 0
   isOn: 0
   ProjectilePrefab: {fileID: 1949821205865294940, guid: ccf18fa9d20d5f909befe02c7fae4727, type: 3}
+  luxRings: {fileID: 1008839323339783835}
 --- !u!58 &518453145197026385
 CircleCollider2D:
   m_ObjectHideFlags: 0
