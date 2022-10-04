@@ -4251,20 +4251,24 @@ PrefabInstance:
     - target: {fileID: 3317582958856787251, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5759942792239276505}
+      objectReference: {fileID: 6058842126840317698}
     - target: {fileID: 3317582958856787251, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: ShowCoupledMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3317582958856787251, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: OpenSettings, Assembly-CSharp
+      value: MenuController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3317582959957048371, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
       propertyPath: m_text
       value: 'Apply
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409988128022687767, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409988128022687767, guid: f8635977f262e4af98a8f4b581e6b429, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
