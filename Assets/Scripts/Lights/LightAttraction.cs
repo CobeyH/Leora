@@ -91,7 +91,6 @@ public class LightAttraction : MonoBehaviour
                 ) ||
                 !LightInRange(light, vecToLight)
             ) return false;
-            Debug.Log(light.lightType);
 
             return true;
         }
