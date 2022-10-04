@@ -102,9 +102,10 @@ public class LevelProgressTracker : MonoBehaviour
     void UnlockNextLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
-        int nextSceneIndex = scene.buildIndex + 1;
+        int nextSceneIndex = scene.buildIndex;
         UnlockLevel(nextSceneIndex);
     }
+
     public static void UnlockLevel(int sceneIndex)
     {
         if (sceneIndex >= SceneManager.sceneCountInBuildSettings)
