@@ -39,32 +39,24 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void RaiseSettingsEvent()
+    {
+        if (ToggleMenuChannel != null)
+        {
+            ToggleMenuChannel.RaiseEvent(MenuType.SettingsMenu);
+        }
+    }
+
     void Start()
     {
         // All menus should start invisible
         gameObject.SetActive(false);
     }
 
-    public void HideMenu()
-    {
-    }
-
-    // public void ShowCoupledMenu()
-    // {
-    //     HideMenu();
-    //     coupledMenuController.ShowMenu();
-    // }
-
     public void RestartLevel()
     {
         gameController.RestartLevel();
     }
-
-    //TODO: Fix events
-    // public void ResumeLevel()
-    // {
-    //     gameController.TogglePauseMenu();
-    // }
 
     public void LoadMenu()
     {

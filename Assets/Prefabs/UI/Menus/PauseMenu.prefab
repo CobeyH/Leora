@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 7031392415892468155}
     - target: {fileID: 4733694224567363686, guid: d9c566c0429c24b4fbddc6f034aa0707, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowCoupledMenu
+      value: RaiseSettingsEvent
       objectReference: {fileID: 0}
     - target: {fileID: 4733694224567363686, guid: d9c566c0429c24b4fbddc6f034aa0707, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
