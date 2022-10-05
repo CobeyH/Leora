@@ -2768,6 +2768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df07db8eac9e4f7fb5d4c4c246704b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ToggleMenuChannel: {fileID: 11400000, guid: 2e3498219a4e7b89b9427fa57408d8eb, type: 2}
+  Type: 1
   coupledMenu: {fileID: 1455487427743739148, guid: 608b1a8e1898a4484b91f2176ebce4e3, type: 3}
 --- !u!114 &3470805417572605770
 MonoBehaviour:

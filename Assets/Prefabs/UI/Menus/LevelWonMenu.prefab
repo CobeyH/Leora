@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Level Complete
       objectReference: {fileID: 0}
+    - target: {fileID: 8717678130559676311, guid: d9c566c0429c24b4fbddc6f034aa0707, type: 3}
+      propertyPath: Type
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8907053072963927051, guid: d9c566c0429c24b4fbddc6f034aa0707, type: 3}
       propertyPath: m_text
       value: Menu

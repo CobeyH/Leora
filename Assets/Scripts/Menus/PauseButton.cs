@@ -3,31 +3,39 @@ using UnityEngine.UI;
 
 public class PauseButton : MonoBehaviour
 {
-    GameController gameController;
+    public MenuEventChannelSO ToggleMenuChannel;
     [SerializeField]
     private Sprite[] icons = new Sprite[2];
+    private int currentIcon = 0;
     private Image img;
     void Start()
     {
-        gameController = GameObject.FindObjectOfType<GameController>();
         img = gameObject.GetComponent<Image>();
     }
 
-    void Update()
+    void OnEnable()
     {
-        if (gameController.IsGamePaused())
-        {
-            img.sprite = icons[1];
-        }
-        else
-        {
-            img.sprite = icons[0];
-        }
+        ToggleMenuChannel.OnEventRaised += TogglePauseButton;
     }
 
-    public void HandlePauseButton()
+    void OnDisable()
     {
-        gameController.TogglePauseMenu();
+        ToggleMenuChannel.OnEventRaised -= TogglePauseButton;
+    }
+
+    void TogglePauseButton(MenuType menu)
+    {
+        if (menu != MenuType.PauseMenu) return;
+        currentIcon = (currentIcon + 1) % 2;
+        img.sprite = icons[currentIcon];
+    }
+
+    public void SendPauseEvent()
+    {
+        if (ToggleMenuChannel != null)
+        {
+            ToggleMenuChannel.RaiseEvent(MenuType.PauseMenu);
+        }
     }
 
 }
