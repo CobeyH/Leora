@@ -8,6 +8,8 @@ public class LightController : MonoBehaviour
 
     public Light2D lightBeams;
 
+    public LightData lightData;
+
     public bool startOn = false;
 
     [HideInInspector]

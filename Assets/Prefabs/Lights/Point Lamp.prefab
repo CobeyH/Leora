@@ -243,6 +243,7 @@ MonoBehaviour:
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -311,6 +312,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLight: {fileID: 5490333106156900489}
   lightBeams: {fileID: 3237902851604274026}
+  test:
+    area: 1
+    activation: 0
+    canDim: 0
+    canRotate: 0
+    startsOn: 0
   startOn: 0
   isOn: 0
   ProjectilePrefab: {fileID: 1949821205865294940, guid: ccf18fa9d20d5f909befe02c7fae4727, type: 3}
@@ -416,6 +423,7 @@ MonoBehaviour:
   m_LightCookieSprite: {fileID: 21300000, guid: 8b3a74f4fd2206cfda1ff195b2de671d, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
