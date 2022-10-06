@@ -4,19 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject
-
-            gameLostMenu,
-            gameWonMenu,
-            pauseMenu;
-
-    private MenuController
-
-            lostMenuController,
-            wonMenuController,
-            pauseMenuController,
-            settingMenuController;
-
+    public MenuEventChannelSO ToggleMenuChannel;
     public GameObject dofVolume;
 
     private LevelProgressTracker tracker;
@@ -29,11 +17,6 @@ public class GameController : MonoBehaviour
             GameObject
                 .FindGameObjectWithTag("ProgressManager")
                 .GetComponent<LevelProgressTracker>();
-        pauseMenuController = pauseMenu.GetComponent<MenuController>();
-        wonMenuController = gameWonMenu.GetComponent<MenuController>();
-        settingMenuController =
-            GameObject.Find("SettingsMenu").GetComponent<MenuController>();
-        lostMenuController = gameLostMenu.GetComponent<MenuController>();
     }
 
     void Start()
@@ -51,7 +34,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePauseMenu();
+            SendPauseEvent();
         }
     }
 
@@ -62,8 +45,11 @@ public class GameController : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.5f);
             if (tracker.IsLevelFailed())
             {
-                gameLostMenu.GetComponent<MenuController>().ShowMenu();
-
+                if (ToggleMenuChannel != null)
+                {
+                    ToggleMenuChannel.RaiseEvent(MenuType.LevelFailedMenu);
+                    PauseGame();
+                }
                 yield break;
             }
         }
@@ -76,41 +62,52 @@ public class GameController : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.5f);
             if (tracker.IsLevelComplete())
             {
-                gameWonMenu.GetComponent<MenuController>().ShowMenu();
+                if (ToggleMenuChannel != null)
+                {
+                    ToggleMenuChannel.RaiseEvent(MenuType.LevelWonMenu);
+                    PauseGame();
+                }
 
                 yield break;
             }
         }
     }
 
-    public void TogglePauseMenu()
+    private void OnEnable()
     {
-        bool isSettingsOpen = settingMenuController.gameObject.activeSelf;
-        if (isSettingsOpen)
+        ToggleMenuChannel.OnEventRaised += TogglePause;
+    }
+
+    private void OnDisable()
+    {
+        ToggleMenuChannel.OnEventRaised -= TogglePause;
+    }
+
+    private void TogglePause(MenuType menu)
+    {
+        switch (menu)
         {
-            HideSettings();
-        }
-        else if (IsGamePaused())
-        {
-            pauseMenuController.HideMenu();
-            ResumeGame();
-        }
-        else
-        {
-            pauseMenuController.ShowMenu();
-            PauseGame();
+            case MenuType.PauseMenu:
+                if (Time.timeScale == 0)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
+                break;
+            default:
+                break;
         }
     }
 
-    public bool IsGamePaused()
+    public void SendPauseEvent()
     {
-        return pauseMenuController.gameObject.activeSelf;
-    }
-
-    void HideSettings()
-    {
-        settingMenuController.HideMenu();
-        pauseMenuController.ShowMenu();
+        if (ToggleMenuChannel != null)
+        {
+            ToggleMenuChannel.RaiseEvent(MenuType.PauseMenu);
+        }
     }
 
     public void PauseGame()

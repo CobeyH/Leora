@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3111238933293443986}
         m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
-        m_MethodName: HandlePauseButton
+        m_MethodName: SendPauseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5634079558b7d8f3a2859c2b7f7bb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ToggleMenuChannel: {fileID: 11400000, guid: 2e3498219a4e7b89b9427fa57408d8eb, type: 2}
   icons:
   - {fileID: 21300000, guid: a1bda28f797f71c4db09f6a0d4af4759, type: 3}
   - {fileID: 21300000, guid: d42cfe7bed8439c439378d1a7e76f4e3, type: 3}
