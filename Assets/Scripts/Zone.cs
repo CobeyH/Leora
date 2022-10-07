@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Zone : MonoBehaviour
@@ -10,7 +8,7 @@ public class Zone : MonoBehaviour
     {
         if (col.gameObject.CompareTag("MothForces"))
         {
-            Debug.Log("Valid collision");
+            ZoneEvents.RaiseEvent(id);
         }
     }
 }
