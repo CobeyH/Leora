@@ -115,4 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  triggerTime: 2
   ZoneEvents: {fileID: 11400000, guid: 7b542f389418ac9ecb78a87818f7ec67, type: 2}

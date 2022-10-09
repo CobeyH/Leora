@@ -5,27 +5,27 @@ public class Zone : MonoBehaviour
 {
     public int id;
 
-    public ZoneType type;
+    public float triggerTime;
 
     public IntEventChannelSO ZoneEvents;
 
-    public enum ZoneType
-    {
-        TimeBased,
-        PopulationBased
-    }
+    private float timeInside;
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("MothForces"))
         {
-            StartCoroutine(ZoneCountdown());
+            timeInside = 0;
         }
     }
 
-    IEnumerator ZoneCountdown()
+    void OnTriggerStay2D()
     {
-        ZoneEvents.RaiseEvent (id);
-        yield break;
+        timeInside += Time.deltaTime;
+        if (timeInside > triggerTime)
+        {
+            ZoneEvents.RaiseEvent (id);
+            timeInside = 0;
+        }
     }
 }
