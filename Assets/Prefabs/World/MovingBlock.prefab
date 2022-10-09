@@ -124,5 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b7b28b9023d43b9b70a9e06a5846d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerChannel: {fileID: 11400000, guid: 7b542f389418ac9ecb78a87818f7ec67, type: 2}
+  subscribedChannels: 
   endPoint: {x: -3, y: 0}
   speed: 1

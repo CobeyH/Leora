@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MovingBlock : MonoBehaviour
 {
+    public IntEventChannelSO triggerChannel;
+
+    public List<int> subscribedChannels = new List<int>();
+
     public Vector2 endPoint;
 
     Vector2 startPoint;
@@ -12,22 +16,27 @@ public class MovingBlock : MonoBehaviour
 
     private bool blockMoving = false;
 
-    public void Trigger()
+    void OnEnable()
     {
-        StartCoroutine(MoveBlock());
+        triggerChannel.OnEventRaised += Trigger;
+    }
+
+    void OnDisable()
+    {
+        triggerChannel.OnEventRaised -= Trigger;
+    }
+
+    public void Trigger(int channelID)
+    {
+        if (subscribedChannels.Contains(channelID))
+        {
+            StartCoroutine(MoveBlock());
+        }
     }
 
     public void Start()
     {
         startPoint = transform.position;
-    }
-
-    public void Update()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            Trigger();
-        }
     }
 
     IEnumerator MoveBlock()
@@ -55,5 +64,6 @@ public class MovingBlock : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(endPoint, 0.25f);
+        Gizmos.DrawLine(transform.position, endPoint);
     }
 }
