@@ -47,11 +47,11 @@ public class LightController : MonoBehaviour
 
     void OnMouseDown()
     {
-        toggleLight();
+        ToggleLight();
         audioManager.Play("LightOn");
     }
 
-    void toggleLight()
+    public void ToggleLight()
     {
         // Light cannot be interacted with if the routine is running.
         if (routineRunning)
