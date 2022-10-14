@@ -3514,11 +3514,13 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    influenceFilter: 0
+    influenceFilter: 2
     influenceMask:
       serializedVersion: 2
-      m_Bits: 4294967295
-    influenceList: []
+      m_Bits: 1
+    influenceList:
+    - {fileID: 3854380182497185525}
+    - {fileID: 3854380181968057033}
   ClampVelocityModule:
     enabled: 1
     x:
