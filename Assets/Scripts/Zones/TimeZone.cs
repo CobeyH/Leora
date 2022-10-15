@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Zone : MonoBehaviour
+public class TimeZone : MonoBehaviour
 {
     public int id;
 
@@ -12,9 +12,8 @@ public class Zone : MonoBehaviour
 
     public IntEventChannelSO ZoneEvents;
 
-    private float timeInside;
-
     private Image ZoneUI;
+    private float timeInside = 0;
 
     void Awake()
     {
@@ -42,7 +41,7 @@ public class Zone : MonoBehaviour
         ZoneUI.fillAmount = timeInside / triggerTime;
         if (timeInside > triggerTime)
         {
-            ZoneEvents.RaiseEvent (id);
+            ZoneEvents.RaiseEvent(id);
             timeInside = 0;
         }
     }
