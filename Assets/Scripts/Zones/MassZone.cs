@@ -1,36 +1,10 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class MassZone : MonoBehaviour
+public class MassZone : ZoneBase
 {
-    public int id;
-
-    public int activationAmount;
-
-    public GameObject UIPrefab;
-
-    public IntEventChannelSO ZoneEvents;
-    [HideInInspector]
-    public int mothsEntered = 0;
-
-    private Image ZoneUI;
-
-    void Awake()
-    {
-        GameObject ZoneUIObject =
-            Instantiate(UIPrefab, transform.position, Quaternion.identity);
-        ZoneUIObject
-            .transform
-            .SetParent(GameObject.Find("SpriteOverlay").transform);
-
-        ZoneUI = ZoneUIObject.GetComponent<Image>();
-        ZoneUI.color = gameObject.GetComponent<SpriteRenderer>().color;
-    }
-
     void Update()
     {
-        float target = mothsEntered / (float)activationAmount;
+        float target = progress / activationReq;
         target = Mathf.Clamp(target, 0f, 1f);
         if (ZoneUI.fillAmount < target)
         {
@@ -49,11 +23,11 @@ public class MassZone : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        mothsEntered += GetMothCount(col);
+        progress += GetMothCount(col);
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        mothsEntered -= GetMothCount(col);
+        progress -= GetMothCount(col);
     }
 
     int GetMothCount(Collider2D col)
