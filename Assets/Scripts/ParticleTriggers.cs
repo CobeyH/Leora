@@ -23,7 +23,6 @@ public class ParticleTriggers : MonoBehaviour
     {
         AddCollidersWithTag("TrapLight");
         AddCollidersWithTag("Goal");
-        AddCollidersWithTag("MassZone");
     }
 
     void AddCollidersWithTag(string tag)
