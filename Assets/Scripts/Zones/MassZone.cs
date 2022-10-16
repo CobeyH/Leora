@@ -11,7 +11,8 @@ public class MassZone : MonoBehaviour
     public GameObject UIPrefab;
 
     public IntEventChannelSO ZoneEvents;
-    private int mothsEntered;
+    [HideInInspector]
+    public int mothsEntered = 0;
 
     private Image ZoneUI;
 
@@ -24,5 +25,10 @@ public class MassZone : MonoBehaviour
             .SetParent(GameObject.Find("SpriteOverlay").transform);
 
         ZoneUI = ZoneUIObject.GetComponent<Image>();
+    }
+
+    void OnTriggerStay2D()
+    {
+        ZoneUI.fillAmount = mothsEntered / (float)activationAmount;
     }
 }
