@@ -21,21 +21,17 @@ public class ParticleTriggers : MonoBehaviour
 
     void AddCollidersToTriggers()
     {
-        var trigger = partSys.trigger;
+        AddCollidersWithTag("TrapLight");
+        AddCollidersWithTag("Goal");
+        AddCollidersWithTag("MassZone");
+    }
 
-        // Add colliders for trap lights
-        GameObject[] trapLights =
-            GameObject.FindGameObjectsWithTag("TrapLight");
-        foreach (GameObject trap in trapLights)
+    void AddCollidersWithTag(string tag)
+    {
+        GameObject[] gameObjs = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in gameObjs)
         {
-            trigger.AddCollider(trap.GetComponent<Collider2D>());
-        }
-
-        // Add colliders for goals
-        GameObject[] goals = GameObject.FindGameObjectsWithTag("Goal");
-        foreach (GameObject goal in goals)
-        {
-            trigger.AddCollider(goal.GetComponent<CircleCollider2D>());
+            partSys.trigger.AddCollider(obj.GetComponent<CircleCollider2D>());
         }
     }
 
