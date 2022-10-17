@@ -9,12 +9,7 @@ public class LightController : MonoBehaviour
     public Light2D lightBeams;
 
     public LightData lightData;
-
-    public bool startOn = false;
     public bool returnsLux = false;
-
-    [HideInInspector]
-    public bool isOn;
 
     [SerializeField]
     GameObject ProjectilePrefab;
@@ -41,11 +36,9 @@ public class LightController : MonoBehaviour
 
     void Start()
     {
-        myLight.enabled = startOn;
-        lightBeams.enabled = startOn;
+        myLight.enabled = lightData.startsOn;
+        lightBeams.enabled = lightData.startsOn;
         myLight.intensity = Mathf.Round(myLight.intensity);
-        isOn = startOn;
-
     }
 
     void OnMouseDown()
@@ -72,15 +65,18 @@ public class LightController : MonoBehaviour
             SwitchLightState();
             return;
         }
-        if (!isOn)
+        if (!myLight.enabled)
         {
             StartCoroutine(EnableLight(startPos, endPos));
         }
         else
         {
-            if(returnsLux) {
-                  StartCoroutine(EnableLight(endPos, startPos));
-            } else {
+            if (returnsLux)
+            {
+                StartCoroutine(EnableLight(endPos, startPos));
+            }
+            else
+            {
                 SwitchLightState();
             }
         }
@@ -89,7 +85,7 @@ public class LightController : MonoBehaviour
     IEnumerator EnableLight(Vector3 startPos, Vector3 endPos)
     {
         routineRunning = true;
-        bool lightWasOn = isOn;
+        bool lightWasOn = myLight.enabled;
         if (lightWasOn)
         {
             HandleOnLight();
@@ -140,10 +136,9 @@ public class LightController : MonoBehaviour
 
     void SwitchLightState()
     {
-        isOn = !isOn;
-        myLight.enabled = isOn;
-        lightBeams.enabled = isOn;
-        luxRings.SetActive(!isOn);
+        myLight.enabled = !myLight.enabled;
+        lightBeams.enabled = myLight.enabled;
+        luxRings.SetActive(!myLight.enabled);
     }
 }
 

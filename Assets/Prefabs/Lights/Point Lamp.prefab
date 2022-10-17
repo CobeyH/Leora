@@ -56,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5490333105552584142}
   - component: {fileID: 5490333105552584143}
-  - component: {fileID: 1123742137505648197}
   - component: {fileID: 9137194527988666746}
   - component: {fileID: 4666888882054064983}
   m_Layer: 6
@@ -134,20 +133,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1123742137505648197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5490333105552584178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a713d0fd4030b46ecb32990d71cbda7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sparks: {fileID: 634278166950957639}
-  controlledLight: {fileID: 5490333106156900489}
 --- !u!70 &9137194527988666746
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -312,14 +297,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLight: {fileID: 5490333106156900489}
   lightBeams: {fileID: 3237902851604274026}
-  test:
-    area: 1
+  lightData:
+    area: 0
     activation: 0
     canDim: 0
     canRotate: 0
     startsOn: 0
-  startOn: 0
-  isOn: 0
+  returnsLux: 0
   ProjectilePrefab: {fileID: 1949821205865294940, guid: ccf18fa9d20d5f909befe02c7fae4727, type: 3}
   luxRings: {fileID: 1008839323339783835}
 --- !u!58 &518453145197026385
@@ -802,11 +786,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
---- !u!198 &634278166950957639 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2057606824703212134, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
-  m_PrefabInstance: {fileID: 1460149383260497953}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7045732805243488081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8467900383550091120, guid: 5f6a17f94c451efd8bb79f92ff9f9589, type: 3}
