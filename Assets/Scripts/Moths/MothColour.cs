@@ -14,7 +14,7 @@ public class MothColour : MonoBehaviour
     void Start()
     {
         mat = gameObject.GetComponent<ParticleSystemRenderer>().material;
-        isDecoy = gameObject.GetComponent<Goal>().IsDecoy;
+        isDecoy = gameObject.GetComponent<ParticleTriggers>().IsDecoy;
         if (isDecoy)
         {
             mat.color = Color.white;
