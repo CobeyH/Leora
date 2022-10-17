@@ -49,7 +49,6 @@ public class LightAttraction : MonoBehaviour
 
         foreach (Light2D light in contributingLights)
         {
-            Debug.Log(light.name + " " + light.intensity + " " + highestIntensity);
             if (light.intensity < highestIntensity) continue;
             centerOfLightMass += AddAttractionFromLight(light);
             totalIntensity += light.intensity;
