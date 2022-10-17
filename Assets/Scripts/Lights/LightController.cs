@@ -11,6 +11,7 @@ public class LightController : MonoBehaviour
     public LightData lightData;
 
     public bool startOn = false;
+    public bool returnsLux = false;
 
     [HideInInspector]
     public bool isOn;
@@ -49,11 +50,11 @@ public class LightController : MonoBehaviour
 
     void OnMouseDown()
     {
-        toggleLight();
+        ToggleLight();
         audioManager.Play("LightOn");
     }
 
-    void toggleLight()
+    public void ToggleLight()
     {
         // Light cannot be interacted with if the routine is running.
         if (routineRunning)
@@ -77,7 +78,11 @@ public class LightController : MonoBehaviour
         }
         else
         {
-            StartCoroutine(EnableLight(endPos, startPos));
+            if(returnsLux) {
+                  StartCoroutine(EnableLight(endPos, startPos));
+            } else {
+                SwitchLightState();
+            }
         }
     }
 
