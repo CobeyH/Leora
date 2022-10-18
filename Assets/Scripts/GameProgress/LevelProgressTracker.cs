@@ -8,7 +8,7 @@ public class LevelProgressTracker : MonoBehaviour
     [SerializeField]
     private float[] checkpointRequirements;
 
-    List<Goal> goals = new List<Goal>();
+    List<ParticleTriggers> goals = new List<ParticleTriggers>();
 
     List<ParticleSystem> flocks = new List<ParticleSystem>();
 
@@ -29,7 +29,7 @@ public class LevelProgressTracker : MonoBehaviour
         GameObject[] mothFlocks = GameObject.FindGameObjectsWithTag("Moths");
         foreach (GameObject flock in mothFlocks)
         {
-            Goal nextGoal = flock.GetComponent<Goal>();
+            ParticleTriggers nextGoal = flock.GetComponent<ParticleTriggers>();
             if (nextGoal.IsDecoy) continue;
             goals.Add(nextGoal);
             totalMoths += flock.GetComponent<MothLifetime>().getFlockSize();
@@ -41,7 +41,7 @@ public class LevelProgressTracker : MonoBehaviour
     void Update()
     {
         int updatedMothsInGoal = 0;
-        foreach (Goal goal in goals)
+        foreach (ParticleTriggers goal in goals)
         {
             updatedMothsInGoal += goal.getMothsInGoal();
         }

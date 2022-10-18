@@ -9,6 +9,7 @@ public class LightController : MonoBehaviour
     public Light2D lightBeams;
 
     public bool startOn = false;
+    public bool returnsLux = false;
 
     [HideInInspector]
     public bool isOn;
@@ -75,7 +76,11 @@ public class LightController : MonoBehaviour
         }
         else
         {
-            StartCoroutine(EnableLight(endPos, startPos));
+            if(returnsLux) {
+                  StartCoroutine(EnableLight(endPos, startPos));
+            } else {
+                SwitchLightState();
+            }
         }
     }
 

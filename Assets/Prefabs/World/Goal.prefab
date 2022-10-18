@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2438196393849366666}
   - component: {fileID: 3754458913241048103}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Outer Force
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5538,7 +5538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2659933858926817281}
   - component: {fileID: 2659933858926817286}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Goal Vacuum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6112,6 +6112,7 @@ MonoBehaviour:
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2

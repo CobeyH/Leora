@@ -44,12 +44,12 @@ public class LightAttraction : MonoBehaviour
         int layer_mask = LayerMask.GetMask("Terrain");
         centerOfLightMass = Vector2.zero;
         float totalIntensity = 0f;
-        foreach (Light2D light in lightsInScene)
+        List<Light2D> contributingLights = lightsInScene.FindAll(l => ShouldLightContribute(l, layer_mask));
+        int highestIntensity = FindHighestIntensity(contributingLights);
+
+        foreach (Light2D light in contributingLights)
         {
-            if (!ShouldLightContribute(light, layer_mask))
-            {
-                continue;
-            }
+            if (light.intensity < highestIntensity) continue;
             centerOfLightMass += AddAttractionFromLight(light);
             totalIntensity += light.intensity;
         }
@@ -62,6 +62,19 @@ public class LightAttraction : MonoBehaviour
             centerOfLightMass /= totalIntensity;
         }
 
+    }
+
+    private int FindHighestIntensity(List<Light2D> lights)
+    {
+        int highestIntensity = 0;
+        foreach (Light2D light in lights)
+        {
+            if (light.intensity > highestIntensity)
+            {
+                highestIntensity = (int)light.intensity;
+            }
+        }
+        return highestIntensity;
     }
 
     private void FixedUpdate()
