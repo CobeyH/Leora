@@ -20,6 +20,8 @@ public class ZoneBase : MonoBehaviour
             .SetParent(GameObject.Find("SpriteOverlay").transform);
 
         ZoneUI = ZoneUIObject.GetComponent<Image>();
-        ZoneUI.color = gameObject.GetComponent<SpriteRenderer>().color;
+        SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+        ZoneUI.color = sprite.color;
+        ZoneUI.transform.localScale = gameObject.transform.localScale;
     }
 }
