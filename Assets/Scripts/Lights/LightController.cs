@@ -5,11 +5,8 @@ using System.Collections;
 public class LightController : MonoBehaviour
 {
     public Light2D myLight;
-
     public Light2D lightBeams;
-
     public LightData lightData;
-    public bool returnsLux = false;
 
     [SerializeField]
     GameObject ProjectilePrefab;
@@ -71,7 +68,7 @@ public class LightController : MonoBehaviour
         }
         else
         {
-            if (returnsLux)
+            if (lightData.returnsLux)
             {
                 StartCoroutine(EnableLight(endPos, startPos));
             }
