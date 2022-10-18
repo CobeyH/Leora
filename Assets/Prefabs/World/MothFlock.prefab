@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3854380181968057028}
   - component: {fileID: 2938814413458364554}
   - component: {fileID: 1620006874478156726}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: MothFlock
   m_TagString: MothForces
   m_Icon: {fileID: 0}
@@ -48,9 +48,9 @@ ParticleSystemForceField:
   m_Parameters:
     m_Shape: 0
     m_StartRange: 0
-    m_EndRange: 2
+    m_EndRange: 1
     m_Length: 1
-    m_GravityFocus: 0
+    m_GravityFocus: 0.1
     m_RotationRandomness: {x: 0, y: 0}
     m_DirectionCurveX:
       serializedVersion: 2
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5afba06ec10bbd0ebc19bb9067c018f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mothSpeed: 4
+  mothSpeed: 3
 --- !u!58 &2938814413458364554
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -560,7 +560,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!50 &1620006874478156726
 Rigidbody2D:
   serializedVersion: 4
@@ -624,8 +624,8 @@ ParticleSystemForceField:
   m_Enabled: 1
   m_Parameters:
     m_Shape: 0
-    m_StartRange: 2
-    m_EndRange: 2.5
+    m_StartRange: 1
+    m_EndRange: 1.5
     m_Length: 1
     m_GravityFocus: 0
     m_RotationRandomness: {x: 0, y: 0}
@@ -1860,7 +1860,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.7
+      value: 0.5
       mode: 0
       spread: 0
       speed:
@@ -3685,7 +3685,7 @@ ParticleSystem:
     magnitude:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3735,11 +3735,11 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxis: 1
+    separateAxis: 0
     inWorldSpace: 0
-    multiplyDragByParticleSize: 1
+    multiplyDragByParticleSize: 0
     multiplyDragByParticleVelocity: 1
-    dampen: 0.4
+    dampen: 0.05
     drag:
       serializedVersion: 2
       minMaxState: 0
