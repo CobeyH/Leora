@@ -30,7 +30,7 @@ The simplest gameplay element is the moth's attraction light. Each plant light h
 
 ![image](https://user-images.githubusercontent.com/32989729/187002236-4ca1b73d-bff2-411f-8c8d-01158e26eb6e.png)
 
-Each update cycle, a script calculates the equilibrium point for each flock. A linecast is performed between every active light and each moth flock to determine if they have line-of-sight to that light. If there are no obstacles blocking sight, the light will be used in a center-of-mass calculation. The intensity of the light is used as the "mass" in the COM calculation. This means that the equilibrium point will be closed to more powerful lights.
+Each update cycle, a script calculates the equilibrium point for each flock. A linecast is performed between every active light and each moth flock to determine if they have line-of-sight to that light. If there are no obstacles blocking sight, the light will be used in a center-of-mass calculation. The intensity of the light is used as the "mass" in the COM calculation. This means that the equilibrium point will be closer to more powerful lights.
 
 ### Directional Lights
 
@@ -45,7 +45,7 @@ An additional script allows the users to dim the intensity of the lights during 
 
 ### Lux Limits
 
-A resource called "Lux" was created to limit the number of lights that can be enabled in the scene at one time. The current available lux is represented as a glowing orb with a number of rings to represent the current available lux. The lights each have a glowing ring around them to represent the amount of lux they require to activate.
+A resource called "Lux" was created to limit the number of lights that can be enabled in the scene at one time. The current available lux is represented as a glowing orb with a number of rings to represent the current available lux. The lights each have a glowing ring around them to represent the amount of lux they require to activate. When a light is activated, a co-routine starts that animates a projectile from the lux source to the light location. 
 ![image](https://user-images.githubusercontent.com/32989729/187006899-405ca7d6-7294-4b60-b4be-2a029a606c4c.png)
 
 ### Glass Material
@@ -71,6 +71,13 @@ Decoy flocks are a variant of normal flocks that do not count towards level prog
 This project leverages scriptable objects to build an event system that doesn't require direct object assignments. The scriptable object script contains a function that will get called when the OnEventRaised function is invoked. This event will then get propagated to all the subscribers on that channel without references being assigned directly.
 
 For example, the game controller raises an event on the "GamePause" channel when the user presses the escape button. The pause menu can listen for this event and enable itself without the game controller directly knowing about the pause menu. This system is much more scalable and allows logic for each component to be encapsulated inside individual scripts instead of calling functions from other scripts. It's also very easy to add other components that care about game pausing without modifying the game controller.
+
+### Zones
+Zones act as our version of "buttons" in a traditional platformer puzzle game. Each zone has a activation requirement that will cause it to trigger some action in the world. This system uses the scriptable object event system to create a many-to-many relationship between zones and trigger objects. For example, a zone could cause two movable platforms to update their position or cause two lights to turn on.
+
+At this point we have two different types of zones. One zone requires any flock of moths to overlap with the zone for a set amount of time to activate, the other zone requires a certain number of particles to overlap the zone.
+![image](https://user-images.githubusercontent.com/32989729/197032764-d8bd8437-19c6-4fd2-9fba-03da0db10966.png)
+
 
 ### Progress Management
 
