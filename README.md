@@ -76,6 +76,7 @@ For example, the game controller raises an event on the "GamePause" channel when
 Zones act as our version of "buttons" in a traditional platformer puzzle game. Each zone has a activation requirement that will cause it to trigger some action in the world. This system uses the scriptable object event system to create a many-to-many relationship between zones and trigger objects. For example, a zone could cause two movable platforms to update their position or cause two lights to turn on.
 
 At this point we have two different types of zones. One zone requires any flock of moths to overlap with the zone for a set amount of time to activate, the other zone requires a certain number of particles to overlap the zone.
+
 ![image](https://user-images.githubusercontent.com/32989729/197032764-d8bd8437-19c6-4fd2-9fba-03da0db10966.png)
 
 
