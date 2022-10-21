@@ -24013,6 +24013,14 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[65].Array.data[207].Y
       value: -69950100
       objectReference: {fileID: 0}
+    - target: {fileID: 7898793027810343390, guid: e1a88c89427949deaa36610e6c263454, type: 3}
+      propertyPath: m_ChunkCullingBounds.x
+      value: 0.0009803772
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898793027810343390, guid: e1a88c89427949deaa36610e6c263454, type: 3}
+      propertyPath: m_ChunkCullingBounds.y
+      value: 0.0009803772
+      objectReference: {fileID: 0}
     - target: {fileID: 7898793027810343391, guid: e1a88c89427949deaa36610e6c263454, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 272
@@ -31619,7 +31627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5889620949529498332, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
       propertyPath: orthographic size
-      value: 6.184378
+      value: 6.1849055
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caba3be02061447f3b4db9b1b23f08b1, type: 3}
