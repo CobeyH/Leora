@@ -6,7 +6,8 @@ public class LightController : MonoBehaviour
 {
     public Light2D myLight;
     public Light2D lightBeams;
-    public LightData lightData;
+
+    private LightData lightData;
 
     [SerializeField]
     GameObject ProjectilePrefab;
@@ -29,6 +30,7 @@ public class LightController : MonoBehaviour
         lightLimit = GameObject.Find("RadialLightLimit").GetComponent<RadialLightLimit>();
         mainCam = Camera.main;
         UICamera = GameObject.Find("UICamera").GetComponent<Camera>();
+        lightData = transform.parent.gameObject.GetComponent<LightBuilder>().lightData;
     }
 
     void Start()
