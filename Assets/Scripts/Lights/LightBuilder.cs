@@ -18,7 +18,7 @@ public class LightBuilder : MonoBehaviour
         if (this == null) return;
         CheckActivationType();
         CheckAreaOfEffect();
-        lightEmitter.GetComponent<Light2D>().enabled = lightData.startsOn;
+        CheckStartOn();
     }
 
     void CheckActivationType()
@@ -43,7 +43,6 @@ public class LightBuilder : MonoBehaviour
 
     void CheckAreaOfEffect()
     {
-
         if (lightData.area != _oldLightData.area)
         {
             GameObject leaves = lightEmitter.transform.Find("Leaves").gameObject;
@@ -63,6 +62,11 @@ public class LightBuilder : MonoBehaviour
             }
             _oldLightData.area = lightData.area;
         }
+    }
+
+    void CheckStartOn()
+    {
+        lightEmitter.GetComponent<Light2D>().enabled = lightData.startsOn;
     }
 
     void SetLightCollider(bool isOn)
