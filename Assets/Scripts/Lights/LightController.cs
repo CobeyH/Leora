@@ -31,6 +31,8 @@ public class LightController : MonoBehaviour
         mainCam = Camera.main;
         UICamera = GameObject.Find("UICamera").GetComponent<Camera>();
         lightData = transform.parent.gameObject.GetComponent<LightBuilder>().lightData;
+        Debug.Log("From the horses mouth: " + lightData.canRotate);
+
     }
 
     void Start()

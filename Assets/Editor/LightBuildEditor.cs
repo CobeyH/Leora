@@ -12,6 +12,8 @@ public class LightBuilderEditor : Editor
         if (builder.lightData.area == AreaOfEffect.Directional)
         {
             builder.lightData.canRotate = EditorGUILayout.Toggle("Is Rotatable", builder.lightData.canRotate);
+            Debug.Log("From editor: " + builder.lightData.canRotate);
+
             // Light2D light2D = builder.lightEmitter.GetComponent<Light2D>();
             // light2D.pointLightOuterAngle = EditorGUILayout.Slider("Leaf Angle", light2D.pointLightOuterAngle, 5, 360);
         }

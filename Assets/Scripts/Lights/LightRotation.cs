@@ -8,18 +8,15 @@ public class LightRotation : MonoBehaviour
     private bool rotating = false;
     private Camera mainCam;
 
-    void Awake()
-    {
-        // TODO: Fix this object location, it's brittle
-        GameObject lightEmitter = gameObject.transform.parent.parent.parent.gameObject;
-        GameObject lightBase = lightEmitter.transform.parent.gameObject;
-
-        controlledLight = lightEmitter.GetComponent<Light2D>();
-        canRotate = lightBase.GetComponent<LightBuilder>().lightData.canRotate;
-    }
     // Set the initial leaf position based on the light angle
     void Start()
     {
+        GameObject lightEmitter = gameObject.transform.parent.parent.parent.gameObject;
+        GameObject lightBase = lightEmitter.transform.parent.gameObject;
+        controlledLight = lightEmitter.GetComponent<Light2D>();
+        canRotate = lightBase.GetComponent<LightBuilder>().lightData.canRotate;
+        Debug.Log(canRotate);
+
         mainCam = Camera.main;
         UpdateLeafPositions();
     }
