@@ -3,11 +3,11 @@ using UnityEngine.Rendering.Universal;
 
 public class LightBuilder : MonoBehaviour
 {
-    [SerializeField]
-    GameObject lightEmitter;
+    public GameObject lightEmitter;
     public LightData lightData = new LightData();
     private LightData _oldLightData = new LightData();
-    private Light2D light2D;
+    [HideInInspector]
+    public Light2D light2D;
 
 
     private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
@@ -46,15 +46,18 @@ public class LightBuilder : MonoBehaviour
         if (lightData.area != _oldLightData.area)
         {
             GameObject leaves = lightEmitter.transform.Find("Leaves").gameObject;
+            Light2D light2D = lightEmitter.GetComponent<Light2D>();
             switch (lightData.area)
             {
                 case AreaOfEffect.Directional:
                     leaves.SetActive(true);
-                    lightEmitter.GetComponent<Light2D>().pointLightOuterAngle = 90;
+                    light2D.pointLightOuterAngle = 90;
+                    light2D.pointLightInnerAngle = 90;
                     break;
                 case AreaOfEffect.Point:
                     leaves.SetActive(false);
-                    lightEmitter.GetComponent<Light2D>().pointLightOuterAngle = 360;
+                    light2D.pointLightInnerAngle = 360;
+                    light2D.pointLightInnerAngle = 360;
                     break;
                 default:
                     Debug.LogError("Unsupported area of effect");

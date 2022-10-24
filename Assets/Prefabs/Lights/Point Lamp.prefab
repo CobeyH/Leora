@@ -151,6 +151,7 @@ MonoBehaviour:
     canRotate: 0
     returnsLux: 0
     startsOn: 0
+  light2D: {fileID: 0}
 --- !u!1 &5490333106156900492
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3109881736215248405, guid: f80107dd0f2e6976295922ee9bbac4ab, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4532002175919710098, guid: f80107dd0f2e6976295922ee9bbac4ab, type: 3}
       propertyPath: m_RootOrder
@@ -757,7 +758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4983603569223309622, guid: f80107dd0f2e6976295922ee9bbac4ab, type: 3}
       propertyPath: m_InstanceId
-      value: -155792
+      value: -99364
       objectReference: {fileID: 0}
     - target: {fileID: 6303549699399848128, guid: f80107dd0f2e6976295922ee9bbac4ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -769,7 +770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9084154915856654534, guid: f80107dd0f2e6976295922ee9bbac4ab, type: 3}
       propertyPath: m_InstanceId
-      value: -155774
+      value: -99346
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f80107dd0f2e6976295922ee9bbac4ab, type: 3}

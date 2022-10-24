@@ -36,8 +36,8 @@ public class LightRotation : MonoBehaviour
             float angleToMouse = Vector2.Angle(dirToMouse, controlledLight.transform.up);
             angleToMouse = Mathf.Clamp(angleToMouse, 10, 90);
             controlledLight.pointLightOuterAngle = angleToMouse * 2;
-            UpdateLeafPositions();
         }
+        UpdateLeafPositions();
     }
 
     void OnMouseDown()
