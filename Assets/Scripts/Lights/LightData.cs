@@ -7,12 +7,14 @@ public class LightData
 
     public ActivationType activation;
 
-    [HideInInspector]
-    public bool canRotate;
-
     public bool returnsLux = false;
 
     public bool startsOn;
+
+    public int lightIntensity = 1;
+
+    [HideInInspector]
+    public bool canRotate;
 }
 
 public enum AreaOfEffect

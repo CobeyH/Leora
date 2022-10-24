@@ -31,14 +31,13 @@ public class LightController : MonoBehaviour
         mainCam = Camera.main;
         UICamera = GameObject.Find("UICamera").GetComponent<Camera>();
         lightData = transform.parent.gameObject.GetComponent<LightBuilder>().lightData;
-
+        myLight.intensity = lightData.lightIntensity;
     }
 
     void Start()
     {
         myLight.enabled = lightData.startsOn;
         lightBeams.enabled = lightData.startsOn;
-        myLight.intensity = Mathf.Round(myLight.intensity);
     }
 
     void OnMouseDown()
