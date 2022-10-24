@@ -76,4 +76,9 @@ public class LightBuilder : MonoBehaviour
         CircleCollider2D col = lightEmitter.GetComponent<CircleCollider2D>();
         col.enabled = isOn;
     }
+
+    void OnDrawGizmosSelected() {
+        float radius = lightEmitter.GetComponent<Light2D>().pointLightOuterRadius;
+        Gizmos.DrawWireSphere(lightEmitter.transform.position, radius);
+    }
 }
