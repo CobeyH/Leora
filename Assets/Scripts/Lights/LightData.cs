@@ -4,12 +4,17 @@ using UnityEngine;
 public class LightData
 {
     public AreaOfEffect area;
+
     public ActivationType activation;
+
     [HideInInspector]
     public bool canRotate;
+
     public bool returnsLux = false;
+
     public bool startsOn;
 }
+
 public enum AreaOfEffect
 {
     Point,

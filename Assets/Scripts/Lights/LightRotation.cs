@@ -15,7 +15,6 @@ public class LightRotation : MonoBehaviour
         GameObject lightBase = lightEmitter.transform.parent.gameObject;
         controlledLight = lightEmitter.GetComponent<Light2D>();
         canRotate = lightBase.GetComponent<LightBuilder>().lightData.canRotate;
-        Debug.Log(canRotate);
 
         mainCam = Camera.main;
         UpdateLeafPositions();
