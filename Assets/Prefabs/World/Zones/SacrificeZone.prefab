@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1991188845687353867
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -1000993682640484797, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: UIPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1000993682640484797, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1000993682640484797, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: ZoneEvents
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283253339265395473, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_Name
+      value: SacrificeZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433971202930734389, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433971202930734389, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433971202930734389, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641596732869656183, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -1000993682640484797, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+--- !u!1 &292067001865165082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2283253339265395473, guid: 42f45f5b0a03324318b676780a4df09d, type: 3}
+  m_PrefabInstance: {fileID: 1991188845687353867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &515348220935021735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292067001865165082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b20b6c73053564aa59fc5f3d1d158c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 8457899945749326905, guid: 56a07c2c7b07a450c87836643237db7f, type: 3}
+  ZoneUI: {fileID: 0}
+  id: 0
+  ZoneEvents: {fileID: 11400000, guid: 7b542f389418ac9ecb78a87818f7ec67, type: 2}
+  activationReq: 0
+  progress: 0
