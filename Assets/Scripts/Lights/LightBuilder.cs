@@ -9,7 +9,6 @@ public class LightBuilder : MonoBehaviour
     [HideInInspector]
     public Light2D light2D;
 
-
     private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
 
     void _OnValidate()

@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 [CustomEditor(typeof(LightBuilder))]
 public class LightBuilderEditor : Editor
 {
+    SerializedProperty canRotate;
     override public void OnInspectorGUI()
     {
         base.OnInspectorGUI();
