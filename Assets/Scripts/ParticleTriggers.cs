@@ -30,7 +30,7 @@ public class ParticleTriggers : MonoBehaviour
         GameObject[] gameObjs = GameObject.FindGameObjectsWithTag(tag);
         foreach (GameObject obj in gameObjs)
         {
-            partSys.trigger.AddCollider(obj.GetComponent<CircleCollider2D>());
+            partSys.trigger.AddCollider(obj.GetComponent<Collider2D>());
         }
     }
 
