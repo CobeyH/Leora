@@ -4,7 +4,6 @@ using UnityEngine;
 public class SacrificeZone : ZoneBase
 {
     List<ParticleSystem> contactingFlocks = new List<ParticleSystem>();
-    private int sacrificedMoth;
     void Start()
     {
         StartCoroutine(DestroyContactedMoths());
@@ -30,14 +29,12 @@ public class SacrificeZone : ZoneBase
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        progress += GetMothCount(col);
         ParticleSystem touchingFlock = GetFlockFromCollider(col);
         if (touchingFlock != null)
             contactingFlocks.Add(touchingFlock);
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        progress -= GetMothCount(col);
         contactingFlocks.Remove(GetFlockFromCollider(col));
 
     }
@@ -62,7 +59,7 @@ public class SacrificeZone : ZoneBase
 
     IEnumerator DestroyContactedMoths()
     {
-        while (sacrificedMoth < activationReq)
+        while (progress < activationReq)
         {
             foreach (ParticleSystem partSys in contactingFlocks)
             {
@@ -71,7 +68,7 @@ public class SacrificeZone : ZoneBase
                 for (int i = 0; i < Mathf.Min(particles.Length, 5); i++)
                 {
                     particles[i].remainingLifetime = 0;
-                    sacrificedMoth++;
+                    progress++;
                 }
                 partSys.SetParticles(particles);
             }
