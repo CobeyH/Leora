@@ -1,16 +1,21 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-
 public class LightRotation : MonoBehaviour
 {
     public GameObject leftPivot, rightPivot;
-    public Light2D controlledLight;
-    public bool canRotate = false;
+    private Light2D controlledLight;
+    private bool canRotate = false;
     private bool rotating = false;
     private Camera mainCam;
+
     // Set the initial leaf position based on the light angle
     void Start()
     {
+        GameObject lightEmitter = gameObject.transform.parent.parent.parent.gameObject;
+        GameObject lightBase = lightEmitter.transform.parent.gameObject;
+        controlledLight = lightEmitter.GetComponent<Light2D>();
+        canRotate = lightBase.GetComponent<LightBuilder>().lightData.canRotate;
+
         mainCam = Camera.main;
         UpdateLeafPositions();
     }
@@ -27,8 +32,8 @@ public class LightRotation : MonoBehaviour
             float angleToMouse = Vector2.Angle(dirToMouse, controlledLight.transform.up);
             angleToMouse = Mathf.Clamp(angleToMouse, 10, 90);
             controlledLight.pointLightOuterAngle = angleToMouse * 2;
-            UpdateLeafPositions();
         }
+        UpdateLeafPositions();
     }
 
     void OnMouseDown()
@@ -43,7 +48,7 @@ public class LightRotation : MonoBehaviour
     void UpdateLeafPositions()
     {
         float angle = controlledLight.pointLightOuterAngle;
-        leftPivot.transform.localEulerAngles = new Vector3(0, 0, -1 * (angle / 2 - 40));
-        rightPivot.transform.localEulerAngles = new Vector3(0, 0, (angle / 2 - 40));
+        leftPivot.transform.localEulerAngles = new Vector3(0, 0, -1 * (angle / 2));
+        rightPivot.transform.localEulerAngles = new Vector3(0, 0, (angle / 2));
     }
 }

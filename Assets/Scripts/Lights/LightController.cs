@@ -5,14 +5,9 @@ using System.Collections;
 public class LightController : MonoBehaviour
 {
     public Light2D myLight;
-
     public Light2D lightBeams;
 
-    public bool startOn = false;
-    public bool returnsLux = false;
-
-    [HideInInspector]
-    public bool isOn;
+    private LightData lightData;
 
     [SerializeField]
     GameObject ProjectilePrefab;
@@ -35,15 +30,14 @@ public class LightController : MonoBehaviour
         lightLimit = GameObject.Find("RadialLightLimit").GetComponent<RadialLightLimit>();
         mainCam = Camera.main;
         UICamera = GameObject.Find("UICamera").GetComponent<Camera>();
+        lightData = transform.parent.gameObject.GetComponent<LightBuilder>().lightData;
+        myLight.intensity = lightData.lightIntensity;
     }
 
     void Start()
     {
-        myLight.enabled = startOn;
-        lightBeams.enabled = startOn;
-        myLight.intensity = Mathf.Round(myLight.intensity);
-        isOn = startOn;
-
+        myLight.enabled = lightData.startsOn;
+        lightBeams.enabled = lightData.startsOn;
     }
 
     void OnMouseDown()
@@ -70,15 +64,18 @@ public class LightController : MonoBehaviour
             SwitchLightState();
             return;
         }
-        if (!isOn)
+        if (!myLight.enabled)
         {
             StartCoroutine(EnableLight(startPos, endPos));
         }
         else
         {
-            if(returnsLux) {
-                  StartCoroutine(EnableLight(endPos, startPos));
-            } else {
+            if (lightData.returnsLux)
+            {
+                StartCoroutine(EnableLight(endPos, startPos));
+            }
+            else
+            {
                 SwitchLightState();
             }
         }
@@ -87,7 +84,7 @@ public class LightController : MonoBehaviour
     IEnumerator EnableLight(Vector3 startPos, Vector3 endPos)
     {
         routineRunning = true;
-        bool lightWasOn = isOn;
+        bool lightWasOn = myLight.enabled;
         if (lightWasOn)
         {
             HandleOnLight();
@@ -138,10 +135,9 @@ public class LightController : MonoBehaviour
 
     void SwitchLightState()
     {
-        isOn = !isOn;
-        myLight.enabled = isOn;
-        lightBeams.enabled = isOn;
-        luxRings.SetActive(!isOn);
+        myLight.enabled = !myLight.enabled;
+        lightBeams.enabled = myLight.enabled;
+        luxRings.SetActive(!myLight.enabled);
     }
 }
 

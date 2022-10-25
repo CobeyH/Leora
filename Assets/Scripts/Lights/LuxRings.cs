@@ -12,7 +12,7 @@ public class LuxRings : MonoBehaviour
     SpriteRenderer[] luxRings;
     private float innerRingScale = 1.3f, ringSpacing = 0.3f, globalRingScale = 0.1f;
 
-    void Awake()
+    void Start()
     {
         int intensity = (int)controlledLight.intensity;
         luxRings = new SpriteRenderer[intensity];
