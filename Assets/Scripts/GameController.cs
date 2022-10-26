@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     private LevelProgressTracker tracker;
 
     AudioManager audioManager;
+    bool _time_slowed = false;
 
     void Awake()
     {
@@ -35,6 +36,14 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SendPauseEvent();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (Time.timeScale != 0)
+            {
+                Time.timeScale = _time_slowed ? 1f : 0.5f;
+                _time_slowed = !_time_slowed;
+            }
         }
     }
 
