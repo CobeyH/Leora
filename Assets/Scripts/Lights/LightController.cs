@@ -14,12 +14,12 @@ public class LightController : MonoBehaviour
 
     [SerializeField]
     private GameObject luxRings;
+    private LuxRings _ringController;
 
     private Camera UICamera;
     private Camera mainCam;
     private RadialLightLimit lightLimit;
     private AudioManager audioManager;
-    private bool routineRunning = false;
 
     void Awake()
     {
@@ -30,8 +30,9 @@ public class LightController : MonoBehaviour
         lightLimit = GameObject.Find("RadialLightLimit").GetComponent<RadialLightLimit>();
         mainCam = Camera.main;
         UICamera = GameObject.Find("UICamera").GetComponent<Camera>();
+        _ringController = luxRings.GetComponent<LuxRings>();
         lightData = transform.parent.gameObject.GetComponent<LightBuilder>().lightData;
-        myLight.intensity = lightData.maxIntensity;
+        myLight.intensity = 0;
     }
 
     void Start()
@@ -42,59 +43,46 @@ public class LightController : MonoBehaviour
 
     void OnMouseDown()
     {
-        ToggleLight();
+        StartCoroutine(BrightenLight());
         audioManager.Play("LightOn");
     }
 
-    public void ToggleLight()
+    void OnMouseOver()
     {
-        // Light cannot be interacted with if the routine is running.
-        if (routineRunning)
+        if (Input.GetMouseButtonDown(1))
         {
-            return;
-        }
-
-        audioManager.Play("LightOff");
-        Vector3 uiElementPosition = UICamera.WorldToScreenPoint(lightLimit.transform.position);
-        Vector3 startPos = mainCam.ScreenToWorldPoint(uiElementPosition);
-        Vector3 endPos = transform.position;
-        // Start a co-routine that will turn on/off the light. This involves the light limit to send a light projectile.
-        if (!lightLimit)
-        {
-            SwitchLightState();
-            return;
-        }
-        if (!myLight.enabled)
-        {
-            StartCoroutine(EnableLight(startPos, endPos));
-        }
-        else
-        {
-            if (lightData.returnsLux)
-            {
-                StartCoroutine(EnableLight(endPos, startPos));
-            }
-            else
-            {
-                SwitchLightState();
-            }
+            StartCoroutine(DimLight());
+            audioManager.Play("LightOff");
         }
     }
 
-    IEnumerator EnableLight(Vector3 startPos, Vector3 endPos)
+
+    // public void ToggleLight()
+    // {
+    //     audioManager.Play("LightOff");
+    //     Vector3 uiElementPosition = UICamera.WorldToScreenPoint(lightLimit.transform.position);
+    //     Vector3 startPos = mainCam.ScreenToWorldPoint(uiElementPosition);
+    //     Vector3 endPos = transform.position;
+
+    //     if (!myLight.enabled)
+    //     {
+    //         StartCoroutine(EnableLight(startPos, endPos));
+    //     }
+    //     else
+    //     {
+    //         if (lightData.returnsLux)
+    //         {
+    //             StartCoroutine(EnableLight(endPos, startPos));
+    //         }
+    //         else
+    //         {
+    //             SwitchLightState();
+    //         }
+    //     }
+    // }
+
+    IEnumerator FireProjectile(Vector3 startPos, Vector3 endPos)
     {
-        routineRunning = true;
-        bool lightWasOn = myLight.enabled;
-        if (lightWasOn)
-        {
-            HandleOnLight();
-        }
-        // If the light is being turned on, it must request light immediately.
-        if (!lightWasOn)
-        {
-            if (!HandleOffLight())
-                yield break;
-        }
         GameObject luxProjectile = Instantiate(ProjectilePrefab);
         luxProjectile.transform.position = startPos;
         // Set start point for projectile in canvas coordinates
@@ -106,38 +94,62 @@ public class LightController : MonoBehaviour
             luxProjectile.transform.position += dir / 15;
         }
         Destroy(luxProjectile);
-        if (!lightWasOn)
+    }
+
+    void CalculateProjectileTarget(out Vector3 startPos, out Vector3 endPos)
+    {
+        Vector3 uiElementPosition = UICamera.WorldToScreenPoint(lightLimit.transform.position);
+        startPos = mainCam.ScreenToWorldPoint(uiElementPosition);
+        endPos = transform.position;
+    }
+
+    public IEnumerator BrightenLight()
+    {
+        if (!lightLimit.LuxAvailable(1) || myLight.intensity == lightData.maxIntensity)
+        {
+            // If there isn't enough lux, the light cannot increase in brightness.
+            yield break;
+        }
+        if (myLight.intensity == 0)
         {
             SwitchLightState();
         }
-        // On lights must be handled at the end 
-        routineRunning = false;
-        yield return null;
+        Vector3 startPos;
+        Vector3 endPos;
+        CalculateProjectileTarget(out startPos, out endPos);
+        yield return FireProjectile(startPos, endPos);
+        myLight.intensity += 1;
+        lightLimit.ChangeAvailableLux(-1);
     }
 
-    bool HandleOffLight()
+    IEnumerator DimLight()
     {
-        if (!lightLimit.LuxAvailable((int)myLight.intensity))
+        if (myLight.intensity == 0) yield break;
+        myLight.intensity -= 1;
+        if (myLight.intensity == 0)
         {
-            // If there isn't enough lux, the light cannot turn on.
-            routineRunning = false;
-            return false;
+            SwitchLightState();
         }
-        lightLimit.ChangeAvailableLux((int)-myLight.intensity);
-        return true;
-    }
-
-    void HandleOnLight()
-    {
-        lightLimit.ChangeAvailableLux((int)myLight.intensity);
-        SwitchLightState();
+        if (lightData.returnsLux)
+        {
+            Vector3 startPos;
+            Vector3 endPos;
+            CalculateProjectileTarget(out startPos, out endPos);
+            yield return FireProjectile(endPos, startPos);
+            lightLimit.ChangeAvailableLux(1);
+        }
+        else
+        {
+            // The ChangeAvailableLux function normally handles this. We have to explicitly do
+            // it here because that function is skipped.
+            lightLimit.UpdateAllRingColours();
+        }
     }
 
     void SwitchLightState()
     {
         myLight.enabled = !myLight.enabled;
         lightBeams.enabled = myLight.enabled;
-        luxRings.SetActive(!myLight.enabled);
     }
 }
 

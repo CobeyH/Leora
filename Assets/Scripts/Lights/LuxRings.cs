@@ -32,14 +32,16 @@ public class LuxRings : MonoBehaviour
         Color ringColor;
         foreach (SpriteRenderer ring in luxRings)
         {
-            if (controlledLight.enabled || controlledLight.intensity <= availableLux)
+            // In this case, the ring is already powered
+            if (i <= controlledLight.intensity)
+            {
+                ringColor = Color.magenta;
+            }
+            else if (i <= controlledLight.intensity + availableLux)
             {
                 ringColor = Color.green;
             }
-            else
-            {
-                ringColor = i > availableLux ? Color.red : Color.green;
-            }
+            else { ringColor = Color.red; }
             ring.color = ringColor;
             i++;
         }
