@@ -7,7 +7,8 @@ public class LightController : MonoBehaviour
     public Light2D myLight;
     public Light2D lightBeams;
 
-    private LightData lightData;
+    [HideInInspector]
+    public LightData lightData;
 
     [SerializeField]
     GameObject ProjectilePrefab;
@@ -42,6 +43,15 @@ public class LightController : MonoBehaviour
     {
         myLight.enabled = lightData.startsOn;
         lightBeams.enabled = lightData.startsOn;
+        SetLightColour();
+    }
+
+    void SetLightColour()
+    {
+        if (lightData.isRepulsive)
+        {
+            myLight.color = new Color(0.4f, 0f, 0.4f, 1.0f);
+        }
     }
 
     void Update()
