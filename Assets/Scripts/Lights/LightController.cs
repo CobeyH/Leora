@@ -7,7 +7,8 @@ public class LightController : MonoBehaviour
     public Light2D myLight;
     public Light2D lightBeams;
 
-    private LightData lightData;
+    [HideInInspector]
+    public LightData lightData;
 
     [SerializeField]
     GameObject ProjectilePrefab;

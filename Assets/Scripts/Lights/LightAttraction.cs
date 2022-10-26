@@ -112,7 +112,25 @@ public class LightAttraction : MonoBehaviour
 
     Vector2 AddAttractionFromLight(Light2D light)
     {
-        return light.transform.position * light.intensity;
+        Vector3 position = light.transform.position;
+        LightController controller = light.transform.gameObject.GetComponent<LightController>();
+        bool isRepulsive = false;
+        if (controller != null)
+        {
+            isRepulsive = controller.lightData.isRepulsive;
+        }
+        if (isRepulsive)
+        {
+            position = FlipPointAroundPivot(position, rigidBody.transform.position);
+        }
+        return position * light.intensity;
+    }
+    Vector3 FlipPointAroundPivot(Vector3 point, Vector3 pivot)
+    {
+        Vector3 dir = point - pivot; // get point direction relative to pivot
+        dir = Quaternion.Euler(new Vector3(0, 0, 180)) * dir; // rotate it
+        point = dir + pivot; // calculate rotated point
+        return point; // return it
     }
 
     private bool LightInRange(Light2D light, Vector2 vecToLight)
