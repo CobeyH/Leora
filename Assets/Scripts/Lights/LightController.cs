@@ -110,15 +110,7 @@ public class LightController : MonoBehaviour
         CalculateProjectileTarget(out startPos, out endPos);
         yield return FireProjectile(startPos, endPos);
         myLight.intensity += 1;
-        if (myLight.intensity > lightData.maxIntensity)
-        {
-            yield return FireProjectile(endPos, startPos);
-            myLight.intensity -= 1;
-        }
-        else
-        {
-            lightLimit.ChangeAvailableLux(-1);
-        }
+        lightLimit.ChangeAvailableLux(-1);
         if (myLight.intensity == 1)
         {
             SwitchLightState();
