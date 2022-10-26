@@ -43,6 +43,15 @@ public class LightController : MonoBehaviour
     {
         myLight.enabled = lightData.startsOn;
         lightBeams.enabled = lightData.startsOn;
+        SetLightColour();
+    }
+
+    void SetLightColour()
+    {
+        if (lightData.isRepulsive)
+        {
+            myLight.color = new Color(0.4f, 0f, 0.4f, 1.0f);
+        }
     }
 
     void Update()
