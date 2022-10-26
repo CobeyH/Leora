@@ -44,12 +44,12 @@ public class LightAttraction : MonoBehaviour
         int layer_mask = LayerMask.GetMask("Terrain");
         centerOfLightMass = Vector2.zero;
         float totalIntensity = 0f;
-        foreach (Light2D light in lightsInScene)
+        List<Light2D> contributingLights = lightsInScene.FindAll(l => ShouldLightContribute(l, layer_mask));
+        int highestIntensity = FindHighestIntensity(contributingLights);
+
+        foreach (Light2D light in contributingLights)
         {
-            if (!ShouldLightContribute(light, layer_mask))
-            {
-                continue;
-            }
+            if (light.intensity < highestIntensity) continue;
             centerOfLightMass += AddAttractionFromLight(light);
             totalIntensity += light.intensity;
         }
@@ -62,6 +62,19 @@ public class LightAttraction : MonoBehaviour
             centerOfLightMass /= totalIntensity;
         }
 
+    }
+
+    private int FindHighestIntensity(List<Light2D> lights)
+    {
+        int highestIntensity = 0;
+        foreach (Light2D light in lights)
+        {
+            if (light.intensity > highestIntensity)
+            {
+                highestIntensity = (int)light.intensity;
+            }
+        }
+        return highestIntensity;
     }
 
     private void FixedUpdate()
@@ -99,7 +112,25 @@ public class LightAttraction : MonoBehaviour
 
     Vector2 AddAttractionFromLight(Light2D light)
     {
-        return light.transform.position * light.intensity;
+        Vector3 position = light.transform.position;
+        LightController controller = light.transform.gameObject.GetComponent<LightController>();
+        bool isRepulsive = false;
+        if (controller != null)
+        {
+            isRepulsive = controller.lightData.isRepulsive;
+        }
+        if (isRepulsive)
+        {
+            position = FlipPointAroundPivot(position, rigidBody.transform.position);
+        }
+        return position * light.intensity;
+    }
+    Vector3 FlipPointAroundPivot(Vector3 point, Vector3 pivot)
+    {
+        Vector3 dir = point - pivot; // get point direction relative to pivot
+        dir = Quaternion.Euler(new Vector3(0, 0, 180)) * dir; // rotate it
+        point = dir + pivot; // calculate rotated point
+        return point; // return it
     }
 
     private bool LightInRange(Light2D light, Vector2 vecToLight)

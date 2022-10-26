@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+public class ParticleTriggers : MonoBehaviour
 {
     public bool IsDecoy = false;
 
@@ -16,18 +16,21 @@ public class Goal : MonoBehaviour
     void Start()
     {
         partSys = GetComponent<ParticleSystem>();
-        GameObject[] trapLights =
-            GameObject.FindGameObjectsWithTag("TrapLight");
-        GameObject[] goals = GameObject.FindGameObjectsWithTag("Goal");
-        var trigger = partSys.trigger;
-        foreach (GameObject trap in trapLights)
-        {
-            trigger.AddCollider(trap.GetComponent<Collider2D>());
-        }
+        AddCollidersToTriggers();
+    }
 
-        foreach (GameObject goal in goals)
+    void AddCollidersToTriggers()
+    {
+        AddCollidersWithTag("TrapLight");
+        AddCollidersWithTag("Goal");
+    }
+
+    void AddCollidersWithTag(string tag)
+    {
+        GameObject[] gameObjs = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in gameObjs)
         {
-            trigger.AddCollider(goal.GetComponent<CircleCollider2D>());
+            partSys.trigger.AddCollider(obj.GetComponent<Collider2D>());
         }
     }
 
@@ -46,13 +49,18 @@ public class Goal : MonoBehaviour
             return;
         }
 
+        GoalsAndTraps(numEnter, enteredData);
+    }
+
+    void GoalsAndTraps(int numEntered, ParticleSystem.ColliderData colliderData)
+    {
         // Delete particles that enter the goal.
-        for (int i = 0; i < numEnter; i++)
+        for (int i = 0; i < numEntered; i++)
         {
             ParticleSystem.Particle p = enter[i];
 
             if (
-                enteredData.GetCollider(i, 0).gameObject.tag != "TrapLight" &&
+                colliderData.GetCollider(i, 0).gameObject.tag != "TrapLight" &&
                 !IsDecoy
             )
             {
@@ -62,7 +70,6 @@ public class Goal : MonoBehaviour
             enter[i] = p;
         }
 
-        // Increment progress bar if new moths made it into goal.
         partSys
             .SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
     }
