@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3018833415683357073}
   - component: {fileID: 3018833415683357084}
   - component: {fileID: 3018833415683357075}
-  m_Layer: 0
+  - component: {fileID: -760636815679773123}
+  m_Layer: 8
   m_Name: MovingBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,3 +129,32 @@ MonoBehaviour:
   subscribedChannels: 
   endPoint: {x: -3, y: 0}
   speed: 1
+--- !u!114 &-760636815679773123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3018833415683357072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1129f424000000001557d24ff3d7f248
+  m_ShapePath:
+  - {x: -4.764232, y: -1.523313, z: 0}
+  - {x: -4.7480407, y: 2.0720782, z: 0}
+  - {x: 4.7966166, y: 2.0720782, z: 0}
+  - {x: 4.7848144, y: 0.024943884, z: 0}
+  - {x: 4.780425, y: -1.58983, z: 0}
+  - {x: 0.024288395, y: -1.588093, z: 0}
+  m_ShapePathHash: 2118417353
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 60114
