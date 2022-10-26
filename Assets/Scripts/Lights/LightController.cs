@@ -62,8 +62,6 @@ public class LightController : MonoBehaviour
     void OnMouseDown()
     {
         _requestedIntensity = Mathf.Min(_requestedIntensity + 1, lightData.maxIntensity);
-        Debug.Log("Mouse Down " + myLight.intensity + " " + _requestedIntensity + " " + _processing);
-
         audioManager.Play("LightOn");
     }
 
@@ -107,10 +105,6 @@ public class LightController : MonoBehaviour
             _requestedIntensity -= 1;
             yield break;
         }
-        if (myLight.intensity == 0)
-        {
-            SwitchLightState();
-        }
         Vector3 startPos;
         Vector3 endPos;
         CalculateProjectileTarget(out startPos, out endPos);
@@ -124,6 +118,10 @@ public class LightController : MonoBehaviour
         else
         {
             lightLimit.ChangeAvailableLux(-1);
+        }
+        if (myLight.intensity == 1)
+        {
+            SwitchLightState();
         }
         _processing = false;
     }
