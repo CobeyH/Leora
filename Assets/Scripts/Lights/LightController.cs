@@ -31,7 +31,7 @@ public class LightController : MonoBehaviour
         mainCam = Camera.main;
         UICamera = GameObject.Find("UICamera").GetComponent<Camera>();
         lightData = transform.parent.gameObject.GetComponent<LightBuilder>().lightData;
-        myLight.intensity = lightData.lightIntensity;
+        myLight.intensity = lightData.maxIntensity;
     }
 
     void Start()

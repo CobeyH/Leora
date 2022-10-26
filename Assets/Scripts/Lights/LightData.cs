@@ -11,7 +11,7 @@ public class LightData
 
     public bool startsOn;
 
-    public int lightIntensity = 1;
+    public int maxIntensity = 1;
 
     [HideInInspector]
     public bool canRotate;
