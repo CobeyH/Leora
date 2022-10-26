@@ -20,6 +20,8 @@ public class LightController : MonoBehaviour
     private Camera mainCam;
     private RadialLightLimit lightLimit;
     private AudioManager audioManager;
+    private int _requestedIntensity = 0;
+    private bool _processing = false;
 
     void Awake()
     {
@@ -32,7 +34,8 @@ public class LightController : MonoBehaviour
         UICamera = GameObject.Find("UICamera").GetComponent<Camera>();
         _ringController = luxRings.GetComponent<LuxRings>();
         lightData = transform.parent.gameObject.GetComponent<LightBuilder>().lightData;
-        myLight.intensity = 0;
+        myLight.intensity = lightData.startsOn ? lightData.maxIntensity : 0;
+        _requestedIntensity = (int)myLight.intensity;
     }
 
     void Start()
@@ -41,9 +44,26 @@ public class LightController : MonoBehaviour
         lightBeams.enabled = lightData.startsOn;
     }
 
+    void Update()
+    {
+        if (_processing) return;
+        if (myLight.intensity < _requestedIntensity)
+        {
+            _processing = true;
+            StartCoroutine(BrightenLight());
+        }
+        else if (myLight.intensity > _requestedIntensity)
+        {
+            _processing = true;
+            StartCoroutine(DimLight());
+        }
+    }
+
     void OnMouseDown()
     {
-        StartCoroutine(BrightenLight());
+        _requestedIntensity = Mathf.Min(_requestedIntensity + 1, lightData.maxIntensity);
+        Debug.Log("Mouse Down " + myLight.intensity + " " + _requestedIntensity + " " + _processing);
+
         audioManager.Play("LightOn");
     }
 
@@ -51,35 +71,10 @@ public class LightController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            StartCoroutine(DimLight());
+            _requestedIntensity = Mathf.Max(_requestedIntensity - 1, 0);
             audioManager.Play("LightOff");
         }
     }
-
-
-    // public void ToggleLight()
-    // {
-    //     audioManager.Play("LightOff");
-    //     Vector3 uiElementPosition = UICamera.WorldToScreenPoint(lightLimit.transform.position);
-    //     Vector3 startPos = mainCam.ScreenToWorldPoint(uiElementPosition);
-    //     Vector3 endPos = transform.position;
-
-    //     if (!myLight.enabled)
-    //     {
-    //         StartCoroutine(EnableLight(startPos, endPos));
-    //     }
-    //     else
-    //     {
-    //         if (lightData.returnsLux)
-    //         {
-    //             StartCoroutine(EnableLight(endPos, startPos));
-    //         }
-    //         else
-    //         {
-    //             SwitchLightState();
-    //         }
-    //     }
-    // }
 
     IEnumerator FireProjectile(Vector3 startPos, Vector3 endPos)
     {
@@ -105,9 +100,11 @@ public class LightController : MonoBehaviour
 
     public IEnumerator BrightenLight()
     {
-        if (!lightLimit.LuxAvailable(1) || myLight.intensity == lightData.maxIntensity)
+        if (!lightLimit.LuxAvailable(1))
         {
             // If there isn't enough lux, the light cannot increase in brightness.
+            _processing = false;
+            _requestedIntensity -= 1;
             yield break;
         }
         if (myLight.intensity == 0)
@@ -119,12 +116,20 @@ public class LightController : MonoBehaviour
         CalculateProjectileTarget(out startPos, out endPos);
         yield return FireProjectile(startPos, endPos);
         myLight.intensity += 1;
-        lightLimit.ChangeAvailableLux(-1);
+        if (myLight.intensity > lightData.maxIntensity)
+        {
+            yield return FireProjectile(endPos, startPos);
+            myLight.intensity -= 1;
+        }
+        else
+        {
+            lightLimit.ChangeAvailableLux(-1);
+        }
+        _processing = false;
     }
 
     IEnumerator DimLight()
     {
-        if (myLight.intensity == 0) yield break;
         myLight.intensity -= 1;
         if (myLight.intensity == 0)
         {
@@ -144,6 +149,7 @@ public class LightController : MonoBehaviour
             // it here because that function is skipped.
             lightLimit.UpdateAllRingColours();
         }
+        _processing = false;
     }
 
     void SwitchLightState()
