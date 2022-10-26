@@ -77,8 +77,11 @@ public class LightBuilder : MonoBehaviour
         col.enabled = isOn;
     }
 
-    void OnDrawGizmosSelected() {
-        float radius = lightEmitter.GetComponent<Light2D>().pointLightOuterRadius;
-        Gizmos.DrawWireSphere(lightEmitter.transform.position, radius);
+    void OnDrawGizmosSelected()
+    {
+        for (int i = 1; i <= lightData.maxIntensity; i++)
+        {
+            Gizmos.DrawWireSphere(lightEmitter.transform.position, i * lightData.rangeMultiplier);
+        }
     }
 }

@@ -8,15 +8,16 @@ public class LuxRings : MonoBehaviour
     GameObject ringPrefab;
     [SerializeField]
     Light2D controlledLight;
+    int maxIntensity;
 
     SpriteRenderer[] luxRings;
     private float innerRingScale = 1.3f, ringSpacing = 0.3f, globalRingScale = 0.1f;
 
     void Start()
     {
-        int intensity = (int)controlledLight.intensity;
-        luxRings = new SpriteRenderer[intensity];
-        for (int i = 0; i < intensity; i++)
+        maxIntensity = transform.parent.parent.gameObject.GetComponent<LightBuilder>().lightData.maxIntensity;
+        luxRings = new SpriteRenderer[maxIntensity];
+        for (int i = 0; i < maxIntensity; i++)
         {
             GameObject newRing = Instantiate(ringPrefab, transform);
             float scale = (i * ringSpacing + innerRingScale) * globalRingScale;
@@ -31,14 +32,16 @@ public class LuxRings : MonoBehaviour
         Color ringColor;
         foreach (SpriteRenderer ring in luxRings)
         {
-            if (controlledLight.enabled || controlledLight.intensity <= availableLux)
+            // In this case, the ring is already powered
+            if (i <= controlledLight.intensity)
+            {
+                ringColor = Color.magenta;
+            }
+            else if (i <= controlledLight.intensity + availableLux)
             {
                 ringColor = Color.green;
             }
-            else
-            {
-                ringColor = i > availableLux ? Color.red : Color.yellow;
-            }
+            else { ringColor = Color.red; }
             ring.color = ringColor;
             i++;
         }

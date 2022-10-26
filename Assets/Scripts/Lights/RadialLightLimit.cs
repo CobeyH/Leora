@@ -65,6 +65,12 @@ public class RadialLightLimit : MonoBehaviour
             availableLux += additionSign;
         }
         UpdateTextDisplay();
+        UpdateAllRingColours();
+    }
+
+    public void UpdateAllRingColours()
+    {
+
         foreach (LuxRings ring in rings)
         {
             ring.UpdateRingsColour(availableLux);

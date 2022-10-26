@@ -11,7 +11,9 @@ public class LightData
 
     public bool startsOn;
 
-    public int lightIntensity = 1;
+    public int maxIntensity = 1;
+    [Range(0.1f, 20.0f)]
+    public float rangeMultiplier = 1;
 
     [HideInInspector]
     public bool canRotate;
