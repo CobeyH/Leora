@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
         {
             if (Time.timeScale != 0)
             {
-                Time.timeScale = _time_slowed ? 1f : 0.5f;
+                Time.timeScale = _time_slowed ? 1f : 0.15f;
                 _time_slowed = !_time_slowed;
             }
         }
