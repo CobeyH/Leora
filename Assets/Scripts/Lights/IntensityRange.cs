@@ -22,7 +22,7 @@ public class IntensityRange : MonoBehaviour
         if (controlledLight.enabled && controlledLight.intensity > 0)
         {
             float intensity = controlledLight.intensity;
-            controlledLight.pointLightOuterRadius = intensity * rangeMultiplier;
+            controlledLight.pointLightOuterRadius = intensity * rangeMultiplier * 7;
             lightBeams.transform.localScale =
                 new Vector3(intensity * beamIntensity * 0.5f,
                     intensity * beamIntensity * 0.5f,

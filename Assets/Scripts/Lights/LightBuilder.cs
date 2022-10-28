@@ -81,7 +81,7 @@ public class LightBuilder : MonoBehaviour
     {
         for (int i = 1; i <= lightData.maxIntensity; i++)
         {
-            Gizmos.DrawWireSphere(lightEmitter.transform.position, i * lightData.rangeMultiplier);
+            Gizmos.DrawWireSphere(lightEmitter.transform.position, i * lightData.rangeMultiplier * 7);
         }
     }
 }
