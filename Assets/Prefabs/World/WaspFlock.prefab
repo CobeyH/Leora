@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaspFlock
       objectReference: {fileID: 0}
+    - target: {fileID: 8770528019953004965, guid: feeb1eca65b4364ee9a89f637525321a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feeb1eca65b4364ee9a89f637525321a, type: 3}
 --- !u!4 &1464908105471906887 stripped
