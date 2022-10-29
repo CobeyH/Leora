@@ -4,6 +4,7 @@ using UnityEngine;
 public class SacrificeZone : ZoneBase
 {
     List<ParticleSystem> contactingFlocks = new List<ParticleSystem>();
+    ParticleSystem.Particle[] particles = new ParticleSystem.Particle[500];
     void Start()
     {
         StartCoroutine(DestroyContactedMoths());
@@ -39,13 +40,6 @@ public class SacrificeZone : ZoneBase
 
     }
 
-    int GetMothCount(Collider2D col)
-    {
-        GameObject mothObject = col.gameObject.transform.Find("Moth Particles").gameObject;
-        ParticleSystem moths = mothObject.GetComponent<ParticleSystem>();
-        return moths.particleCount;
-    }
-
     ParticleSystem GetFlockFromCollider(Collider2D col)
     {
         Transform mothFlockTrans = col.gameObject.transform.Find("Moth Particles");
@@ -63,14 +57,16 @@ public class SacrificeZone : ZoneBase
         {
             foreach (ParticleSystem partSys in contactingFlocks)
             {
-                ParticleSystem.Particle[] particles = new ParticleSystem.Particle[500];
-                partSys.GetParticles(particles);
-                for (int i = 0; i < Mathf.Min(particles.Length, 5); i++)
+
+                int numParticlesAlive = partSys.GetParticles(particles);
+                for (int i = 0; i < Mathf.Min(numParticlesAlive, 5); i++)
                 {
                     particles[i].remainingLifetime = 0;
+                    partSys.TriggerSubEmitter(0, ref particles[i]);
                     progress++;
                 }
-                partSys.SetParticles(particles);
+                partSys.SetParticles(particles, numParticlesAlive);
+
             }
             yield return new WaitForSeconds(1);
         }
