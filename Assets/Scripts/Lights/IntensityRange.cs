@@ -13,19 +13,19 @@ public class IntensityRange : MonoBehaviour
 
     void Start()
     {
-        rangeMultiplier =
-            controlledLight.pointLightOuterRadius / controlledLight.intensity;
+        GameObject lightBase = gameObject.transform.parent.gameObject;
+        rangeMultiplier = lightBase.GetComponent<LightBuilder>().lightData.rangeMultiplier;
     }
 
     void Update()
     {
-        if (controlledLight.enabled)
+        if (controlledLight.enabled && controlledLight.intensity > 0)
         {
             float intensity = controlledLight.intensity;
-            controlledLight.pointLightOuterRadius = intensity * rangeMultiplier;
+            controlledLight.pointLightOuterRadius = intensity * rangeMultiplier * 7;
             lightBeams.transform.localScale =
-                new Vector3(intensity * beamIntensity,
-                    intensity * beamIntensity,
+                new Vector3(intensity * beamIntensity * 0.5f,
+                    intensity * beamIntensity * 0.5f,
                     1);
         }
     }

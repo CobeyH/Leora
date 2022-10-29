@@ -5,8 +5,6 @@ using TMPro;
 
 public class RadialLightLimit : MonoBehaviour
 {
-    [Tooltip("The maximum allow lux the player can use at one time")]
-    public int totalLux;
 
     [SerializeField]
     GameObject orbPrefab;
@@ -21,6 +19,7 @@ public class RadialLightLimit : MonoBehaviour
     Gradient ringColors;
     GameObject[] luxOrbs;
     LuxRings[] rings;
+    int totalLux;
     int availableLux;
 
     void Awake()
@@ -30,6 +29,7 @@ public class RadialLightLimit : MonoBehaviour
 
     void Start()
     {
+        totalLux = GameObject.FindObjectOfType<GlobalConfig>().luxLimit;
         availableLux = totalLux;
         luxOrbs = new GameObject[totalLux];
         GenerateLuxOrbs();
@@ -65,6 +65,12 @@ public class RadialLightLimit : MonoBehaviour
             availableLux += additionSign;
         }
         UpdateTextDisplay();
+        UpdateAllRingColours();
+    }
+
+    public void UpdateAllRingColours()
+    {
+
         foreach (LuxRings ring in rings)
         {
             ring.UpdateRingsColour(availableLux);

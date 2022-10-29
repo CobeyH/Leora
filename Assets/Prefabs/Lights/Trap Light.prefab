@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 518453145197026385, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590971573310917435, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: lightData.startsOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590971573310917435, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: lightData.activation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5490333105552584142, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -88,6 +100,10 @@ PrefabInstance:
       value: 0.9056604
       objectReference: {fileID: 0}
     - target: {fileID: 5490333106156900489, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490333106156900489, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: m_Intensity
       value: 1
       objectReference: {fileID: 0}
@@ -116,4 +132,26 @@ PrefabInstance:
     - {fileID: 4666888882054064983, guid: 758a462d28163b5569f158cc1a978222, type: 3}
     - {fileID: 9137194527988666746, guid: 758a462d28163b5569f158cc1a978222, type: 3}
     - {fileID: 1047800274613189536, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+    - {fileID: 518453145197026385, guid: 758a462d28163b5569f158cc1a978222, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+--- !u!1 &6353249914325875022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5490333106156900492, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+  m_PrefabInstance: {fileID: 1448703310035954114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &4217136502369127078
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353249914325875022}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.04}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
