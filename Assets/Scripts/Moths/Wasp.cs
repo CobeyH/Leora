@@ -5,6 +5,9 @@ using UnityEngine;
 public class Wasp : MonoBehaviour
 {
     List<ParticleSystem> contactingFlocks = new List<ParticleSystem>();
+
+    ParticleSystem.Particle[] particles = new ParticleSystem.Particle[500];
+
     void Start()
     {
         StartCoroutine(DestroyContactedMoths());
@@ -12,14 +15,12 @@ public class Wasp : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-
         if (!col.gameObject.CompareTag("MothForces"))
         {
             return;
         }
         ParticleSystem touchingFlock = GetFlockFromCollider(col);
-        if (touchingFlock != null)
-            contactingFlocks.Add(touchingFlock);
+        if (touchingFlock != null) contactingFlocks.Add(touchingFlock);
     }
 
     void OnTriggerExit2D(Collider2D col)
@@ -33,7 +34,8 @@ public class Wasp : MonoBehaviour
 
     ParticleSystem GetFlockFromCollider(Collider2D col)
     {
-        Transform mothFlockTrans = col.gameObject.transform.Find("Moth Particles");
+        Transform mothFlockTrans =
+            col.gameObject.transform.Find("Moth Particles");
         if (mothFlockTrans == null)
         {
             Debug.LogError("No child found named 'Moth Particles'");
@@ -48,13 +50,13 @@ public class Wasp : MonoBehaviour
         {
             foreach (ParticleSystem partSys in contactingFlocks)
             {
-                ParticleSystem.Particle[] particles = new ParticleSystem.Particle[500];
-                partSys.GetParticles(particles);
+                int numAlive = partSys.GetParticles(particles);
                 for (int i = 0; i < Mathf.Min(particles.Length, 10); i++)
                 {
+                    partSys.TriggerSubEmitter(0, ref particles[i]);
                     particles[i].remainingLifetime = 0;
                 }
-                partSys.SetParticles(particles);
+                partSys.SetParticles (particles, numAlive);
             }
             yield return new WaitForSeconds(1);
         }
