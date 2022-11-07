@@ -1,33 +1,40 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using System.Collections;
 
 public class AutoPlayLevel : MonoBehaviour
 {
     public Light2D[] lights;
 
-    private float timeOn = 0;
+    void Start()
+    {
+        StartCoroutine(AutoPlaySequence());
+    }
 
-    private int lightIndex = 0;
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.anyKey)
         {
             LevelLoader.StartLevelLoadCoroutine("LevelSelector");
         }
+    }
 
-        // Turn off and on lights to auto complete the level
-        timeOn += Time.deltaTime;
-        if (timeOn > 5)
+    IEnumerator AutoPlaySequence()
+    {
+        int lightIndex = 1;
+        while (lightIndex < lights.Length)
         {
-            timeOn = 0;
-            lights[lightIndex].enabled = false;
-            if (lightIndex < lights.Length - 1)
-            {
-                lightIndex++;
-                lights[lightIndex].enabled = true;
-            }
+            yield return new WaitForSeconds(5);
+            ToggleLight(lightIndex - 1);
+            ToggleLight(lightIndex);
+            lightIndex++;
         }
     }
+
+    void ToggleLight(int index)
+    {
+        if (index >= lights.Length || index < 0) return;
+        lights[index].enabled = !lights[index].enabled;
+    }
+
 }
