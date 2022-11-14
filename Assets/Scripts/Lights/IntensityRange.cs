@@ -19,7 +19,6 @@ public class IntensityRange : MonoBehaviour
         GameObject lightBase = gameObject.transform.parent.gameObject;
         rangeMultiplier = lightBase.GetComponent<LightBuilder>().lightData.rangeMultiplier;
         colorController = lightBeams.GetComponent<BeamColour>();
-        UpdateRanges();
     }
 
     void Update()
