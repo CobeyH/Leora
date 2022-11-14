@@ -10,21 +10,34 @@ public class IntensityRange : MonoBehaviour
     public float beamIntensity = 1;
 
     private float rangeMultiplier = 0;
+    private BeamColour colorController;
+
+    private float prevIntensity = 0;
 
     void Start()
     {
         GameObject lightBase = gameObject.transform.parent.gameObject;
         rangeMultiplier = lightBase.GetComponent<LightBuilder>().lightData.rangeMultiplier;
+        colorController = lightBeams.GetComponent<BeamColour>();
+        UpdateRanges();
     }
 
     void Update()
     {
-        if (controlledLight.enabled && controlledLight.intensity > 0)
+        float intensity = controlledLight.intensity;
+        if (controlledLight.enabled && intensity > 0 && intensity != prevIntensity)
         {
-            float intensity = controlledLight.intensity;
-            controlledLight.pointLightOuterRadius = intensity * rangeMultiplier * 7;
-            lightBeams.pointLightOuterRadius = controlledLight.pointLightOuterRadius * 1.25f;
-            lightBeams.pointLightOuterAngle = controlledLight.pointLightOuterAngle;
+            UpdateRanges();
         }
+    }
+
+    void UpdateRanges()
+    {
+        float intensity = controlledLight.intensity;
+        controlledLight.pointLightOuterRadius = intensity * rangeMultiplier * 7;
+        lightBeams.pointLightOuterRadius = controlledLight.pointLightOuterRadius * 1.25f;
+        lightBeams.pointLightOuterAngle = controlledLight.pointLightOuterAngle;
+        colorController.UpdateColour(intensity);
+        prevIntensity = intensity;
     }
 }
