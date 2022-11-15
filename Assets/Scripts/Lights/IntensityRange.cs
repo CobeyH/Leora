@@ -3,30 +3,51 @@ using UnityEngine.Rendering.Universal;
 
 public class IntensityRange : MonoBehaviour
 {
-    public Light2D controlledLight;
-
     public Light2D lightBeams;
 
-    public float beamIntensity = 1;
+    private Light2D controlledLight;
 
     private float rangeMultiplier = 0;
 
+    private BeamColour beamColorController;
+
+    private BeamColour lightColorController;
+
+    private float prevIntensity = 0;
+
     void Start()
     {
+        controlledLight = GetComponent<Light2D>();
         GameObject lightBase = gameObject.transform.parent.gameObject;
-        rangeMultiplier = lightBase.GetComponent<LightBuilder>().lightData.rangeMultiplier;
+        rangeMultiplier =
+            lightBase.GetComponent<LightBuilder>().lightData.rangeMultiplier;
+        beamColorController = lightBeams.GetComponent<BeamColour>();
+        lightColorController = controlledLight.GetComponent<BeamColour>();
     }
 
     void Update()
     {
-        if (controlledLight.enabled && controlledLight.intensity > 0)
+        float intensity = controlledLight.intensity;
+        if (
+            controlledLight.enabled &&
+            intensity > 0 &&
+            intensity != prevIntensity
+        )
         {
-            float intensity = controlledLight.intensity;
-            controlledLight.pointLightOuterRadius = intensity * rangeMultiplier * 7;
-            lightBeams.transform.localScale =
-                new Vector3(intensity * beamIntensity * 0.5f,
-                    intensity * beamIntensity * 0.5f,
-                    1);
+            UpdateRanges();
         }
+    }
+
+    void UpdateRanges()
+    {
+        float intensity = controlledLight.intensity;
+        controlledLight.pointLightOuterRadius = intensity * rangeMultiplier * 7;
+        lightBeams.pointLightOuterRadius =
+            controlledLight.pointLightOuterRadius;
+        lightBeams.pointLightOuterAngle = controlledLight.pointLightOuterAngle;
+        beamColorController.UpdateColour (intensity);
+        lightColorController.UpdateColour (intensity);
+        lightBeams.intensity = controlledLight.intensity;
+        prevIntensity = intensity;
     }
 }

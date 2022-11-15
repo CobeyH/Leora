@@ -11,6 +11,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3237902851604274026, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237902851604274026, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237902851604274026, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4590971573310917435, guid: 758a462d28163b5569f158cc1a978222, type: 3}
       propertyPath: lightData.startsOn
       value: 1
@@ -133,6 +145,8 @@ PrefabInstance:
     - {fileID: 9137194527988666746, guid: 758a462d28163b5569f158cc1a978222, type: 3}
     - {fileID: 1047800274613189536, guid: 758a462d28163b5569f158cc1a978222, type: 3}
     - {fileID: 518453145197026385, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+    - {fileID: 7960800316182992983, guid: 758a462d28163b5569f158cc1a978222, type: 3}
+    - {fileID: 373943690194792507, guid: 758a462d28163b5569f158cc1a978222, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 758a462d28163b5569f158cc1a978222, type: 3}
 --- !u!1 &6353249914325875022 stripped
 GameObject:
