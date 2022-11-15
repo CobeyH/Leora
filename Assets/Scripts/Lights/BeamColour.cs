@@ -6,26 +6,31 @@ using UnityEngine.Rendering.Universal;
 public class BeamColour : MonoBehaviour
 {
     Light2D beams;
+
     void Awake()
     {
         beams = GetComponent<Light2D>();
     }
+
     public void UpdateColour(float intensity)
     {
-        int intIntensity = (int)intensity;
+        int intIntensity = (int) intensity;
         switch (intIntensity)
         {
             case 1:
-                beams.color = Color.red;
+                beams.color = new Color(251, 225, 70);
                 break;
             case 2:
-                beams.color = Color.green;
+                beams.color = new Color(221, 252, 225);
                 break;
             case 3:
-                beams.color = Color.blue;
+                beams.color = new Color(191, 255, 253);
                 break;
             default:
-                Debug.LogError("Intensity of " + intensity + " is outside the accepted range.");
+                Debug
+                    .LogError("Intensity of " +
+                    intensity +
+                    " is outside the accepted range.");
                 break;
         }
     }
