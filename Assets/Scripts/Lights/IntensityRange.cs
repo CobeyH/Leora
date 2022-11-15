@@ -3,28 +3,36 @@ using UnityEngine.Rendering.Universal;
 
 public class IntensityRange : MonoBehaviour
 {
-    public Light2D controlledLight;
-
     public Light2D lightBeams;
 
-    public float beamIntensity = 1;
+    private Light2D controlledLight;
 
     private float rangeMultiplier = 0;
-    private BeamColour colorController;
+
+    private BeamColour beamColorController;
+
+    private BeamColour lightColorController;
 
     private float prevIntensity = 0;
 
     void Start()
     {
+        controlledLight = GetComponent<Light2D>();
         GameObject lightBase = gameObject.transform.parent.gameObject;
-        rangeMultiplier = lightBase.GetComponent<LightBuilder>().lightData.rangeMultiplier;
-        colorController = lightBeams.GetComponent<BeamColour>();
+        rangeMultiplier =
+            lightBase.GetComponent<LightBuilder>().lightData.rangeMultiplier;
+        beamColorController = lightBeams.GetComponent<BeamColour>();
+        lightColorController = controlledLight.GetComponent<BeamColour>();
     }
 
     void Update()
     {
         float intensity = controlledLight.intensity;
-        if (controlledLight.enabled && intensity > 0 && intensity != prevIntensity)
+        if (
+            controlledLight.enabled &&
+            intensity > 0 &&
+            intensity != prevIntensity
+        )
         {
             UpdateRanges();
         }
@@ -34,9 +42,12 @@ public class IntensityRange : MonoBehaviour
     {
         float intensity = controlledLight.intensity;
         controlledLight.pointLightOuterRadius = intensity * rangeMultiplier * 7;
-        lightBeams.pointLightOuterRadius = controlledLight.pointLightOuterRadius * 1.25f;
+        lightBeams.pointLightOuterRadius =
+            controlledLight.pointLightOuterRadius * 1.25f;
         lightBeams.pointLightOuterAngle = controlledLight.pointLightOuterAngle;
-        colorController.UpdateColour(intensity);
+        beamColorController.UpdateColour (intensity);
+        lightColorController.UpdateColour (intensity);
+        lightBeams.intensity = controlledLight.intensity;
         prevIntensity = intensity;
     }
 }
