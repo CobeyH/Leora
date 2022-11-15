@@ -353,6 +353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a8f2ec5dbc41d73b93fb3b1c5bff5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightColours:
+  - {r: 0.8980392, g: 0.8, b: 0.38039216, a: 0.19607843}
+  - {r: 0.9528302, g: 0.5558176, b: 0, a: 0.19607843}
+  - {r: 0.25587398, g: 0.31211245, b: 0.4339623, a: 0.19607843}
 --- !u!1 &5722856782120271183
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a8f2ec5dbc41d73b93fb3b1c5bff5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightColours:
+  - {r: 1, g: 0.89133024, b: 0, a: 1}
+  - {r: 1, g: 0.5087234, b: 0, a: 1}
+  - {r: 0, g: 0.5506482, b: 1, a: 1}
 --- !u!1001 &5297090932585412407
 PrefabInstance:
   m_ObjectHideFlags: 0
