@@ -20,7 +20,7 @@ public class ButtonHover : MonoBehaviour
     void Start()
     {
         defaultColour = buttonText.color;
-        ToggleDecals();
+        SetDecals(false);
         audioManager =
             GameObject
                 .FindGameObjectWithTag("AudioManager")
@@ -30,21 +30,21 @@ public class ButtonHover : MonoBehaviour
     public void ButtonHovered()
     {
         buttonText.color = highlightColour;
-        ToggleDecals();
+        SetDecals(true);
         audioManager.Play("ButtonClick");
     }
 
     public void ButtonUnHovered()
     {
         buttonText.color = defaultColour;
-        ToggleDecals();
+        SetDecals(false);
     }
 
-    public void ToggleDecals()
+    public void SetDecals(bool isOn)
     {
         foreach (Image decal in decals)
         {
-            decal.enabled = !decal.enabled;
+            decal.enabled = isOn;
         }
     }
 
