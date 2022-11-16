@@ -23,7 +23,14 @@ public class ZoneToggleLight : MonoBehaviour
     {
         if (subscribedZones.Contains(zoneId))
         {
-            StartCoroutine(lightController.BrightenLight());
+            if (lightController.myLight.intensity <= 0)
+            {
+                StartCoroutine(lightController.BrightenLight());
+            }
+            else
+            {
+                StartCoroutine(lightController.DimLight());
+            }
         }
     }
 }
