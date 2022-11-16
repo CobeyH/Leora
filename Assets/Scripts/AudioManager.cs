@@ -14,7 +14,8 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource mainTheme;
 
-    public AudioMixerGroup mainMixer;
+    public AudioMixerGroup SFXMixer;
+    public AudioMixerGroup MusicMixer;
 
     public static AudioManager instance;
 
@@ -37,11 +38,12 @@ public class AudioManager : MonoBehaviour
         transform.parent = null;
         DontDestroyOnLoad(gameObject);
 
-        AddAudioSources(sounds);
-        AddAudioSources(musicTracks);
+        AddAudioSources(sounds, false);
+        AddAudioSources(musicTracks, true);
         mainTheme = gameObject.AddComponent<AudioSource>();
         mainTheme.clip = themeClip;
-        mainTheme.volume = 0.5f;
+        mainTheme.volume = 0.1f;
+        mainTheme.outputAudioMixerGroup = MusicMixer;
     }
 
     void Start()
@@ -89,7 +91,7 @@ public class AudioManager : MonoBehaviour
         mainTheme.Play();
     }
 
-    void AddAudioSources(Sound[] clips)
+    void AddAudioSources(Sound[] clips, bool isMusic)
     {
         foreach (Sound s in clips)
         {
@@ -99,7 +101,7 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
-            s.source.outputAudioMixerGroup = mainMixer;
+            s.source.outputAudioMixerGroup = isMusic ? MusicMixer : SFXMixer;
         }
     }
 

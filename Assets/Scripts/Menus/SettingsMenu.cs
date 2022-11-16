@@ -11,7 +11,8 @@ public class SettingsMenu : MonoBehaviour
     public GameObject SettingsMenuUI;
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
-    public AudioMixer mainMixer;
+    public AudioMixer musicMixer;
+    public AudioMixer sfxMixer;
     public Slider volumeSlider;
     public Toggle fullScreenToggle;
     public TMP_Dropdown graphicQualityDropdown;
@@ -37,10 +38,20 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void SetVolume(float sliderVolume)
+    public void SetMusicVolume(float sliderVolume)
+    {
+        SetVolume(sliderVolume, musicMixer);
+    }
+
+    public void SetSFXVolume(float sliderVolume)
+    {
+        SetVolume(sliderVolume, sfxMixer);
+    }
+
+    void SetVolume(float sliderVolume, AudioMixer mixer)
     {
         float mixerVolume = Mathf.Log10(sliderVolume) * 20;
-        mainMixer.SetFloat("volume", mixerVolume);
+        mixer.SetFloat("volume", mixerVolume);
         PlayerPrefs.SetFloat("volume", sliderVolume);
 
     }
