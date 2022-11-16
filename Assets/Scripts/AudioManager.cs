@@ -43,6 +43,7 @@ public class AudioManager : MonoBehaviour
         mainTheme = gameObject.AddComponent<AudioSource>();
         mainTheme.clip = themeClip;
         mainTheme.volume = 0.1f;
+        mainTheme.outputAudioMixerGroup = MusicMixer;
     }
 
     void Start()

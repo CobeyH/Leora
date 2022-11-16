@@ -143,4 +143,5 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   themeClip: {fileID: 8300000, guid: ba46b7140b0fd21f0a1a808ea79f7640, type: 3}
-  mainMixer: {fileID: 24300002, guid: e80bc5ca3749e422b9af3805a1e29ae4, type: 2}
+  SFXMixer: {fileID: 24300002, guid: e80bc5ca3749e422b9af3805a1e29ae4, type: 2}
+  MusicMixer: {fileID: 24300002, guid: 6c99cca0b34e6687b847421a6cdafc7d, type: 2}
