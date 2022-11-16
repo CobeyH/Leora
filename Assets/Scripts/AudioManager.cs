@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
         AddAudioSources(musicTracks);
         mainTheme = gameObject.AddComponent<AudioSource>();
         mainTheme.clip = themeClip;
-        mainTheme.volume = 0.5f;
+        mainTheme.volume = 0.1f;
     }
 
     void Start()
