@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEditor;
 
 public class LightBuilder : MonoBehaviour
 {
@@ -9,16 +10,19 @@ public class LightBuilder : MonoBehaviour
     [HideInInspector]
     public Light2D light2D;
 
-    private void OnValidate() => UnityEditor.EditorApplication.delayCall += _OnValidate;
+#if UNITY_EDITOR
+    private void OnValidate() => EditorApplication.delayCall += _OnValidate;
 
     void _OnValidate()
     {
-        UnityEditor.EditorApplication.delayCall -= _OnValidate;
+        EditorApplication.delayCall -= _OnValidate;
         if (this == null) return;
         CheckActivationType();
         CheckAreaOfEffect();
         CheckStartOn();
     }
+
+#endif
 
     void CheckActivationType()
     {
