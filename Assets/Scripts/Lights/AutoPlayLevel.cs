@@ -5,6 +5,8 @@ using System.Collections;
 public class AutoPlayLevel : MonoBehaviour
 {
     public Light2D[] lights;
+    [SerializeField]
+    private IntEventChannelSO lightChannel;
 
     void Start()
     {
@@ -25,16 +27,9 @@ public class AutoPlayLevel : MonoBehaviour
         while (lightIndex < lights.Length)
         {
             yield return new WaitForSeconds(5);
-            ToggleLight(lightIndex - 1);
-            ToggleLight(lightIndex);
+            lightChannel.RaiseEvent(lightIndex - 1);
+            lightChannel.RaiseEvent(lightIndex);
             lightIndex++;
         }
     }
-
-    void ToggleLight(int index)
-    {
-        if (index >= lights.Length || index < 0) return;
-        lights[index].enabled = !lights[index].enabled;
-    }
-
 }

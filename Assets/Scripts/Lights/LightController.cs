@@ -30,7 +30,9 @@ public class LightController : MonoBehaviour
             GameObject
                 .FindGameObjectWithTag("AudioManager")
                 .GetComponent<AudioManager>();
-        lightLimit = GameObject.Find("RadialLightLimit").GetComponent<RadialLightLimit>();
+        GameObject lightLimitObj = GameObject.Find("RadialLightLimit");
+        if (lightLimitObj != null)
+            lightLimit = lightLimitObj.GetComponent<RadialLightLimit>();
         mainCam = Camera.main;
         UICamera = GameObject.Find("UICamera").GetComponent<Camera>();
         _ringController = luxRings.GetComponent<LuxRings>();
@@ -108,6 +110,14 @@ public class LightController : MonoBehaviour
 
     public IEnumerator BrightenLight()
     {
+        if (lightLimit == null)
+        {
+            myLight.intensity += 1;
+            _requestedIntensity += 1;
+            SwitchLightState();
+            _processing = false;
+            yield break;
+        }
         if (!lightLimit.LuxAvailable(1))
         {
             // If there isn't enough lux, the light cannot increase in brightness.
@@ -128,12 +138,18 @@ public class LightController : MonoBehaviour
         _processing = false;
     }
 
-    IEnumerator DimLight()
+    public IEnumerator DimLight()
     {
         myLight.intensity -= 1;
         if (myLight.intensity == 0)
         {
             SwitchLightState();
+        }
+        if (lightLimit == null)
+        {
+            _processing = false;
+            _requestedIntensity -= 1;
+            yield break;
         }
         if (lightData.returnsLux)
         {
