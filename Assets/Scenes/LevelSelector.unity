@@ -2236,6 +2236,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3460763845317496424, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3460763845317496424, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3460763845317496424, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3460763845317496424, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3472704016951217313, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2300,6 +2316,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4039886330484210193, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039886331128255249, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039886331128255249, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039886331128255249, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039886331128255249, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039886331128255249, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 129.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039886331128255249, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4283476277794357328, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2353,6 +2397,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5165211117041346015, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271601500085638076, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271601500085638076, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271601500085638076, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271601500085638076, guid: 5dbad8b87711b8de0bb8ebcdc48f680b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -3297,7 +3357,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.1862917
+  orthographic size: 5.892857
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8544,6 +8604,10 @@ PrefabInstance:
       propertyPath: MusicMixer
       value: 
       objectReference: {fileID: 24300002, guid: 6c99cca0b34e6687b847421a6cdafc7d, type: 2}
+    - target: {fileID: 3381024949018725557, guid: 9b7db996252394162bb85c9027377d04, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 32551692c90d9e34a9ac6f38a647ae07, type: 3}
     - target: {fileID: 3381024949018725557, guid: 9b7db996252394162bb85c9027377d04, type: 3}
       propertyPath: sounds.Array.data[7].volume
       value: 0.85
