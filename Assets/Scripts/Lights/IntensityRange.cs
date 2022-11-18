@@ -44,7 +44,7 @@ public class IntensityRange : MonoBehaviour
         controlledLight.pointLightOuterRadius = intensity * rangeMultiplier * 7;
         lightBeams.pointLightOuterRadius =
             controlledLight.pointLightOuterRadius;
-        lightBeams.pointLightOuterAngle = controlledLight.pointLightOuterAngle;
+        
         beamColorController.UpdateColour (intensity);
         lightColorController.UpdateColour (intensity);
         lightBeams.intensity = controlledLight.intensity;

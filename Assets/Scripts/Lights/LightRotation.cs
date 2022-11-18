@@ -3,6 +3,7 @@ using UnityEngine.Rendering.Universal;
 public class LightRotation : MonoBehaviour
 {
     public GameObject leftPivot, rightPivot;
+    public Light2D lightBeams;
     private Light2D controlledLight;
     private bool canRotate = false;
     private bool rotating = false;
@@ -18,6 +19,7 @@ public class LightRotation : MonoBehaviour
 
         mainCam = Camera.main;
         UpdateLeafPositions();
+        MatchLightAngles();
     }
 
     // Update is called once per frame
@@ -33,7 +35,20 @@ public class LightRotation : MonoBehaviour
             angleToMouse = Mathf.Clamp(angleToMouse, 10, 90);
             controlledLight.pointLightOuterAngle = angleToMouse * 2;
         }
+        MatchLightAngles();
         UpdateLeafPositions();
+    }
+
+    // Make the LightEmitter inner angle's max value to be the outer angle's value.
+    // Additionally the LightEmitter angle and Beam angle match.
+    void MatchLightAngles()
+    {
+        if (controlledLight.pointLightInnerAngle > controlledLight.pointLightOuterAngle)
+        {
+            controlledLight.pointLightInnerAngle = controlledLight.pointLightOuterAngle;
+        }
+        lightBeams.pointLightOuterAngle = controlledLight.pointLightOuterAngle;
+        lightBeams.pointLightInnerAngle = controlledLight.pointLightInnerAngle;
     }
 
     void OnMouseDown()
