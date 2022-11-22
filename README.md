@@ -1,6 +1,6 @@
-# MothLight
+# Leora
 
-MothLight is a 2D puzzle game in which the player controls lights in the environment to guide flocks of moths to a goal. This project was started in June 2022 to build Unity skills for future employment.
+Leora is a 2D puzzle game in which the player controls lights in the environment to guide flocks of moths to a goal. This project was started in June 2022 to build Unity skills for future employment.
 Some of the key concepts used are listed below:
 
 - Scene Management
