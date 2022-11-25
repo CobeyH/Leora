@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class LevelButtons : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class LevelButtons : MonoBehaviour
     void Start()
     {
         // substracting start screen and level selctor scene
-        int levelCount = SceneManager.sceneCountInBuildSettings - 2;
+        int levelCount = SceneManager.sceneCountInBuildSettings - 3;
 
         for (int levelIndex = 1; levelIndex <= levelCount; levelIndex++)
         {
@@ -23,18 +23,19 @@ public class LevelButtons : MonoBehaviour
             buttonObject.GetComponent<LevelChanger>().level = levelIndex;
             Button button =
                 buttonObject.GetComponent<MothLightLevelSelection>().button;
-            levelButtons.Add(button);
+            levelButtons.Add (button);
         }
         UpdateButtonInteraction();
     }
 
     void UpdateButtonInteraction()
     {
-        int levelCount = SceneManager.sceneCountInBuildSettings - 2;
+        int levelCount = SceneManager.sceneCountInBuildSettings - 3;
         int furthestLevel = PlayerPrefs.GetInt("furthestUnlock", 1);
         for (int buttonIndex = 0; buttonIndex < levelCount; buttonIndex++)
         {
-            levelButtons[buttonIndex].interactable = buttonIndex < furthestLevel;
+            levelButtons[buttonIndex].interactable =
+                buttonIndex < furthestLevel;
         }
     }
 
@@ -42,11 +43,12 @@ public class LevelButtons : MonoBehaviour
     {
         PlayerPrefs.SetInt("furthestUnlock", 1);
         UpdateButtonInteraction();
-        GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        GameObject[] checkpoints =
+            GameObject.FindGameObjectsWithTag("Checkpoint");
         PlayerPrefs.DeleteAll();
         foreach (GameObject cp in checkpoints)
         {
-            Destroy(cp);
+            Destroy (cp);
         }
     }
 }
