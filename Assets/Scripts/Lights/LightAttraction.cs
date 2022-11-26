@@ -25,11 +25,16 @@ public class LightAttraction : MonoBehaviour
         List<Light2D> allLightsInScene = new List<Light2D>(FindObjectsOfType<Light2D>());
         foreach (Light2D light in allLightsInScene)
         {
-            if (light.lightType == Light2D.LightType.Point)
+            if (light.lightType == Light2D.LightType.Point && LightHasCorrectTag(light.gameObject))
             {
                 lightsInScene.Add(light);
             }
         }
+    }
+
+    bool LightHasCorrectTag(GameObject obj)
+    {
+        return obj.CompareTag("AttractiveLight") || obj.CompareTag("TrapLight");
     }
 
     // Update is called once per frame
@@ -118,6 +123,10 @@ public class LightAttraction : MonoBehaviour
         if (controller != null)
         {
             isRepulsive = controller.lightData.isRepulsive;
+        }
+        else
+        {
+            Debug.LogWarning("Light controller cannot be found");
         }
         if (isRepulsive)
         {

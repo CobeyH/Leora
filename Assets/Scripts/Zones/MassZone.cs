@@ -16,7 +16,7 @@ public class MassZone : ZoneBase
         }
         else if (ZoneUI.fillAmount > target)
         {
-            ZoneUI.fillAmount -= Time.deltaTime;
+            ZoneUI.fillAmount -= Time.deltaTime * 2;
         }
 
     }
