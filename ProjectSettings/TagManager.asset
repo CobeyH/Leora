@@ -12,6 +12,7 @@ TagManager:
   - AudioManager
   - MothForces
   - Checkpoint
+  - AttractiveLight
   layers:
   - Default
   - TransparentFX
