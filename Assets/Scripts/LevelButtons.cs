@@ -23,7 +23,7 @@ public class LevelButtons : MonoBehaviour
             buttonObject.GetComponent<LevelChanger>().level = levelIndex;
             Button button =
                 buttonObject.GetComponent<MothLightLevelSelection>().button;
-            levelButtons.Add (button);
+            levelButtons.Add(button);
         }
         UpdateButtonInteraction();
     }
@@ -48,7 +48,12 @@ public class LevelButtons : MonoBehaviour
         PlayerPrefs.DeleteAll();
         foreach (GameObject cp in checkpoints)
         {
-            Destroy (cp);
+            Destroy(cp);
         }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
